@@ -1,97 +1,63 @@
-#include "Emily.h"
+#ifndef _EMILY_
+#define _EMILY_
 
-// Emily's Memo
-static _MyDataEmily MyData = INIT_EMILY_MYDATA ;
 
-// Birth
-EmilyFunctions callEmily( void ){
-	EmilyFunctions _EmilySkills = BIRTH_EMILY ;
+//--< Sisters ID >--//
+#define Emily_ID 3
 
-	return _EmilySkills ;
+
+//--< Use Headers >--//
+#include "stdio.h"
+#include "string.h"
+
+
+//--< Standard Definition >--//
+#include "../dir_Specifications/sisdef.h"
+
+
+//--< Prototype Declarations >--//
+int mfnMainEmily( int argc, char* argv[] ) ;
+
+string _fnGetLine( string ) ;
+void _fnDispLine( string ) ;
+void _fnDispLineCustom( string, string, string ) ;
+void _fnDispStr( string ) ;
+void _fnDispStrCustom( string, string, string ) ;
+
+
+/* <] - Emily - [> */
+typedef struct _emily_functions{
+	string ( *fnGetLine )( string ) ;
+	void ( *fnDispLine )( string ) ;
+	void ( *fnDispLineCustom )( string, string, string ) ;
+	void ( *fnDispStr )( string ) ;
+	void ( *fnDispStrCustom )( string, string, string ) ;
+}EmilyFunctions ;
+
+#define BIRTH_EMILY {\
+	_fnGetLine,\
+	_fnDispLine,\
+	_fnDispLineCustom,\
+	_fnDispStr,\
+	_fnDispStrCustom\
 }
 
-//------------------------
-// :[ NAME ]:
-//     fnGetLine
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-string _fnGetLine( string label ){
-	int len ;
+static EmilyFunctions Emily ;
 
-	fputs( label, stdout ) ;
-	fgets( MyData.str, MAX_LENGTH, stdin ) ;
-	len = strlen( MyData.str ) ;
-	MyData.str[--len] = NL ;
+EmilyFunctions callEmily( void ) ;
 
-	return MyData.str ;
+
+//--< MyData Declaration >--//
+typedef struct _myDataEmily{
+	char str[MAX_LENGTH] ;
+}_MyDataEmily ;
+
+#define INIT_EMILY_MYDATA {\
+	{ NL }\
 }
 
-//------------------------
-// :[ NAME ]:
-//     fnDispLine
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-void _fnDispLine( string str ){
 
-	printf( "%s\n", str ) ;
+//--< Free Definitions >--//
 
-	return ;
-}
 
-//------------------------
-// :[ NAME ]:
-//     fnDispLineCustom
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-void _fnDispLineCustom( string pre, string str, string suf ){
-
-	if( pre == NULL ){
-		pre = STR_EMPTY ;
-	}
-	if( suf == NULL ){
-		suf = STR_EMPTY ;
-	}
-	printf( "%s%s%s\n", pre, str, suf ) ;
-
-	return ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnDispStr
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-void _fnDispStr( string str ){
-
-	printf( "%s", str ) ;
-
-	return ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnDispStrCustom
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-void _fnDispStrCustom( string pre, string str, string suf ){
-
-	if( pre == NULL ){
-		pre = STR_EMPTY ;
-	}
-	if( suf == NULL ){
-		suf = STR_EMPTY ;
-	}
-	printf( "%s%s%s", pre, str, suf ) ;
-
-	return ;
-}
+#endif
