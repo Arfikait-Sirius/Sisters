@@ -14,7 +14,7 @@ void callSisters( void ){
 ```
 string s = Emily.fnGetLine() ;
 ```
-コンソールから文字列を入力できます！
+コンソールから文字列を入力できます！  
 エンターキー押下まで入力待ちになります！
 
 ## fnDispLine()
