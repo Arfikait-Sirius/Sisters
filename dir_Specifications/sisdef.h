@@ -85,11 +85,6 @@ typedef void* fnp ;
 #define YES "y"
 #define NO  "n"
 
-#define READ_ONLY  "r"
-#define WRITE_ONLY "w"
-#define APPEND_ONLY "a"
-#define READ_AFTER_WRITE "r+"
-
 #define FILE_CONTINUE	0x40
 #define FILE_END	0x24
 
