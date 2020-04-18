@@ -58,3 +58,9 @@ Emily.fnDispStrCustom(
 ```
 コンソールに「Hello, I'm Emily!(改行なし)」を表示できます！  
 プレフィックス、サフィックスが必要ない場合はNULLを指定することで実現できます。
+
+## fnNewLine()
+```
+Emily.fnNewLine() ;
+```
+コンソール表示を改行できます！
