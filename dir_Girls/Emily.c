@@ -23,7 +23,9 @@ EmilyFunctions callEmily( void ){
 string _fnGetLine( string label ){
 	int len ;
 
-	fputs( label, stdout ) ;
+	if( label != NULL ){
+		fputs( label, stdout ) ;
+	}
 	fgets( MyData.str, MAX_LENGTH, stdin ) ;
 	len = strlen( MyData.str ) ;
 	MyData.str[--len] = NL ;
@@ -95,6 +97,20 @@ void _fnDispStrCustom( string pre, string str, string suf ){
 		suf = STR_EMPTY ;
 	}
 	printf( "%s%s%s", pre, str, suf ) ;
+
+	return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnNewLine
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _fnNewLine( void ){
+
+	printf( "\n" ) ;
 
 	return ;
 }

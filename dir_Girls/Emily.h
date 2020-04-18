@@ -19,6 +19,7 @@ void _fnDispLine( string ) ;
 void _fnDispLineCustom( string, string, string ) ;
 void _fnDispStr( string ) ;
 void _fnDispStrCustom( string, string, string ) ;
+void _fnNewLine( void ) ;
 
 
 /* <] - Emily - [> */
@@ -28,6 +29,7 @@ typedef struct _emily_functions{
 	void ( *fnDispLineCustom )( string, string, string ) ;
 	void ( *fnDispStr )( string ) ;
 	void ( *fnDispStrCustom )( string, string, string ) ;
+	void ( *fnNewLine )( void ) ;
 }EmilyFunctions ;
 
 #define BIRTH_EMILY {\
@@ -35,7 +37,8 @@ typedef struct _emily_functions{
 	_fnDispLine,\
 	_fnDispLineCustom,\
 	_fnDispStr,\
-	_fnDispStrCustom\
+	_fnDispStrCustom,\
+	_fnNewLine\
 }
 
 static EmilyFunctions Emily ;
