@@ -2,10 +2,6 @@
 #define _EMILY_
 
 
-//--< Sisters ID >--//
-#define Emily_ID 3
-
-
 //--< Use Headers >--//
 #include "stdio.h"
 #include "string.h"

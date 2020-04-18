@@ -1,5 +1,8 @@
 #include "Dorothy.h"
 
+// Name
+static string MyName = "Dorothy" ;
+
 // Dorothy's Memo
 static _MyDataDorothy MyData = INIT_DOROTHY_MYDATA ;
 
@@ -26,8 +29,8 @@ int _fnOpenRead( string fileName ){
 		MyData.error[MyData.fileSeq] = TRUE ;
 		logSisters(
 				"Failed to open file.",
-				FATAL,
-				Dorothy_ID
+				FTL,
+				MyName
 			) ;
 		return CHAO ;
 	}
@@ -54,8 +57,8 @@ int _fnOpenWrite( string fileName ){
 		MyData.error[MyData.fileSeq] = TRUE ;
 		logSisters(
 				"Failed to open file.",
-				FATAL,
-				Dorothy_ID
+				FTL,
+				MyName
 			) ;
 		return CHAO ;
 	}
