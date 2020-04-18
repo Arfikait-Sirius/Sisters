@@ -2,10 +2,6 @@
 #define _SISDEF_
 
 
-//--< Sisters_ID >--//
-#define Sisters_ID 0
-
-
 //** TYPE DEFINE **
 typedef char bool ;
 typedef char* string ;
