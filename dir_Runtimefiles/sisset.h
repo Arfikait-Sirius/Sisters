@@ -5,6 +5,12 @@
 // [ COMMON ]
 #define LOG_SETUP 1
 
+#define ATD 0
+#define ERR 1
+#define FTL 2
+#define INF 3
+#define MSG 4
+
 
 // Dorothy
 #define MAX_FILE_COUNT 16
@@ -23,6 +29,11 @@
 // Sylvia
 #define OPERATOR_STACK_BUFSIZE 64
 #define NUMBER_STACK_BUFSIZE 64
+
+
+// Grace
+#define GRACE_PATH "/Users/Sirius/SiriusFramework/Sisters/dir_Runtimefiles/Grace/Source/%s.grace"
+#define GRACE_PROPERTY "/Users/Sirius/SiriusFramework/Sisters/dir_Runtimefiles/Grace/Property/%s_Property.grace"
 
 
 #endif
