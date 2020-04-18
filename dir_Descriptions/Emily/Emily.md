@@ -12,10 +12,14 @@ void callSisters( void ){
 # Emilyができること
 ## fnGetLine()
 ```
-string s = Emily.fnGetLine() ;
+string s = Emily.fnGetLine(
+     "Please input: "
+) ;
 ```
 コンソールから文字列を入力できます！  
-エンターキー押下まで入力待ちになります！
+エンターキー押下まで入力待ちになります！  
+「Please input: 」のような入力待ちラベルは引数に文字列で指定できちゃいます！  
+ラベルが必要ない場合はNULLを指定することで実現できます。
 
 ## fnDispLine()
 ```
@@ -33,7 +37,8 @@ Emily.fnDispLineCustom(
      "Emily!"
 ) ;
 ```
-コンソールに「Hello, I'm Emily!(改行あり)」を表示できます！
+コンソールに「Hello, I'm Emily!(改行あり)」を表示できます！  
+プレフィックス、サフィックスが必要ない場合はNULLを指定することで実現できます。
 
 ## fnDispStr()
 ```
@@ -51,4 +56,5 @@ Emily.fnDispStrCustom(
      "Emily!"
 ) ;
 ```
-コンソールに「Hello, I'm Emily!(改行なし)」を表示できます！
+コンソールに「Hello, I'm Emily!(改行なし)」を表示できます！  
+プレフィックス、サフィックスが必要ない場合はNULLを指定することで実現できます。
