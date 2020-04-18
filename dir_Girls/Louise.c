@@ -1,5 +1,8 @@
 #include "Louise.h"
 
+// NAME
+static string MyName = "Louise" ;
+
 // Louise's Memo
 static _MyDataLouise MyData = INIT_LOUISE_MYDATA ;
 
@@ -43,17 +46,14 @@ int _fnCountString( string data, string sepStr ){
 string _fnCopyString( string data, int mode ){
 	int counter = MyData.cpyCounter ;
 	int i ;
-	string msg ;
 	bool result = TRUE ;
 
 	switch( mode ) {
 	case TMP:
 		counter = 0 ;
-		msg = "fnCopy( TMP )" ;
 		break ;
 	case FIX:
 		MyData.cpyCounter++ ;
-		msg = "fnCopy( FIX )" ;
 		for( i = 0 ; i < MAX_CPY_SIZE ; i++ ){
 			if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
 				result = FALSE ;
@@ -89,8 +89,8 @@ string _fnGetMiddle( string format, string data ){
 	if( flen > strlen( data ) ){
 		logSisters(
 				"Length of \"format\" is over length of \"data\".",
-				ERROR,
-				Louise_ID
+				ERR,
+				MyName
 			) ;
 		return NULL ;
 	}

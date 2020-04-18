@@ -1,5 +1,8 @@
 #include "Emily.h"
 
+// NAME
+static string MyName = "Emily" ;
+
 // Emily's Memo
 static _MyDataEmily MyData = INIT_EMILY_MYDATA ;
 
