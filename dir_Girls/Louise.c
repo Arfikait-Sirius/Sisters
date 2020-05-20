@@ -1,6 +1,6 @@
 #include "Louise.h"
 
-// NAME
+// Name
 static string MyName = "Louise" ;
 
 // Louise's Memo
