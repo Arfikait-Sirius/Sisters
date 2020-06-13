@@ -41,21 +41,17 @@ void _fnService( void ){
      char str[READ_BUFSIZE] ;
      char* p ;
 
-     // Socketを生成
      socketRead = socket( AF_INET, SOCK_STREAM, 0 ) ;
 
-     // Socketが生成できなかった場合はエラー終了
      if( socketRead < 0 ){
           fprintf( stderr, "Error: Cannot create socketRead.\n" ) ;
           return ;
      }
 
-     // Internetを利用するためのアドレス・ポートの設定
      addr.sin_family = AF_INET ;
      addr.sin_port = htons( 8080 ) ;
      addr.sin_addr.s_addr = INADDR_ANY ;
 
-     // 設定したアドレス・ポートをサーバー自身にバインド
      result = bind( socketRead, ( struct sockaddr* )&addr, sizeof( addr ) ) ;
 
      if( result < 0 ){
