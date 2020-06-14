@@ -23,6 +23,11 @@ void _fnService( void ) ;
 void _fnDeploy( string ) ;
 void _fnSetValue( string, string ) ;
 
+static int sfnBindSocket( void ) ;
+static int sfnAccept( int, string, string, string ) ;
+static int sfnSendProperty( int, string ) ;
+static int sfnSendHTML( int, string ) ;
+
 static void sfnSplitFileName( string ) ;
 static void sfnGenerateHTML( string, string ) ;
 static string sfnGetValue( string ) ;
@@ -52,8 +57,8 @@ typedef struct _myDataGrace{
      char type[HALF_LENGTH] ;
 
      int index ;
-     char key[STANDARD_LENGTH][HALF_LENGTH] ;
-     char value[STANDARD_LENGTH][HALF_LENGTH] ;
+     char key[MEDIUM_LENGTH][HALF_LENGTH] ;
+     char value[MEDIUM_LENGTH][HALF_LENGTH] ;
 }_MyDataGrace ;
 
 #define INIT_GRACE_MYDATA {\
@@ -67,6 +72,7 @@ typedef struct _myDataGrace{
 
 
 //--< Free Definitions >--//
+#define GRACE_HTML "ghtml"
 
 
 #endif
