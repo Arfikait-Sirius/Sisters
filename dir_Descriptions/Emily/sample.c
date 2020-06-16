@@ -1,6 +1,6 @@
 #include "Emily.h"
 
-// Sisters呼び出し関数
+// Sisters呼び出し
 void callSisters( void ){
 
      // Emilyを呼び出し
@@ -15,24 +15,23 @@ int main( void ){
 
      string s ;
 
+     // fnGetLine
      s = Emily.fnGetLine( "fnGetLine: " ) ;
-     Emily.fnDispStr( "fnDispLine: " ) ;
+     printf( "%s", s ) ;
+
+     // fnDispLine
      Emily.fnDispLine( s ) ;
 
-     Emily.fnDispStr( "fnDispLineCustom: " ) ;
-     Emily.fnDispLineCustom( "Input: ", s, NULL ) ;
+     // fnDispLineCustom
+     Emily.fnDispLineCustom( "Input: ", s, " (inputed)." ) ;
 
-     Emily.fnDispStr( "fnDispStr: " ) ;
-     Emily.fnDispStr( "Hello!" ) ;
+     // fnDispStr
+     Emily.fnDispStr( s ) ;
 
-     Emily.fnNewLine() ;
+     // fnDispStrCustom
+     Emily.fnDispStrCustom( "Input: ", s, "(inputed)." ) ;
 
-     Emily.fnDispStr( "fnDispStrCustom: " ) ;
-     Emily.fnDispStrCustom( NULL, s, "(inputed)." ) ;
-
-     Emily.fnNewLine() ;
-
-     Emily.fnDispStr( "fnNewLine: " ) ;
+     // fnNewLine
      Emily.fnNewLine() ;
 
      return CHAO ;
