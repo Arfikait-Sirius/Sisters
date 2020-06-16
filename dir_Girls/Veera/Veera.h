@@ -27,13 +27,13 @@ int _fnRandom( int ) ;
 
 /* <] - Veera - [> */
 typedef struct _veera_functions{
-	void ( *fnInit )( void ) ;
-	int ( *fnRandom )( int ) ;
+     void ( *fnInit )( void ) ;
+     int ( *fnRandom )( int ) ;
 }VeeraFunctions ;
 
 #define BIRTH_VEERA {\
-	_fnInitRandom,\
-	_fnRandom\
+     _fnInitRandom,\
+     _fnRandom\
 }
 
 static VeeraFunctions Veera ;

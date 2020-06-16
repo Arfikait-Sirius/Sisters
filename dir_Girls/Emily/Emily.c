@@ -8,9 +8,9 @@ static _MyDataEmily MyData = INIT_EMILY_MYDATA ;
 
 // Birth
 EmilyFunctions callEmily( void ){
-	EmilyFunctions _EmilySkills = BIRTH_EMILY ;
+     EmilyFunctions _EmilySkills = BIRTH_EMILY ;
 
-	return _EmilySkills ;
+     return _EmilySkills ;
 }
 
 //------------------------
@@ -21,16 +21,16 @@ EmilyFunctions callEmily( void ){
 //     Skill
 //------------------------
 string _fnGetLine( string label ){
-	int len ;
+     int len ;
 
-	if( label != NULL ){
-		fputs( label, stdout ) ;
-	}
-	fgets( MyData.str, MAX_LENGTH, stdin ) ;
-	len = strlen( MyData.str ) ;
-	MyData.str[--len] = NL ;
+     if( label != NULL ){
+          fputs( label, stdout ) ;
+     }
+     fgets( MyData.str, MAX_LENGTH, stdin ) ;
+     len = strlen( MyData.str ) ;
+     MyData.str[--len] = NL ;
 
-	return MyData.str ;
+     return MyData.str ;
 }
 
 //------------------------
@@ -42,9 +42,9 @@ string _fnGetLine( string label ){
 //------------------------
 void _fnDispLine( string str ){
 
-	printf( "%s\n", str ) ;
+     printf( "%s\n", str ) ;
 
-	return ;
+     return ;
 }
 
 //------------------------
@@ -56,15 +56,15 @@ void _fnDispLine( string str ){
 //------------------------
 void _fnDispLineCustom( string pre, string str, string suf ){
 
-	if( pre == NULL ){
-		pre = STR_EMPTY ;
-	}
-	if( suf == NULL ){
-		suf = STR_EMPTY ;
-	}
-	printf( "%s%s%s\n", pre, str, suf ) ;
+     if( pre == NULL ){
+          pre = STR_EMPTY ;
+     }
+     if( suf == NULL ){
+          suf = STR_EMPTY ;
+     }
+     printf( "%s%s%s\n", pre, str, suf ) ;
 
-	return ;
+     return ;
 }
 
 //------------------------
@@ -76,9 +76,9 @@ void _fnDispLineCustom( string pre, string str, string suf ){
 //------------------------
 void _fnDispStr( string str ){
 
-	printf( "%s", str ) ;
+     printf( "%s", str ) ;
 
-	return ;
+     return ;
 }
 
 //------------------------
@@ -90,15 +90,15 @@ void _fnDispStr( string str ){
 //------------------------
 void _fnDispStrCustom( string pre, string str, string suf ){
 
-	if( pre == NULL ){
-		pre = STR_EMPTY ;
-	}
-	if( suf == NULL ){
-		suf = STR_EMPTY ;
-	}
-	printf( "%s%s%s", pre, str, suf ) ;
+     if( pre == NULL ){
+          pre = STR_EMPTY ;
+     }
+     if( suf == NULL ){
+          suf = STR_EMPTY ;
+     }
+     printf( "%s%s%s", pre, str, suf ) ;
 
-	return ;
+     return ;
 }
 
 //------------------------
@@ -110,7 +110,7 @@ void _fnDispStrCustom( string pre, string str, string suf ){
 //------------------------
 void _fnNewLine( void ){
 
-	printf( "\n" ) ;
+     printf( "\n" ) ;
 
-	return ;
+     return ;
 }

@@ -27,19 +27,19 @@ static void sfnToLower( string ) ;
 
 /* <] - Chloe - [> */
 typedef struct _chloe_functions{
-	bool ( *acNot )( bool ) ;
+     bool ( *acNot )( bool ) ;
 
-	void ( *fnPass )( void ) ;
+     void ( *fnPass )( void ) ;
 
-	bool ( *isNo )( string ) ;
+     bool ( *isNo )( string ) ;
 }ChloeFunctions ;
 
 #define BIRTH_CHLOE {\
-	_acNot,\
-	\
-	_fnPass,\
-	\
-	_isNo\
+     _acNot,\
+     \
+     _fnPass,\
+     \
+     _isNo\
 }
 
 static ChloeFunctions Chloe ;
