@@ -36,37 +36,37 @@ bool _isEmpty( string ) ;
 
 /* <] - Louise - [> */
 typedef struct _louise_functions{
-	string ( *fnCopy )( string, int ) ;
-	string ( *fnReplace )( string, string, string ) ;
-	string ( *fnUpperAll )( string ) ;
-	string ( *fnLowerAll )( string ) ;
-	string ( *fnUpperFirst )( string ) ;
-	string ( *fnGetMiddle )( string, string ) ;
-	string ( *fnTrimWhiteSpace )( string ) ;
-	string ( *fnNumToStr )( int ) ;
-	int ( *fnGetLength )( string ) ;
+     string ( *fnCopy )( string, int ) ;
+     string ( *fnReplace )( string, string, string ) ;
+     string ( *fnUpperAll )( string ) ;
+     string ( *fnLowerAll )( string ) ;
+     string ( *fnUpperFirst )( string ) ;
+     string ( *fnGetMiddle )( string, string ) ;
+     string ( *fnTrimWhiteSpace )( string ) ;
+     string ( *fnNumToStr )( int ) ;
+     int ( *fnGetLength )( string ) ;
 
-	bool ( *isMatchFormat )( string, string ) ;
-	bool ( *isContain )( string, string ) ;
-	bool ( *isEqual )( string, string ) ;
-	bool ( *isEmpty )( string ) ;
+     bool ( *isMatchFormat )( string, string ) ;
+     bool ( *isContain )( string, string ) ;
+     bool ( *isEqual )( string, string ) ;
+     bool ( *isEmpty )( string ) ;
 }LouiseFunctions ;
 
 #define BIRTH_LOUISE {\
-	_fnCopyString,\
-	_fnReplace,\
-	_fnUpperAll,\
-	_fnLowerAll,\
-	_fnUpperFirst,\
-	_fnGetMiddle,\
-	_fnTrimWhiteSpace,\
-	_fnNumToStr,\
-	_fnGetLength,\
-	\
-	_isMatchFormat,\
-	_isContain,\
-	_isEqualStr,\
-	_isEmpty\
+     _fnCopyString,\
+     _fnReplace,\
+     _fnUpperAll,\
+     _fnLowerAll,\
+     _fnUpperFirst,\
+     _fnGetMiddle,\
+     _fnTrimWhiteSpace,\
+     _fnNumToStr,\
+     _fnGetLength,\
+     \
+     _isMatchFormat,\
+     _isContain,\
+     _isEqualStr,\
+     _isEmpty\
 }
 
 static LouiseFunctions Louise ;
@@ -76,23 +76,23 @@ LouiseFunctions callLouise( void ) ;
 
 //--< Mydata Declaration >--//
 typedef struct myDataLouise{
-	int cpyCounter ;
-	char cpyStr[MAX_CPY_SIZE][MAX_LENGTH] ;
-	char repStr[MAX_LENGTH] ;
-	char midStr[HALF_LENGTH] ;
-	char resStr[MAX_LENGTH] ;
-	char trmStr[MAX_LENGTH] ;
-	char numStr[HALF_LENGTH] ;
+     int cpyCounter ;
+     char cpyStr[MAX_CPY_SIZE][MAX_LENGTH] ;
+     char repStr[MAX_LENGTH] ;
+     char midStr[HALF_LENGTH] ;
+     char resStr[MAX_LENGTH] ;
+     char trmStr[MAX_LENGTH] ;
+     char numStr[HALF_LENGTH] ;
 }_MyDataLouise ;
 
 #define INIT_LOUISE_MYDATA {\
-	1,\
-	{ { NL } },\
-	{ NL },\
-	{ NL },\
-	{ NL },\
-	{ NL },\
-	{ NL }\
+     1,\
+     { { NL } },\
+     { NL },\
+     { NL },\
+     { NL },\
+     { NL },\
+     { NL }\
 }
 
 

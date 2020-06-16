@@ -36,39 +36,39 @@ static string sfnExtractFilePath( string ) ;
 
 /* <] - Dorothy - [> */
 typedef struct _dorothy_functions{
-	int ( *fnOpenRead )( string ) ;
-	int ( *fnOpenWrite )( string ) ;
-	void ( *fnClose )( int ) ;
-	string ( *fnReadLine )( int ) ;
-	void ( *fnWriteLine )( int, string ) ;
-	void ( *fnRenameFile )( int, string ) ;
-	int ( *fnDelete )( string ) ;
-	int ( *fnOpenParse )( string ) ;
-	void ( *fnCloseParse )( int ) ;
-	int ( *fnGetLength )( int ) ;
-	int ( *fnGetLine )( int ) ;
-	void ( *fnCopy )( string, string ) ;
+     int ( *fnOpenRead )( string ) ;
+     int ( *fnOpenWrite )( string ) ;
+     void ( *fnClose )( int ) ;
+     string ( *fnReadLine )( int ) ;
+     void ( *fnWriteLine )( int, string ) ;
+     void ( *fnRenameFile )( int, string ) ;
+     int ( *fnDelete )( string ) ;
+     int ( *fnOpenParse )( string ) ;
+     void ( *fnCloseParse )( int ) ;
+     int ( *fnGetLength )( int ) ;
+     int ( *fnGetLine )( int ) ;
+     void ( *fnCopy )( string, string ) ;
 
-	char ( *isNotFileEnd )( int ) ;
-	char ( *isExistError )( int ) ;
+     char ( *isNotFileEnd )( int ) ;
+     char ( *isExistError )( int ) ;
 }DorothyFunctions ;
 
 #define BIRTH_DOROTHY {\
-	_fnOpenRead,\
-	_fnOpenWrite,\
-	_fnCloseFile,\
-	_fnReadLine,\
-	_fnWriteLine,\
-	_fnRenameFile,\
-	_fnDelete,\
-	_fnOpenParse,\
-	_fnCloseParse,\
-	_fnGetFileLength,\
-	_fnGetFileLine,\
-	_fnCopyFile,\
-	\
-	_isNotFileEnd,\
-	_isExistError\
+     _fnOpenRead,\
+     _fnOpenWrite,\
+     _fnCloseFile,\
+     _fnReadLine,\
+     _fnWriteLine,\
+     _fnRenameFile,\
+     _fnDelete,\
+     _fnOpenParse,\
+     _fnCloseParse,\
+     _fnGetFileLength,\
+     _fnGetFileLine,\
+     _fnCopyFile,\
+     \
+     _isNotFileEnd,\
+     _isExistError\
 }
 
 static DorothyFunctions Dorothy ;
@@ -78,33 +78,33 @@ DorothyFunctions callDorothy( void ) ;
 
 //--< MyData Declaration >--//
 typedef struct _myDataDorothy{
-	int fileSeq ;
-	int parseSeq ;
-	FILE* fp[MAX_FILE_COUNT] ;
-	char fname[MAX_FILE_COUNT][80] ;
-	char readStr[MAX_FILE_COUNT][READ_BUFSIZE] ;
-	char stat[MAX_FILE_COUNT] ;
-	char error[MAX_FILE_COUNT] ;
-	char tmpPath[MAX_FILE_COUNT][MAX_LENGTH] ;
-	char* path[MAX_FILE_COUNT] ;
-	int parseStat[MAX_FILE_COUNT] ;
-	int parseLen[MAX_FILE_COUNT] ;
-	int parseLine[MAX_FILE_COUNT] ;
+     int fileSeq ;
+     int parseSeq ;
+     FILE* fp[MAX_FILE_COUNT] ;
+     char fname[MAX_FILE_COUNT][80] ;
+     char readStr[MAX_FILE_COUNT][READ_BUFSIZE] ;
+     char stat[MAX_FILE_COUNT] ;
+     char error[MAX_FILE_COUNT] ;
+     char tmpPath[MAX_FILE_COUNT][MAX_LENGTH] ;
+     char* path[MAX_FILE_COUNT] ;
+     int parseStat[MAX_FILE_COUNT] ;
+     int parseLen[MAX_FILE_COUNT] ;
+     int parseLine[MAX_FILE_COUNT] ;
 }_MyDataDorothy ;
 
 #define INIT_DOROTHY_MYDATA {\
-	0,\
-	0,\
-	{ NULL },\
-	{ { NL } },\
-	{ { NL } },\
-	{ NL },\
-	{ FALSE },\
-	{ { NL } },\
-	{ NULL },\
-	{ NL },\
-	{ 0 },\
-	{ 0 }\
+     0,\
+     0,\
+     { NULL },\
+     { { NL } },\
+     { { NL } },\
+     { NL },\
+     { FALSE },\
+     { { NL } },\
+     { NULL },\
+     { NL },\
+     { 0 },\
+     { 0 }\
 }
 
 

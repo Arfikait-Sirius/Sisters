@@ -41,7 +41,7 @@ typedef struct myDataKotone{
 }_MyDataKotone ;
 
 #define INIT_KOTONE_MYDATA {\
-	1,\
+     1,\
      { { NULL } },\
      { { NL } },\
      { { NULL } },\

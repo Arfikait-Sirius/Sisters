@@ -30,11 +30,11 @@ int _fnStrToNum( string data ){
           num += *p++ - 0x30 ;
      }
 
-	logSisters(
-			"fnStrToNum()",
-			ATTEND,
-			Sylvia_ID
-		) ;
+     logSisters(
+               "fnStrToNum()",
+               ATTEND,
+               Sylvia_ID
+          ) ;
 
      return num ;
 }

@@ -8,9 +8,9 @@ static _MyDataChloe MyData ;
 
 // Birth
 ChloeFunctions callEmily( void ){
-	ChloeFunctions _ChloeSkills = BIRTH_CHLOE ;
+     ChloeFunctions _ChloeSkills = BIRTH_CHLOE ;
 
-	return _ChloeSkills ;
+     return _ChloeSkills ;
 }
 
 //------------------------
@@ -22,11 +22,11 @@ ChloeFunctions callEmily( void ){
 //------------------------
 bool _acNot( bool b ){
 
-	if( b ){
-		return FALSE ;
-	}
+     if( b ){
+          return FALSE ;
+     }
 
-	return TRUE ;
+     return TRUE ;
 }
 
 //------------------------
@@ -38,9 +38,9 @@ bool _acNot( bool b ){
 //------------------------
 void _fnPass( void ){
 
-	// Do not anything.
+     // Do not anything.
 
-	return ;
+     return ;
 }
 
 //------------------------
@@ -52,37 +52,36 @@ void _fnPass( void ){
 //------------------------
 bool _isNo( string judgement ){
 
-	sfnToLower( judgement ) ;
-	if( strcmp( judgement, NO ) == 0
-			|| strcmp( judgement, "no" ) == 0 ){
-		return TRUE ;
-	}
+     sfnToLower( judgement ) ;
+     if( strcmp( judgement, NO ) == 0 || strcmp( judgement, "no" ) == 0 ){
+          return TRUE ;
+     }
 
-	return FALSE ;
+     return FALSE ;
 }
 
 int _drIfInt( bool judgement, int ( *funcTrue )( void ), int ( *funcFalse )( void ) ){
-	int result ;
+     int result ;
 
-	if( judgement ){
-		result = *funcTrue() ;
-	}else{
-		result = *funcFalse() ;
-	}
+     if( judgement ){
+          result = *funcTrue() ;
+     }else{
+          result = *funcFalse() ;
+     }
 
-	return resutl ;
+     return resutl ;
 }
 
 static void sfnToLower( string s ){
-	char* p ;
+     char* p ;
 
-	p = s ;
-	while( *p != NL ){
-		if( LOWER_A <= *p && *p <= LOWER_Z ){
-			*p += L_U_OFFSET ;
-		}
-		p++ ;
-	}
+     p = s ;
+     while( *p != NL ){
+          if( LOWER_A <= *p && *p <= LOWER_Z ){
+               *p += L_U_OFFSET ;
+          }
+          p++ ;
+     }
 
-	return ;
+     return ;
 }

@@ -8,9 +8,9 @@ static _MyDataGrace MyData = INIT_GRACE_MYDATA ;
 
 // Birth
 GraceFunctions callGrace( void ){
-	GraceFunctions _GraceSkills = BIRTH_GRACE ;
+     GraceFunctions _GraceSkills = BIRTH_GRACE ;
 
-	return _GraceSkills ;
+     return _GraceSkills ;
 }
 
 //------------------------
@@ -23,32 +23,32 @@ GraceFunctions callGrace( void ){
 void _fnService( void ){
      int socketRead ;
      int socketWrite ;
-	char method[MIN_LENGTH] ;
-	char url[HALF_LENGTH] ;
-	char protocol[HALF_LENGTH] ;
-	int result ;
+     char method[MIN_LENGTH] ;
+     char url[HALF_LENGTH] ;
+     char protocol[HALF_LENGTH] ;
+     int result ;
 
-	socketRead = sfnBindSocket() ;
-	if( socketRead < 0 ){
-		return ;
-	}
+     socketRead = sfnBindSocket() ;
+     if( socketRead < 0 ){
+          return ;
+     }
 
      listen( socketRead, 5 ) ;
      while( TRUE ){
-		socketWrite = sfnAccept( socketRead, method, url, protocol ) ;
-		if( socketWrite < 0 ){
-			return ;
-		}
+          socketWrite = sfnAccept( socketRead, method, url, protocol ) ;
+          if( socketWrite < 0 ){
+               return ;
+          }
 
-		result = sfnSendProperty( socketWrite, url ) ;
-		if( result < 0 ){
-			return ;
-		}
+          result = sfnSendProperty( socketWrite, url ) ;
+          if( result < 0 ){
+               return ;
+          }
 
-		result = sfnSendHTML( socketWrite, url ) ;
-		if( result < 0 ){
-			return ;
-		}
+          result = sfnSendHTML( socketWrite, url ) ;
+          if( result < 0 ){
+               return ;
+          }
 
           close( socketWrite ) ;
      }
@@ -65,9 +65,9 @@ void _fnService( void ){
 //     Thinking
 //------------------------
 static int sfnBindSocket( void ){
-	int sock ;
-	struct sockaddr_in addr ;
-	int result ;
+     int sock ;
+     struct sockaddr_in addr ;
+     int result ;
 
      sock = socket( AF_INET, SOCK_STREAM, 0 ) ;
 
@@ -76,9 +76,9 @@ static int sfnBindSocket( void ){
           return -1 ;
      }
 
-	addr.sin_family = AF_INET ;
-	addr.sin_port = htons( 8080 ) ;
-	addr.sin_addr.s_addr = INADDR_ANY ;
+     addr.sin_family = AF_INET ;
+     addr.sin_port = htons( 8080 ) ;
+     addr.sin_addr.s_addr = INADDR_ANY ;
 
      result = bind( sock, ( struct sockaddr* )&addr, sizeof( addr ) ) ;
 
@@ -87,7 +87,7 @@ static int sfnBindSocket( void ){
           return -1 ;
      }
 
-	return sock ;
+     return sock ;
 }
 
 //------------------------
@@ -98,32 +98,32 @@ static int sfnBindSocket( void ){
 //     Thinking
 //------------------------
 static int sfnAccept( int socketRead, string method, string url, string protocol ){
-	int sock ;
-	struct sockaddr_in client ;
-	socklen_t len ;
-	char buf[MAX_LENGTH] ;
-	int result ;
+     int sock ;
+     struct sockaddr_in client ;
+     socklen_t len ;
+     char buf[MAX_LENGTH] ;
+     int result ;
 
-	len = sizeof( client ) ;
-	memset( &client, 0, len ) ;
-	memset( buf, 0, sizeof( buf ) ) ;
-	memset( method, 0, MIN_LENGTH) ;
-	memset( url, 0, HALF_LENGTH ) ;
-	memset( protocol, 0, HALF_LENGTH ) ;
+     len = sizeof( client ) ;
+     memset( &client, 0, len ) ;
+     memset( buf, 0, sizeof( buf ) ) ;
+     memset( method, 0, MIN_LENGTH) ;
+     memset( url, 0, HALF_LENGTH ) ;
+     memset( protocol, 0, HALF_LENGTH ) ;
 
-	sock = accept( socketRead, ( struct sockaddr* )&client, &len ) ;
-	printf( "accept\n" ) ;
+     sock = accept( socketRead, ( struct sockaddr* )&client, &len ) ;
+     printf( "accept\n" ) ;
 
-	result = recv( sock, buf, sizeof( buf ), 0 ) ;
-	if( result < 0 ){
-		fprintf( stderr, "Error: Cannot receive request.\n" ) ;
-		return -1 ;
-	}
+     result = recv( sock, buf, sizeof( buf ), 0 ) ;
+     if( result < 0 ){
+          fprintf( stderr, "Error: Cannot receive request.\n" ) ;
+          return -1 ;
+     }
 
-	sscanf( buf, "%s %s %s", method, url, protocol ) ;
-	printf( "%s\n", url ) ;
+     sscanf( buf, "%s %s %s", method, url, protocol ) ;
+     printf( "%s\n", url ) ;
 
-	return sock ;
+     return sock ;
 }
 
 //------------------------
@@ -135,35 +135,35 @@ static int sfnAccept( int socketRead, string method, string url, string protocol
 //------------------------
 static int sfnSendProperty( int sock, string url ){
      FILE* fp ;
-	char fileName[MAX_LENGTH] = { NL } ;
-	char responseHeader[DOUBLE_LENGTH] = { NL } ;
-	char contentLength[SHORT_LENGTH] = { NL } ;
-	char contentType[SHORT_LENGTH] = { NL } ;
+     char fileName[MAX_LENGTH] = { NL } ;
+     char responseHeader[DOUBLE_LENGTH] = { NL } ;
+     char contentLength[SHORT_LENGTH] = { NL } ;
+     char contentType[SHORT_LENGTH] = { NL } ;
      char property[READ_BUFSIZE] ;
-	int size ;
+     int size ;
 
-	sprintf( fileName, GRACE_PROPERTY, url ) ;
-	fp = fopen( fileName, "r" ) ;
-	if( fp == NULL ){
-		fprintf( stderr, "Error: Cannot read property file.\n" ) ;
-		return -1 ;
-	}
-	fgets( property, READ_BUFSIZE, fp ) ;
-	sprintf( contentLength, "Content-Length: %s", property ) ;
-	fgets( property, READ_BUFSIZE, fp ) ;
-	sprintf( contentType, "Content-Type: text/%s", property ) ;
-	sprintf( responseHeader,
-			"%s\r\n%s%s\r\n\r\n",
-			"HTTP/1.1 200 OK",
-			contentLength,
-			contentType
-		) ;
-	size = strlen( responseHeader ) ;
-	send( sock, responseHeader, size, 0 ) ;
-	printf( "[ Size ]\n%d\n[ Header ]\n%s", size, responseHeader ) ;
-	fclose( fp ) ;
+     sprintf( fileName, GRACE_PROPERTY, url ) ;
+     fp = fopen( fileName, "r" ) ;
+     if( fp == NULL ){
+          fprintf( stderr, "Error: Cannot read property file.\n" ) ;
+          return -1 ;
+     }
+     fgets( property, READ_BUFSIZE, fp ) ;
+     sprintf( contentLength, "Content-Length: %s", property ) ;
+     fgets( property, READ_BUFSIZE, fp ) ;
+     sprintf( contentType, "Content-Type: text/%s", property ) ;
+     sprintf( responseHeader,
+               "%s\r\n%s%s\r\n\r\n",
+               "HTTP/1.1 200 OK",
+               contentLength,
+               contentType
+          ) ;
+     size = strlen( responseHeader ) ;
+     send( sock, responseHeader, size, 0 ) ;
+     printf( "[ Size ]\n%d\n[ Header ]\n%s", size, responseHeader ) ;
+     fclose( fp ) ;
 
-	return 0 ;
+     return 0 ;
 }
 
 //------------------------
@@ -174,29 +174,29 @@ static int sfnSendProperty( int sock, string url ){
 //     Thinking
 //------------------------
 static int sfnSendHTML( int sock, string url ){
-	FILE* fp ;
-	char fileName[MAX_LENGTH] = { NL } ;
-	char str[READ_BUFSIZE] ;
-	int size ;
-	char* p ;
+     FILE* fp ;
+     char fileName[MAX_LENGTH] = { NL } ;
+     char str[READ_BUFSIZE] ;
+     int size ;
+     char* p ;
 
-	sprintf( fileName, GRACE_PATH, url ) ;
-	fp = fopen( fileName, "r" ) ;
-	if( fp == NULL ){
-		fprintf( stderr, "Error: Cannot read grace file.\n" ) ;
-		return -1 ;
-	}
-	printf( "[ Body ]\n" ) ;
-	p = fgets( str, READ_BUFSIZE, fp ) ;
-	while( p != NULL ){
-		size = strlen( str ) ;
-		send( sock, str, size + 1, 0 ) ;
-		printf( "%s", str ) ;
-		p = fgets( str, READ_BUFSIZE, fp) ;
-	}
-	fclose( fp ) ;
+     sprintf( fileName, GRACE_PATH, url ) ;
+     fp = fopen( fileName, "r" ) ;
+     if( fp == NULL ){
+          fprintf( stderr, "Error: Cannot read grace file.\n" ) ;
+          return -1 ;
+     }
+     printf( "[ Body ]\n" ) ;
+     p = fgets( str, READ_BUFSIZE, fp ) ;
+     while( p != NULL ){
+          size = strlen( str ) ;
+          send( sock, str, size + 1, 0 ) ;
+          printf( "%s", str ) ;
+          p = fgets( str, READ_BUFSIZE, fp) ;
+     }
+     fclose( fp ) ;
 
-	return 0 ;
+     return 0 ;
 }
 
 //------------------------
@@ -217,12 +217,12 @@ void _fnDeploy( string fileName ){
      int len ;
      int line ;
      char contentLength[MIN_LENGTH] = { NL } ;
-	char s[HALF_LENGTH] = { NL } ;
+     char s[HALF_LENGTH] = { NL } ;
 
      sfnSplitFileName( fileName ) ;
-	if( strcmp( MyData.type, GRACE_HTML ) == 0 ){
-		strcpy( MyData.type, "html" ) ;
-	}
+     if( strcmp( MyData.type, GRACE_HTML ) == 0 ){
+          strcpy( MyData.type, "html" ) ;
+     }
      strcpy( fileNameOmitExtension, MyData.name ) ;
      sprintf( graceFileName, GRACE_PATH, fileNameOmitExtension ) ;
      sfp = fopen( fileName, "r" ) ;
@@ -238,11 +238,11 @@ void _fnDeploy( string fileName ){
      p = fgets( str, READ_BUFSIZE, sfp ) ;
      while( p != NULL ){
           line++ ;
-		sfnGenerateHTML( s, str ) ;
-		if( s[0] == NL ){
-			fprintf( stderr, "Error: Cannot generated.\n" ) ;
-			break ;
-		}
+          sfnGenerateHTML( s, str ) ;
+          if( s[0] == NL ){
+               fprintf( stderr, "Error: Cannot generated.\n" ) ;
+               break ;
+          }
           len += strlen( s ) ;
           fputs( s, dfp ) ;
           p = fgets( str, READ_BUFSIZE, sfp ) ;
@@ -271,12 +271,12 @@ void _fnDeploy( string fileName ){
 //------------------------
 void _fnSetValue( string key, string value ){
 
-	strcpy( MyData.key[MyData.index], key ) ;
-	strcpy( MyData.value[MyData.index], value ) ;
+     strcpy( MyData.key[MyData.index], key ) ;
+     strcpy( MyData.value[MyData.index], value ) ;
 
-	MyData.index++ ;
+     MyData.index++ ;
 
-	return ;
+     return ;
 }
 
 static void sfnSplitFileName( string fileName ){
@@ -291,19 +291,19 @@ static void sfnSplitFileName( string fileName ){
      len = strlen( fileName ) ;
      for( i = 0 ; i < len ; i++ ){
           if( *p == DOT ){
-			if( *( p + 1 ) == DOT || *( p + 1 ) == SLASH ){
-				p++ ;
-				continue ;
-			}
+               if( *( p + 1 ) == DOT || *( p + 1 ) == SLASH ){
+                    p++ ;
+                    continue ;
+               }
                *q++ = NL ;
                q = MyData.type ;
                p++ ;
           }
-		if( *p == SLASH ){
-			p++ ;
-			q = MyData.name ;
-			continue ;
-		}
+          if( *p == SLASH ){
+               p++ ;
+               q = MyData.name ;
+               continue ;
+          }
           *q++ = *p++ ;
      }
      *q = NL ;
@@ -312,55 +312,55 @@ static void sfnSplitFileName( string fileName ){
 }
 
 static void sfnGenerateHTML( string buffer, string readStr ){
-	char tmp[MIN_LENGTH] ;
-	char* b ;
-	char* r ;
-	char* t ;
-	int len ;
-	string value ;
+     char tmp[MIN_LENGTH] ;
+     char* b ;
+     char* r ;
+     char* t ;
+     int len ;
+     string value ;
 
-	b = buffer ;
-	r = readStr ;
-	t = tmp ;
+     b = buffer ;
+     r = readStr ;
+     t = tmp ;
 
-	while( *r != NL ){
-		if( *r == DOLLAR && *( r + 1 ) == BRACE_LEFT ){
-			t  = tmp ;
-			r += 2 ;
-			*b++ = NL ;
-		} else if( *r == BRACE_RIGHT ){
-			*t = NL ;
-			value = sfnGetValue( tmp ) ;
-			if( value == NULL ){
-				*buffer = NL ;
-				return ;
-			}
-			strcat( buffer, value ) ;
-			len = strlen( buffer ) ;
-			b = buffer + len ;
-			r++ ;
-		}
-		*t++ = *r ;
-		*b++ = *r++ ;
-	}
-	*b = NL ;
+     while( *r != NL ){
+          if( *r == DOLLAR && *( r + 1 ) == BRACE_LEFT ){
+               t  = tmp ;
+               r += 2 ;
+               *b++ = NL ;
+          } else if( *r == BRACE_RIGHT ){
+               *t = NL ;
+               value = sfnGetValue( tmp ) ;
+               if( value == NULL ){
+                    *buffer = NL ;
+                    return ;
+               }
+               strcat( buffer, value ) ;
+               len = strlen( buffer ) ;
+               b = buffer + len ;
+               r++ ;
+          }
+          *t++ = *r ;
+          *b++ = *r++ ;
+     }
+     *b = NL ;
 
-	return ;
+     return ;
 }
 
 static string sfnGetValue( string key ){
-	int i ;
-	string result ;
+     int i ;
+     string result ;
 
-	result = NULL ;
+     result = NULL ;
 
-	i = 0 ;
-	while( MyData.key[i][0] != NL ){
-		if( strcmp( MyData.key[i], key ) == 0 ){
-			result = MyData.value[i] ;
-		}
-		i++ ;
-	}
+     i = 0 ;
+     while( MyData.key[i][0] != NL ){
+          if( strcmp( MyData.key[i], key ) == 0 ){
+               result = MyData.value[i] ;
+          }
+          i++ ;
+     }
 
-	return result ;
+     return result ;
 }

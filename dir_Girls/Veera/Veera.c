@@ -9,35 +9,35 @@ VeeraFunctions callVeera( void ){
 static time_t seed = 0 ;
 
 int mfnMainVeera( int argc, char* argv[] ){
-	int i ;
-	char s[80] ;
+     int i ;
+     char s[80] ;
 
-	_fnInitRandom() ;
-	for( i = 0 ; i < 1000 ; i++ ){
-		sprintf( s, "rand = %d", _fnRandom( 10000 ) ) ;
-		logSisters( s, INFO, Veera_ID ) ;
-	}
+     _fnInitRandom() ;
+     for( i = 0 ; i < 1000 ; i++ ){
+          sprintf( s, "rand = %d", _fnRandom( 10000 ) ) ;
+          logSisters( s, INFO, Veera_ID ) ;
+     }
 
-	return CHAO ;
+     return CHAO ;
 }
 
 void _fnInitRandom(){
 
-	seed = time( NULL ) ;
-	srand( seed ) ;
+     seed = time( NULL ) ;
+     srand( seed ) ;
 
-	return ;
+     return ;
 }
 
 int _fnRandom( int limit ){
-	int randNum ;
+     int randNum ;
 
-	if( seed == 0 ){
-		return STATUS_RED ;
-	}
-	randNum = rand() % limit ;
+     if( seed == 0 ){
+          return STATUS_RED ;
+     }
+     randNum = rand() % limit ;
 
-	return randNum ;
+     return randNum ;
 }
 
 string _fnGetDate( void ){
