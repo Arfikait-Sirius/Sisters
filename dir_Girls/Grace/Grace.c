@@ -15,7 +15,7 @@ GraceFunctions callGrace( void ){
 
 //------------------------
 // :[ NAME ]:
-//     fnRunServer
+//     fnService
 //
 // :[ CATEGORY ]:
 //     Skill
