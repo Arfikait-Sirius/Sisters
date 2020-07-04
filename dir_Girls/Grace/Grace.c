@@ -325,7 +325,7 @@ static void sfnGenerateHTML( string buffer, string readStr ){
 
      while( *r != NL ){
           if( *r == DOLLAR && *( r + 1 ) == BRACE_LEFT ){
-               t  = tmp ;
+               t = tmp ;
                r += 2 ;
                *b++ = NL ;
           } else if( *r == BRACE_RIGHT ){

@@ -108,12 +108,11 @@ string _fnReadLine( int fileID ){
      }
      for( src = MyData.readStr[fileID], count = 0 ;
                c != LF && c != EOF && count < READ_BUFSIZE ;
-               count++
-               ){
+               count++ ){
           *src++ = c ;
           c = fgetc( MyData.fp[fileID] ) ;
      }
-     *src = 0x00 ;
+     *src = NL ;
      MyData.stat[fileID] = FILE_STAT_READING ;
 
      return MyData.readStr[fileID] ;

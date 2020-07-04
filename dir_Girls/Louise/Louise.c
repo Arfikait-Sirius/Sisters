@@ -15,7 +15,7 @@ LouiseFunctions callLouise( void ){
 
 //------------------------
 // :[ NAME ]:
-//     fnCountString
+//     fnCount
 //
 // :[ CATEGORY ]:
 //     Skill
@@ -38,7 +38,7 @@ int _fnCountString( string data, string sepStr ){
 
 //------------------------
 // :[ NAME ]:
-//     fnCopyString
+//     fnCopy
 //
 // :[ CATEGORY ]:
 //     Skill
@@ -76,7 +76,7 @@ string _fnCopyString( string data, int mode ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnGetMiddle( string format, string data ){
+string _fnGetMiddleString( string format, string data ){
      int flen ;
      int len ;
      char f[MAX_LENGTH] ;
@@ -118,7 +118,7 @@ string _fnGetMiddle( string format, string data ){
 
 //------------------------
 // :[ NAME ]:
-//     fnTrimWhiteSpace
+//     fnTrim
 //
 // :[ CATEGORY ]:
 //     Skill
@@ -149,7 +149,7 @@ string _fnTrimWhiteSpace( string target ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnReplace( string data, string repTarget, string repData ){
+string _fnReplaceString( string data, string repTarget, string repData ){
      int len ;
      char* p ;
      char* e ;
@@ -179,8 +179,8 @@ string _fnUpperAll( string data ){
      result = MyData.resStr ;
      c = *data++ ;
      while( c != NL ){
-          if( 0x61 <= c && c <= 0x7a ){
-               c -= 0x20 ;
+          if( UPPER_A <= c && c <= UPPER_Z ){
+               c -= L_U_OFFSET ;
           }
           *result++ = c ;
           c = *data++ ;
@@ -203,8 +203,8 @@ string _fnLowerAll( string data ){
      result = MyData.resStr ;
      c = *data++ ;
      while( c != NL ){
-          if( 0x41 <= c && c <= 0x5a ){
-               c += 0x20 ;
+          if( LOWER_A <= c && c <= LOWER_Z ){
+               c += L_U_OFFSET ;
           }
           *result++ = c ;
           c = *data++ ;
@@ -227,14 +227,14 @@ string _fnUpperFirst( string data ){
 
      result = MyData.resStr ;
      c = *data++ ;
-     if( 0x61 <= c && c <= 0x7a ){
-          c -= 0x20 ;
+     if( UPPER_A <= c && c <= UPPER_Z ){
+          c -= L_U_OFFSET ;
      }
      *result++ = c ;
      c = *data++ ;
      while( c != NL ){
-          if( 0x41 <= c && c <= 0x5a ){
-               c += 0x20 ;
+          if( LOWER_A <= c && c <= LOWER_Z ){
+               c += L_U_OFFSET ;
           }
           *result++ = c ;
           c = *data++ ;
@@ -291,7 +291,7 @@ string _fnNumToStr( int num ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnGetLength( string data ){
+int _fnGetLengthString( string data ){
      int len = 0 ;
 
      if( data != NULL ){
@@ -303,7 +303,7 @@ int _fnGetLength( string data ){
 
 //------------------------
 // :[ NAME ]:
-//     isMatchFormat
+//     isMatch
 //
 // :[ CATEGORY ]:
 //     Judge
@@ -353,7 +353,7 @@ bool _isMatchFormat( string format, string data ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isContain( string data, string target ){
+bool _isContainString( string data, string target ){
      char* p ;
 
      p = strstr( data, target ) ;
@@ -366,12 +366,12 @@ bool _isContain( string data, string target ){
 
 //------------------------
 // :[ NAME ]:
-//     isEqualStr
+//     isEqual
 //
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isEqualStr( string org, string target ){
+bool _isEqualString( string org, string target ){
 
      if( strcmp( org, target ) == 0 ){
           return TRUE ;
@@ -387,7 +387,7 @@ bool _isEqualStr( string org, string target ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isEmpty( string data ){
+bool _isEmptyString( string data ){
 
      if( data == NULL ){
           return TRUE ;
