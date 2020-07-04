@@ -17,21 +17,20 @@
 int mfnLouise( int, char*[] ) ;
 
 string _fnCopyString( string, int ) ;
-string _fnRemoveWhiteSpace( string ) ;
-string _fnReplace( string, string, string ) ;
+string _fnReplaceString( string, string, string ) ;
 string _fnUpperAll( string ) ;
 string _fnLowerAll( string ) ;
 string _fnUpperFirst( string ) ;
-string _fnGetMiddle( string, string ) ;
+string _fnGetMiddleString( string, string ) ;
 string _fnTrimWhiteSpace( string ) ;
 string _fnNumToStr( int ) ;
 int _fnCountString( string, string ) ;
-int _fnGetLength( string ) ;
+int _fnGetLengthString( string ) ;
 
 bool _isMatchFormat( string, string ) ;
-bool _isContain( string, string ) ;
-bool _isEqualStr( string, string ) ;
-bool _isEmpty( string ) ;
+bool _isContainString( string, string ) ;
+bool _isEqualString( string, string ) ;
+bool _isEmptyString( string ) ;
 
 
 /* <] - Louise - [> */
@@ -42,11 +41,11 @@ typedef struct _louise_functions{
      string ( *fnLowerAll )( string ) ;
      string ( *fnUpperFirst )( string ) ;
      string ( *fnGetMiddle )( string, string ) ;
-     string ( *fnTrimWhiteSpace )( string ) ;
+     string ( *fnTrim )( string ) ;
      string ( *fnNumToStr )( int ) ;
      int ( *fnGetLength )( string ) ;
 
-     bool ( *isMatchFormat )( string, string ) ;
+     bool ( *isMatch )( string, string ) ;
      bool ( *isContain )( string, string ) ;
      bool ( *isEqual )( string, string ) ;
      bool ( *isEmpty )( string ) ;
@@ -54,19 +53,19 @@ typedef struct _louise_functions{
 
 #define BIRTH_LOUISE {\
      _fnCopyString,\
-     _fnReplace,\
+     _fnReplaceString,\
      _fnUpperAll,\
      _fnLowerAll,\
      _fnUpperFirst,\
-     _fnGetMiddle,\
+     _fnGetMiddleString,\
      _fnTrimWhiteSpace,\
      _fnNumToStr,\
-     _fnGetLength,\
+     _fnGetLengthString,\
      \
      _isMatchFormat,\
-     _isContain,\
-     _isEqualStr,\
-     _isEmpty\
+     _isContainString,\
+     _isEqualString,\
+     _isEmptyString\
 }
 
 static LouiseFunctions Louise ;
