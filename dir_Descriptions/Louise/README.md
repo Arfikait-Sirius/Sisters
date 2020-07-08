@@ -47,6 +47,15 @@ string s = Louise.fnUpperAll(
 文字列 str をすべて大文字にできます！  
 文字列 str は書き変わりません！
 
+## fnLowerAll()
+```
+string s = Louise.fnLowerAll(
+     str
+) ;
+```
+文字列 str をすべて小文字にできます！  
+文字列 str は書き変わりません！
+
 ## fnUpperFirst()
 ```
 string s = Louise.fnUpperFirst(
