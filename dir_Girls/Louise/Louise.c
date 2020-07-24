@@ -176,9 +176,12 @@ string _fnSplitString( string data, char splitter, int position ){
      int i ;
      char* s ;
      char* p ;
+     char d[MAX_LENGTH] ;
 
+     strcpy( d, data ) ;
+     
      p = strchr( data, splitter ) ;
-     s = data ;
+     s = d ;
      if( p == NULL ){
           return NULL ;
      }
