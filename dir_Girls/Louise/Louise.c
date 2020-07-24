@@ -179,8 +179,8 @@ string _fnSplitString( string data, char splitter, int position ){
      char d[MAX_LENGTH] ;
 
      strcpy( d, data ) ;
-     
-     p = strchr( data, splitter ) ;
+
+     p = strchr( d, splitter ) ;
      s = d ;
      if( p == NULL ){
           return NULL ;
