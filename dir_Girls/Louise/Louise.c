@@ -56,6 +56,7 @@ string _fnCopyString( string data, int mode ){
           for( i = 0 ; i < MAX_CPY_SIZE ; i++ ){
                if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
                     result = FALSE ;
+                    counter = i ;
                     break ;
                }
           }
