@@ -167,6 +167,33 @@ string _fnReplaceString( string data, string repTarget, string repData ){
 
 //------------------------
 // :[ NAME ]:
+//     fnSplit
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _fnSplitString( string data, char splitter, int position ){
+     int i ;
+     char* s ;
+     char* p ;
+
+     p = strchr( data, splitter ) ;
+     s = data ;
+     if( p == NULL ){
+          return NULL ;
+     }
+     for( i = 0 ; i < position && p != NULL ; i++ ){
+          *p++ = NL ;
+          strcpy( MyData.splStr, s ) ;
+          s = p ;
+          p = strchr( p, splitter ) ;
+     }
+
+     return MyData.splStr ;
+}
+
+//------------------------
+// :[ NAME ]:
 //     fnUpperAll
 //
 // :[ CATEGORY ]:

@@ -14,10 +14,9 @@
 
 
 //--< Prototype Declarations >--//
-int mfnLouise( int, char*[] ) ;
-
 string _fnCopyString( string, int ) ;
 string _fnReplaceString( string, string, string ) ;
+string _fnSplitString( string, char, int ) ;
 string _fnUpperAll( string ) ;
 string _fnLowerAll( string ) ;
 string _fnUpperFirst( string ) ;
@@ -37,6 +36,7 @@ bool _isEmptyString( string ) ;
 typedef struct _louise_functions{
      string ( *fnCopy )( string, int ) ;
      string ( *fnReplace )( string, string, string ) ;
+     string ( *fnSplit )( string, char, int ) ;
      string ( *fnUpperAll )( string ) ;
      string ( *fnLowerAll )( string ) ;
      string ( *fnUpperFirst )( string ) ;
@@ -54,6 +54,7 @@ typedef struct _louise_functions{
 #define BIRTH_LOUISE {\
      _fnCopyString,\
      _fnReplaceString,\
+     _fnSplitString,\
      _fnUpperAll,\
      _fnLowerAll,\
      _fnUpperFirst,\
@@ -78,6 +79,7 @@ typedef struct myDataLouise{
      int cpyCounter ;
      char cpyStr[MAX_CPY_SIZE][MAX_LENGTH] ;
      char repStr[MAX_LENGTH] ;
+     char splStr[HALF_LENGTH] ;
      char midStr[HALF_LENGTH] ;
      char resStr[MAX_LENGTH] ;
      char trmStr[MAX_LENGTH] ;
@@ -87,6 +89,7 @@ typedef struct myDataLouise{
 #define INIT_LOUISE_MYDATA {\
      1,\
      { { NL } },\
+     { NL },\
      { NL },\
      { NL },\
      { NL },\
