@@ -7,7 +7,7 @@ static string MyName = "Chloe" ;
 static _MyDataChloe MyData ;
 
 // Birth
-ChloeFunctions callEmily( void ){
+ChloeFunctions callChloe( void ){
      ChloeFunctions _ChloeSkills = BIRTH_CHLOE ;
 
      return _ChloeSkills ;
