@@ -60,18 +60,6 @@ bool _isNo( string judgement ){
      return FALSE ;
 }
 
-int _drIfInt( bool judgement, int ( *funcTrue )( void ), int ( *funcFalse )( void ) ){
-     int result ;
-
-     if( judgement ){
-          result = *funcTrue() ;
-     }else{
-          result = *funcFalse() ;
-     }
-
-     return resutl ;
-}
-
 static void sfnToLower( string s ){
      char* p ;
 
