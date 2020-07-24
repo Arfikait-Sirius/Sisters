@@ -53,7 +53,6 @@ string _fnCopyString( string data, int mode ){
           counter = 0 ;
           break ;
      case FIX:
-          MyData.cpyCounter++ ;
           for( i = 0 ; i < MAX_CPY_SIZE ; i++ ){
                if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
                     result = FALSE ;
@@ -64,6 +63,7 @@ string _fnCopyString( string data, int mode ){
      }
      if( result ){
           strcpy( MyData.cpyStr[counter], data ) ;
+          MyData.cpyCounter++ ;
      }
 
      return MyData.cpyStr[counter] ;
