@@ -3,30 +3,36 @@
 
 
 //** TYPE DEFINE **
+typedef char mode ;
+typedef void* pointer ;
 typedef char bool ;
 typedef char* string ;
 typedef int file ;
+typedef int schema ;
 typedef void* fnp ;
 
 
 // ** KEY SYMBOL DEFINE **
-#define LF		0x0A
-#define CR		0x0D
-#define SPACE		0x20
-#define BACK_SPACE	0x08
-#define TAB		0x09
-#define EQUAL		0x3D
-#define COMMA		0x2C
-#define COLON		0x3A
-#define SEMICOLON	0x3B
-#define DOT		0x2E
-#define SLASH		0x2F
-#define ASTERISK	0x2A
-#define AMPERSAND	0x26
-#define PLUS		0x2B
-#define MINUS		0x2D
-#define LESS_THAN	0x3E
-#define GRATER_THAN	0x3C
+#define LF          0x0A
+#define CR          0x0D
+#define SPACE       0x20
+#define BACK_SPACE  0x08
+#define TAB         0x09
+#define EQUAL       0x3D
+#define DOLLAR      0x24
+#define COMMA       0x2C
+#define COLON       0x3A
+#define SEMICOLON   0x3B
+#define DOT         0x2E
+#define SLASH       0x2F
+#define ASTERISK    0x2A
+#define AMPERSAND   0x26
+#define PLUS        0x2B
+#define MINUS       0x2D
+#define LESS_THAN   0x3E
+#define GRATER_THAN 0x3C
+#define BRACE_LEFT  0x7B
+#define BRACE_RIGHT 0x7D
 
 
 // ** CONTROL SYMBOL DEFINE **
@@ -86,7 +92,7 @@ typedef void* fnp ;
 
 #define MIN_LENGTH 32
 #define SHORT_LENGTH 64
-#define STANDARD_LENGTH 128
+#define MEDIUM_LENGTH 128
 #define HALF_LENGTH 256
 #define MAX_LENGTH 512
 #define DOUBLE_LENGTH 1024
