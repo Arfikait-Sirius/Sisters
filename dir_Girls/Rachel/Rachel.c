@@ -22,9 +22,12 @@ RachelFunctions callRachel( void ){
 //------------------------
 schema _fnOpenSchema( string schemaName ){
      FILE* fp ;
+     char name[HALF_LENGTH] ;
      char msg[MEDIUM_LENGTH] ;
 
-     fp = fopen( schemaName, "r" ) ;
+     sprintf( name, "%s.rachel", schemaName ) ;
+
+     fp = fopen( name, "r" ) ;
      if( fp == NULL ){
           sprintf( msg, "Cannot find schema: %s.", schemaName ) ;
           logSisters(
@@ -35,7 +38,7 @@ schema _fnOpenSchema( string schemaName ){
           return TOO_BAD ;
      }
      MyData.schemafp[MyData.schemaSeq] = fp ;
-     MyData.schemaName[MyData.schemaSeq] = schemaName ;
+     strcpy( MyData.schemaName[MyData.schemaSeq], schemaName ) ;
      MyData.currSchema = MyData.schemafp[MyData.schemaSeq] ;
 
      return MyData.schemaSeq++ ;
@@ -63,6 +66,33 @@ void _fnChangeSchema( schema schemaID ){
      MyData.currSchema = MyData.schemafp[schemaID] ;
 
      return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnGetData
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _fnGetData( string dataID ){
+     char* p ;
+     char data[HALF_LENGTH] ;
+     char id[SHORT_LENGTH] ;
+     char tmp[HALF_LENGTH] ;
+
+     p = fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
+     if( p == NULL ){
+          return NULL ;
+     }
+     sscanf( tmp, "%s@%s", id, data ) ;
+     while( strcmp( dataID, id ) != 0 ){
+          fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
+          sscanf( tmp, "%s@%s", id, data ) ;
+     }
+     strcpy( MyData.data, data ) ;
+
+     return MyData.data ;
 }
 
 //------------------------

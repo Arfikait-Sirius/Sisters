@@ -4,6 +4,7 @@
 
 //--< Use Headers >--//
 #include "stdio.h"
+#include "string.h"
 
 
 //--< Standard Definition >--//
@@ -15,6 +16,7 @@
 //--< Prototype Declarations >--//
 schema _fnOpenSchema( string ) ;
 void _fnChangeSchema( schema ) ;
+string _fnGetData( string ) ;
 void _fnCloseSchema( schema ) ;
 
 
@@ -22,12 +24,14 @@ void _fnCloseSchema( schema ) ;
 typedef struct _rachel_functions{
      schema ( *fnOpen )( string ) ;
      void ( *fnChange )( schema ) ;
+     string ( *fnGetData )( string ) ;
      void ( *fnClose )( schema ) ;
 }RachelFunctions ;
 
 #define BIRTH_RACHEL {\
      _fnOpenSchema,\
      _fnChangeSchema,\
+     _fnGetData,\
      _fnCloseSchema\
 }
 
@@ -37,14 +41,16 @@ typedef struct myDataRachel{
      int schemaSeq ;
      FILE* currSchema ;
      FILE* schemafp[RACHEL_MAX_SCHEMA_COUNT] ;
-     string schemaName[RACHEL_MAX_SCHEMA_COUNT] ;
+     char schemaName[RACHEL_MAX_SCHEMA_COUNT][HALF_LENGTH] ;
+     char data[HALF_LENGTH] ;
 }_MyDataRachel ;
 
 #define INIT_RACHEL_MYDATA {\
      0,\
      NULL,\
      { NULL },\
-     { NULL }\
+     { { NL } },\
+     { NL }\
 }
 
 

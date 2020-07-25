@@ -53,7 +53,7 @@ string _fnCopyString( string data, int mode ){
           counter = 0 ;
           break ;
      case FIX:
-          for( i = 0 ; i < MAX_CPY_SIZE ; i++ ){
+          for( i = 0 ; i < LOUISE_MAX_CPY_SIZE ; i++ ){
                if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
                     result = FALSE ;
                     counter = i ;
@@ -78,41 +78,29 @@ string _fnCopyString( string data, int mode ){
 //     Skill
 //------------------------
 string _fnGetMiddleString( string format, string data ){
-     int flen ;
-     int len ;
-     char f[MAX_LENGTH] ;
-     char d[MAX_LENGTH] ;
      char* p ;
-     char* s ;
-     char* e ;
 
-     flen = strlen( format ) ;
-     if( flen > strlen( data ) ){
+     p = strstr( format, "%s" ) ;
+     if( p == NULL ){
           logSisters(
-                    "Length of \"format\" is over length of \"data\".",
+                    "This format does not contain \"%s\".",
                     ERR,
                     MyName
                ) ;
           return NULL ;
      }
-     strcpy( f, format ) ;
-     p = strstr( f, "%s" ) ;
-     *p = NL ;
-     len = strlen( f ) ;
-     e = p ;
-     if( len + 2 != flen ){
-          e += 2 ;
+     p++ ;
+     p = strstr( p, "%s" ) ;
+     if( p != NULL ){
+          logSisters(
+                    "This format contains more than 2 \"%s\".",
+                    ERR,
+                    MyName
+               ) ;
+          return NULL ;
      }
-     strcpy( d, data ) ;
-     s = strstr( d, f ) ;
-     if( *e != NL ){
-          p = strstr( s, e ) ;
-          if( p == NULL ){
-               return NULL ;
-          }
-          *p = NL ;
-     }
-     strcpy( MyData.midStr, s + len ) ;
+
+     sscanf( data, format, MyData.midStr ) ;
 
      return MyData.midStr ;
 }
