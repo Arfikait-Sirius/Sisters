@@ -35,6 +35,10 @@ typedef struct _rachel_functions{
      _fnCloseSchema\
 }
 
+static RachelFunctions Rachel ;
+
+RachelFunctions callRachel( void ) ;
+
 
 //--< Mydata Declaration >--//
 typedef struct myDataRachel{

@@ -3,7 +3,7 @@
 // Name
 static string MyName = "Rachel" ;
 
-// Louise's Memo
+// Rachel's Memo
 static _MyDataRachel MyData = INIT_RACHEL_MYDATA ;
 
 // Birth
