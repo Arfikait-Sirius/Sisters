@@ -77,7 +77,7 @@ LouiseFunctions callLouise( void ) ;
 //--< Mydata Declaration >--//
 typedef struct myDataLouise{
      int cpyCounter ;
-     char cpyStr[MAX_CPY_SIZE][MAX_LENGTH] ;
+     char cpyStr[LOUISE_MAX_CPY_SIZE][MAX_LENGTH] ;
      char repStr[MAX_LENGTH] ;
      char splStr[HALF_LENGTH] ;
      char midStr[HALF_LENGTH] ;
