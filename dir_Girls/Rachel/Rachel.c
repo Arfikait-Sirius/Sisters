@@ -87,7 +87,7 @@ string _fnGetData( string dataID ){
      }
      while( p != NULL ){
           sscanf( tmp, "%s@%s", id, data ) ;
-          if( strcmp( dataID, id ) != 0 ){
+          if( strcmp( dataID, id ) == 0 ){
                break ;
           }
           p = fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
