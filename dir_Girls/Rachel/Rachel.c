@@ -76,9 +76,10 @@ void _fnChangeSchema( schema schemaID ){
 //     Skill
 //------------------------
 string _fnGetData( string dataID ){
+     int result ;
      char* p ;
-     char data[HALF_LENGTH] ;
      char id[SHORT_LENGTH] ;
+     char data[HALF_LENGTH] ;
      char tmp[HALF_LENGTH] ;
 
      p = fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
@@ -86,7 +87,12 @@ string _fnGetData( string dataID ){
           return NULL ;
      }
      while( p != NULL ){
-          sscanf( tmp, "%s@%s", id, data ) ;
+          p = strchr( tmp, LF ) ;
+          *p = NL ;
+          result = sfnSplitData( tmp, id, data ) ;
+          if( result == -1 ){
+               return NULL ;
+          }
           if( strcmp( dataID, id ) == 0 ){
                break ;
           }
@@ -118,4 +124,26 @@ void _fnCloseSchema( schema schemaID ){
      fclose( MyData.schemafp[schemaID] ) ;
 
      return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     sfnSplitData
+//
+// :[ CATEGORY ]:
+//     Thinking
+//------------------------
+int sfnSplitData( string tmp, string id, string data ){
+     char* p ;
+
+     p = strchr( tmp, '@' ) ;
+     if( p == NULL ){
+          return -1 ;
+     }
+     *p = NL ;
+     strcpy( id, tmp ) ;
+     p++ ;
+     strcpy( data, p ) ;
+
+     return 0 ;
 }

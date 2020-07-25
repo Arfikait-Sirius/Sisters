@@ -78,29 +78,41 @@ string _fnCopyString( string data, int mode ){
 //     Skill
 //------------------------
 string _fnGetMiddleString( string format, string data ){
+     int flen ;
+     int len ;
+     char f[MAX_LENGTH] ;
+     char d[MAX_LENGTH] ;
      char* p ;
+     char* s ;
+     char* e ;
 
-     p = strstr( format, "%s" ) ;
-     if( p == NULL ){
+     flen = strlen( format ) ;
+     if( flen > strlen( data ) ){
           logSisters(
-                    "This format does not contain \"%s\".",
+                    "Length of \"format\" is over length of \"data\".",
                     ERR,
                     MyName
                ) ;
           return NULL ;
      }
-     p++ ;
-     p = strstr( p, "%s" ) ;
-     if( p != NULL ){
-          logSisters(
-                    "This format contains more than 2 \"%s\".",
-                    ERR,
-                    MyName
-               ) ;
-          return NULL ;
+     strcpy( f, format ) ;
+     p = strstr( f, "%s" ) ;
+     *p = NL ;
+     len = strlen( f ) ;
+     e = p ;
+     if( len + 2 != flen ){
+          e += 2 ;
      }
-
-     sscanf( data, format, MyData.midStr ) ;
+     strcpy( d, data ) ;
+     s = strstr( d, f ) ;
+     if( *e != NL ){
+          p = strstr( s, e ) ;
+          if( p == NULL ){
+               return NULL ;
+          }
+          *p = NL ;
+     }
+     strcpy( MyData.midStr, s + len ) ;
 
      return MyData.midStr ;
 }
