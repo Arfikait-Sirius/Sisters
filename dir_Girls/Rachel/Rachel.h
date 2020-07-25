@@ -19,6 +19,8 @@ void _fnChangeSchema( schema ) ;
 string _fnGetData( string ) ;
 void _fnCloseSchema( schema ) ;
 
+int sfnSplitData( string, string, string ) ;
+
 
 /* <] - Rachel - [> */
 typedef struct _rachel_functions{
