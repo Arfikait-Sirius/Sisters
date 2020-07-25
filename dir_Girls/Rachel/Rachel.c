@@ -85,10 +85,12 @@ string _fnGetData( string dataID ){
      if( p == NULL ){
           return NULL ;
      }
-     sscanf( tmp, "%s@%s", id, data ) ;
-     while( strcmp( dataID, id ) != 0 ){
-          fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
+     while( p != NULL ){
           sscanf( tmp, "%s@%s", id, data ) ;
+          if( strcmp( dataID, id ) != 0 ){
+               break ;
+          }
+          p = fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
      }
      strcpy( MyData.data, data ) ;
 
