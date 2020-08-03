@@ -192,6 +192,9 @@ string _fnSplitString( string data, char splitter, int position ){
           s = p ;
           p = strchr( p, splitter ) ;
      }
+     if( i < position ){
+          strcpy( MyData.splStr, s ) ;
+     }
 
      return MyData.splStr ;
 }
