@@ -119,7 +119,7 @@ void _fnCommit( void ){
      fputs( box, MyData.currSchema ) ;
 
      fclose( MyData.currSchema ) ;
-     fp = fopen( name, "r" ) ;
+     fp = fopen( name, "a" ) ;
      if( fp == NULL ){
           sprintf( msg, "Failed to commit to schema: %s.", MyData.schemaName[MyData.currSeq] ) ;
           logSisters(
