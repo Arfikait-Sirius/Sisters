@@ -40,6 +40,7 @@ schema _fnOpenSchema( string schemaName ){
      MyData.schemafp[MyData.schemaSeq] = fp ;
      strcpy( MyData.schemaName[MyData.schemaSeq], schemaName ) ;
      MyData.currSchema = MyData.schemafp[MyData.schemaSeq] ;
+     MyData.currSeq = MyData.schemaSeq ;
 
      return MyData.schemaSeq++ ;
 }
@@ -64,13 +65,78 @@ void _fnChangeSchema( schema schemaID ){
      }
 
      MyData.currSchema = MyData.schemafp[schemaID] ;
+     MyData.currSeq = schemaID ;
 
      return ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnGetData
+//     fnCreate
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+int _fnCreateBox( string dataID ){
+
+     strcpy( MyData.newBox[MyData.newSeq], dataID ) ;
+
+     return MyData.newSeq++ ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnRegist
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _fnRegistData( int boxID, string data ){
+
+     strcpy( MyData.newData[boxID], data ) ;
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnCommit
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _fnCommit( void ){
+     FILE* fp ;
+     int currNewSeq ;
+     char name[HALF_LENGTH] ;
+     char box[MAX_LENGTH] ;
+     char msg[MEDIUM_LENGTH] ;
+
+     sprintf( name, "%s.rachel", MyData.schemaName[MyData.currSeq] ) ;
+
+     currNewSeq = MyData.newSeq - 1 ;
+     sprintf( box, "%s@%s", MyData.newBox[currNewSeq], MyData.newData[currNewSeq] ) ;
+     fputs( box, MyData.currSchema ) ;
+
+     fclose( MyData.currSchema ) ;
+     fp = fopen( name, "r" ) ;
+     if( fp == NULL ){
+          sprintf( msg, "Failed to commit to schema: %s.", MyData.schemaName[MyData.currSeq] ) ;
+          logSisters(
+                    msg,
+                    FTL,
+                    MyName
+               ) ;
+          return ;
+     }
+     MyData.schemafp[MyData.currSeq] = fp ;
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnGet
 //
 // :[ CATEGORY ]:
 //     Skill
