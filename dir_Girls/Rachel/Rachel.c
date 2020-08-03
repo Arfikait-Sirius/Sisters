@@ -27,7 +27,7 @@ schema _fnOpenSchema( string schemaName ){
 
      sprintf( name, "%s.rachel", schemaName ) ;
 
-     fp = fopen( name, "r" ) ;
+     fp = fopen( name, "a+" ) ;
      if( fp == NULL ){
           sprintf( msg, "Cannot find schema: %s.", schemaName ) ;
           logSisters(
@@ -119,7 +119,7 @@ void _fnCommit( void ){
      fputs( box, MyData.currSchema ) ;
 
      fclose( MyData.currSchema ) ;
-     fp = fopen( name, "a" ) ;
+     fp = fopen( name, "a+" ) ;
      if( fp == NULL ){
           sprintf( msg, "Failed to commit to schema: %s.", MyData.schemaName[MyData.currSeq] ) ;
           logSisters(
@@ -130,6 +130,7 @@ void _fnCommit( void ){
           return ;
      }
      MyData.schemafp[MyData.currSeq] = fp ;
+     fputc( LF, fp ) ;
 
      return ;
 }
@@ -147,6 +148,8 @@ string _fnGetData( string dataID ){
      char id[SHORT_LENGTH] ;
      char data[HALF_LENGTH] ;
      char tmp[HALF_LENGTH] ;
+
+     rewind( MyData.currSchema ) ;
 
      p = fgets( tmp, HALF_LENGTH, MyData.currSchema ) ;
      if( p == NULL ){
