@@ -16,6 +16,9 @@
 //--< Prototype Declarations >--//
 schema _fnOpenSchema( string ) ;
 void _fnChangeSchema( schema ) ;
+int _fnCreateBox( string ) ;
+void _fnRegistData( int, string ) ;
+void _fnCommit( void ) ;
 string _fnGetData( string ) ;
 void _fnCloseSchema( schema ) ;
 
@@ -26,13 +29,19 @@ int sfnSplitData( string, string, string ) ;
 typedef struct _rachel_functions{
      schema ( *fnOpen )( string ) ;
      void ( *fnChange )( schema ) ;
-     string ( *fnGetData )( string ) ;
+     int ( *fnCreate )( string ) ;
+     void ( *fnRegist )( int, string ) ;
+     void ( *fnCommit )( void ) ;
+     string ( *fnGet )( string ) ;
      void ( *fnClose )( schema ) ;
 }RachelFunctions ;
 
 #define BIRTH_RACHEL {\
      _fnOpenSchema,\
      _fnChangeSchema,\
+     _fnCreateBox,\
+     _fnRegistData,\
+     _fnCommit,\
      _fnGetData,\
      _fnCloseSchema\
 }
@@ -45,18 +54,26 @@ RachelFunctions callRachel( void ) ;
 //--< Mydata Declaration >--//
 typedef struct myDataRachel{
      int schemaSeq ;
+     int currSeq ;
+     int newSeq ;
      FILE* currSchema ;
      FILE* schemafp[RACHEL_MAX_SCHEMA_COUNT] ;
      char schemaName[RACHEL_MAX_SCHEMA_COUNT][HALF_LENGTH] ;
-     char data[HALF_LENGTH] ;
+     char data[MAX_LENGTH] ;
+     char newBox[RACHEL_MAX_NEW_SCHEMA_COUNT][HALF_LENGTH] ;
+     char newData[RACHEL_MAX_NEW_SCHEMA_COUNT][MAX_LENGTH] ;
 }_MyDataRachel ;
 
 #define INIT_RACHEL_MYDATA {\
      0,\
+     0,\
+     0,\
      NULL,\
      { NULL },\
      { { NL } },\
-     { NL }\
+     { NL },\
+     { { NL } },\
+     { { NL } }\
 }
 
 
