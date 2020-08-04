@@ -34,6 +34,7 @@ bool _isEmptyString( string ) ;
 
 /* <] - Louise - [> */
 typedef struct _louise_functions{
+     int ( *fnCount )( string, string ) ;
      string ( *fnCopy )( string, int ) ;
      string ( *fnReplace )( string, string, string ) ;
      string ( *fnSplit )( string, char, int ) ;
@@ -52,6 +53,7 @@ typedef struct _louise_functions{
 }LouiseFunctions ;
 
 #define BIRTH_LOUISE {\
+     _fnCountString,\
      _fnCopyString,\
      _fnReplaceString,\
      _fnSplitString,\
