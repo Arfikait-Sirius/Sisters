@@ -117,8 +117,10 @@ void _fnCommit( void ){
      currNewSeq = MyData.newSeq - 1 ;
      sprintf( box, "%s@%s", MyData.newBox[currNewSeq], MyData.newData[currNewSeq] ) ;
      fputs( box, MyData.currSchema ) ;
-
      fclose( MyData.currSchema ) ;
+
+     MyData.newSeq = 0 ;
+
      fp = fopen( name, "a+" ) ;
      if( fp == NULL ){
           sprintf( msg, "Failed to commit to schema: %s.", MyData.schemaName[MyData.currSeq] ) ;

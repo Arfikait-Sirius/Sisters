@@ -21,7 +21,8 @@
 
 
 // Rachel
-#define RACHEL_MAX_SCHEMA_COUNT 64
+#define RACHEL_MAX_SCHEMA_COUNT 8192
+#define RACHEL_MAX_NEW_SCHEMA_COUNT 1024
 
 
 // Grace
