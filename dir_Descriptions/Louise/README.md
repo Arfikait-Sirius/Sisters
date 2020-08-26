@@ -30,13 +30,13 @@ mode には以下を指定することができます！
 ## fnReplace()
 ```
 string s = Louise.fnReplace(
-     baseString,
-     replaceTarget,
-     replaceString
+     base,
+     target,
+     replacement
 ) ;
 ```
-文字列 baseString に含まれる文字列 replaceTarget を、文字列 replaceString に置き換えた文字列を得られます！  
-文字列 baseString は書き変わりません！
+文字列 base に含まれる文字列 target を、文字列 replacement に置き換えた文字列を得られます！  
+文字列 base は書き変わりません！
 
 ## fnUpperAll()
 ```
