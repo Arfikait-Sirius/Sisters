@@ -26,8 +26,8 @@
 
 
 // Grace
-#define GRACE_PATH "/Users/Sirius/SiriusFramework/Sisters/dir_Runtimefiles/Grace/Source/%s.grace"
-#define GRACE_PROPERTY "/Users/Sirius/SiriusFramework/Sisters/dir_Runtimefiles/Grace/Property/%s.property.grace"
+#define GRACE_PATH "../dir_Rooms/Grace/Source/%s.grace"
+#define GRACE_PROPERTY "../dir_Rooms/Grace/Property/%s.property.grace"
 
 
 #endif
