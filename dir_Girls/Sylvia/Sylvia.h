@@ -57,8 +57,8 @@ SylviaFunctions callSylvia( void ) ;
 
 
 //--< Free Definitions >--//
-#define NUM_OF_OPERATOR OPERATOR_STACK_BUFSIZE
-#define NUM_OF_NUMBERS NUMBER_STACK_BUFSIZE
+#define NUM_OF_OPERATOR 16
+#define NUM_OF_NUMBERS 256
 
 
 #endif

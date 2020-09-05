@@ -13,8 +13,10 @@ void callSisters( void ){
 # Graceができること
 ## fnService()
 ```
-Grace.fnService() ;
+Grace.fnService(
+     portNumber
+) ;
 ```
-HTTP Webサーバーを起動できます！  
+指定する portNumber で HTTP Webサーバーを起動できます！  
 Sisters/dir_Room/Grace/ に設置した ghtml ファイルをサービスします！  
 ghtml は Grace が読む html ファイルです！
