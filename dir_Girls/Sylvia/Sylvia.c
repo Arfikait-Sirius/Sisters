@@ -21,20 +21,14 @@ int _fnStrToNum( string data ){
           if( *p < 0x30 || 0x39 < *p ){
                logSisters(
                          ERR_MSG_NOT_NUMBER,
-                         FATAL,
-                         Sylvia_ID
+                         ERR,
+                         "Sylvia"
                     ) ;
                return NL ;
           }
           num *= 10 ;
           num += *p++ - 0x30 ;
      }
-
-     logSisters(
-               "fnStrToNum()",
-               ATTEND,
-               Sylvia_ID
-          ) ;
 
      return num ;
 }
