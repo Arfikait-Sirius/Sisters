@@ -150,18 +150,18 @@ string _fnTrimWhiteSpace( string target ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnReplaceString( string data, string repTarget, string repData ){
+string _fnReplaceString( string base, string target, string replacement ){
      int len ;
      char* p ;
      char* e ;
      char s[MAX_LENGTH] ;
 
-     len = strlen( repTarget ) ;
-     strcpy( s, data ) ;
-     p = strstr( s, repTarget ) ;
+     len = strlen( target ) ;
+     strcpy( s, base ) ;
+     p = strstr( s, target ) ;
      *p = NL ;
      e = p + len ;
-     sprintf( MyData.repStr, "%s%s%s", s, repData, e ) ;
+     sprintf( MyData.repStr, "%s%s%s", s, replacement, e ) ;
 
      return MyData.repStr ;
 }
