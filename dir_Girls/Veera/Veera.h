@@ -2,10 +2,6 @@
 #define _VEERA_
 
 
-//--< Sisters ID >--//
-#define Veera_ID 8
-
-
 //--< Use Headers >--//
 #include "stdio.h"
 #include "stdlib.h"
@@ -23,17 +19,20 @@ int mfnVeera( int, char*[] ) ;
 
 void _fnInitRandom( void ) ;
 int _fnRandom( int ) ;
+string _fnGetDate( void ) ;
 
 
 /* <] - Veera - [> */
 typedef struct _veera_functions{
      void ( *fnInit )( void ) ;
      int ( *fnRandom )( int ) ;
+     string ( *fnGetDate )( void ) ;
 }VeeraFunctions ;
 
 #define BIRTH_VEERA {\
      _fnInitRandom,\
-     _fnRandom\
+     _fnRandom,\
+     _fnGetDate\
 }
 
 static VeeraFunctions Veera ;
@@ -42,6 +41,13 @@ VeeraFunctions callVeera( void ) ;
 
 
 //--< Mydata Declaration >--//
+typedef struct myDataVeera{
+     char date[BUF_SIZE_DATE] ;
+}_MyDataVeera ;
+
+#define INIT_VEERA_MYDATA {\
+     { NL },\
+}
 
 
 //--< Free Definitions >--//
