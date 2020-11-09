@@ -20,7 +20,7 @@ EmilyFunctions callEmily( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnGetLine( string label ){
+string _EmilyyfnGetLine( string label ){
      int len ;
 
      if( label != NULL ){
@@ -40,7 +40,7 @@ string _fnGetLine( string label ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnDispLine( string str ){
+void _EmilyfnDispLine( string str ){
 
      printf( "%s\n", str ) ;
 
@@ -54,7 +54,7 @@ void _fnDispLine( string str ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnDispLineCustom( string pre, string str, string suf ){
+void _EmilyfnDispLineCustom( string pre, string str, string suf ){
 
      if( pre == NULL ){
           pre = STR_EMPTY ;
@@ -74,7 +74,7 @@ void _fnDispLineCustom( string pre, string str, string suf ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnDispStr( string str ){
+void _EmilyfnDispStr( string str ){
 
      printf( "%s", str ) ;
 
@@ -88,7 +88,7 @@ void _fnDispStr( string str ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnDispStrCustom( string pre, string str, string suf ){
+void _EmilyfnDispStrCustom( string pre, string str, string suf ){
 
      if( pre == NULL ){
           pre = STR_EMPTY ;
@@ -108,7 +108,7 @@ void _fnDispStrCustom( string pre, string str, string suf ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnNewLine( void ){
+void _EmilyfnNewLine( void ){
 
      printf( "\n" ) ;
 

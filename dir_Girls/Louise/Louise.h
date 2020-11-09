@@ -14,17 +14,17 @@
 
 
 //--< Prototype Declarations >--//
-string _fnCopyString( string, int ) ;
-string _fnReplaceString( string, string, string ) ;
-string _fnSplitString( string, char, int ) ;
-string _fnUpperAll( string ) ;
-string _fnLowerAll( string ) ;
-string _fnUpperFirst( string ) ;
-string _fnGetMiddleString( string, string ) ;
-string _fnTrimWhiteSpace( string ) ;
-string _fnNumToStr( int ) ;
-int _fnCountString( string, string ) ;
-int _fnGetLengthString( string ) ;
+string _LouisefnCopyString( string, int ) ;
+string _LouisefnReplaceString( string, string, string ) ;
+string _LouisefnSplitString( string, char, int ) ;
+string _LouisefnUpperAll( string ) ;
+string _LouisefnLowerAll( string ) ;
+string _LouisefnUpperFirst( string ) ;
+string _LouisefnGetMiddleString( string, string ) ;
+string _LouisefnTrimWhiteSpace( string ) ;
+string _LouisefnNumToStr( int ) ;
+int _LouisefnCountString( string, string ) ;
+int _LouisefnGetLengthString( string ) ;
 
 bool _isMatchFormat( string, string ) ;
 bool _isContainString( string, string ) ;
@@ -53,17 +53,17 @@ typedef struct _louise_functions{
 }LouiseFunctions ;
 
 #define BIRTH_LOUISE {\
-     _fnCountString,\
-     _fnCopyString,\
-     _fnReplaceString,\
-     _fnSplitString,\
-     _fnUpperAll,\
-     _fnLowerAll,\
-     _fnUpperFirst,\
-     _fnGetMiddleString,\
-     _fnTrimWhiteSpace,\
-     _fnNumToStr,\
-     _fnGetLengthString,\
+     _LouisefnCountString,\
+     _LouisefnCopyString,\
+     _LouisefnReplaceString,\
+     _LouisefnSplitString,\
+     _LouisefnUpperAll,\
+     _LouisefnLowerAll,\
+     _LouisefnUpperFirst,\
+     _LouisefnGetMiddleString,\
+     _LouisefnTrimWhiteSpace,\
+     _LouisefnNumToStr,\
+     _LouisefnGetLengthString,\
      \
      _isMatchFormat,\
      _isContainString,\
