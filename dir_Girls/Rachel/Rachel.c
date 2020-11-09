@@ -20,7 +20,7 @@ RachelFunctions callRachel( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-schema _fnOpenSchema( string schemaName ){
+schema _RachelfnOpenSchema( string schemaName ){
      FILE* fp ;
      char name[HALF_LENGTH] ;
      char msg[MEDIUM_LENGTH] ;
@@ -52,7 +52,7 @@ schema _fnOpenSchema( string schemaName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnChangeSchema( schema schemaID ){
+void _RachelfnChangeSchema( schema schemaID ){
 
      if( MyData.schemafp[schemaID] == NULL ){
           MyData.currSchema = NULL ;
@@ -77,7 +77,7 @@ void _fnChangeSchema( schema schemaID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnCreateBox( string dataID ){
+int _RachelfnCreateBox( string dataID ){
 
      strcpy( MyData.newBox[MyData.newSeq], dataID ) ;
 
@@ -91,7 +91,7 @@ int _fnCreateBox( string dataID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnRegistData( int boxID, string data ){
+void _RachelfnRegistData( int boxID, string data ){
 
      strcpy( MyData.newData[boxID], data ) ;
 
@@ -105,7 +105,7 @@ void _fnRegistData( int boxID, string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnCommit( void ){
+void _RachelfnCommit( void ){
      FILE* fp ;
      int currNewSeq ;
      char name[HALF_LENGTH] ;
@@ -144,7 +144,7 @@ void _fnCommit( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnGetData( string dataID ){
+string _RachelfnGetData( string dataID ){
      int result ;
      char* p ;
      char id[SHORT_LENGTH] ;
@@ -181,7 +181,7 @@ string _fnGetData( string dataID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnCloseSchema( schema schemaID ){
+void _RachelfnCloseSchema( schema schemaID ){
 
      if( MyData.schemaName[schemaID] == NULL ){
           logSisters(

@@ -20,7 +20,7 @@ GraceFunctions callGrace( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnService( int portNumber ){
+void _GracefnService( int portNumber ){
      int socketRead ;
      int socketWrite ;
      char method[MIN_LENGTH] ;
@@ -208,7 +208,7 @@ static int sfnSendHTML( int sock, string url ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnDeploy( string fileName ){
+void _GracefnDeploy( string fileName ){
      FILE* sfp ;
      FILE* dfp ;
      char str[MAX_LENGTH] ;
@@ -271,7 +271,7 @@ void _fnDeploy( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnSetValue( string key, string value ){
+void _GracefnSetValue( string key, string value ){
 
      strcpy( MyData.key[MyData.index], key ) ;
      strcpy( MyData.value[MyData.index], value ) ;

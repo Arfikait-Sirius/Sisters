@@ -15,7 +15,7 @@ VeeraFunctions callVeera( void ){
 
 static time_t timer = 0 ;
 
-void _fnInitRandom(){
+void _VeerafnInitRandom(){
 
      timer = time( NULL ) ;
      srand( timer ) ;
@@ -23,7 +23,7 @@ void _fnInitRandom(){
      return ;
 }
 
-int _fnRandom( int limit ){
+int _VeerafnRandom( int limit ){
      int randNum ;
 
      if( timer == 0 ){
@@ -34,7 +34,7 @@ int _fnRandom( int limit ){
      return randNum ;
 }
 
-string _fnGetDate( void ){
+string _VeerafnGetDate( void ){
      struct tm* utc ;
 
      timer = time( NULL ) ;
@@ -45,13 +45,13 @@ string _fnGetDate( void ){
      return MyData.date ;
 }
 
-string _fnGetTime( void ){
+string _VeerafnGetTime( void ){
      string now ;
 
      return now ;
 }
 
-string _fnGetWeek( void ){
+string _VeerafnGetWeek( void ){
      string week ;
 
      return week ;

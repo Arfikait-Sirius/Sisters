@@ -17,9 +17,9 @@
 //--< Prototype Declarations >--//
 int mfnVeera( int, char*[] ) ;
 
-void _fnInitRandom( void ) ;
-int _fnRandom( int ) ;
-string _fnGetDate( void ) ;
+void _VeerafnInitRandom( void ) ;
+int _VeerafnRandom( int ) ;
+string _VeerafnGetDate( void ) ;
 
 
 /* <] - Veera - [> */
@@ -30,9 +30,9 @@ typedef struct _veera_functions{
 }VeeraFunctions ;
 
 #define BIRTH_VEERA {\
-     _fnInitRandom,\
-     _fnRandom,\
-     _fnGetDate\
+     _VeerafnInitRandom,\
+     _VeerafnRandom,\
+     _VeerafnGetDate\
 }
 
 static VeeraFunctions Veera ;
