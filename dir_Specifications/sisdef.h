@@ -8,6 +8,10 @@ typedef void* pointer ;
 typedef char bool ;
 typedef char* string ;
 typedef int file ;
+typedef int list ;
+typedef int stack ;
+typedef int queue ;
+typedef int map ;
 typedef int schema ;
 typedef void* fnp ;
 

@@ -12,9 +12,9 @@
 
 
 //--< Standard Definition >--//
-#include "../dir_Specifications/siscmn.h"
-#include "../dir_Runtimefiles/sisset.h"
-#include "../dir_Runtimefiles/sismsg.h"
+#include "../../dir_Specifications/siscmn.h"
+#include "../../dir_Runtimefiles/sisset.h"
+#include "../../dir_Runtimefiles/sismsg.h"
 
 
 //--< Prototype Declarations >--//
