@@ -15,76 +15,62 @@ KotoneFunctions callKotone( void ){
 
 //------------------------
 // :[ NAME ]:
-//     fnCreate
+//     fnCreateList
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnCreateList( mode m ){
+list _KotonefnCreateList( mode m ){
 
      if( m == TMP ){
           return TMP_LIST ;
      }
 
-     return MyData.seq++ ;
+     return MyData.listSeq++ ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnAdd_p
+//     fnAddList
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnAddList_p( int listID, pointer p ){
+void _KotonefnAddList( list listID, string s ){
 
-     MyData.plist[listID][MyData.index[listID]] = p ;
-     MyData.index[listID]++ ;
+     MyData.myList[listID][MyData.listIndex[listID]] = s ;
+     MyData.listIndex[listID]++ ;
 
      return ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnAdd_c
+//     fnCreateStack
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnAddList_c( int listID, char c ){
+stack _KotonefnCreateStack( mode m ){
 
-     MyData.clist[listID][MyData.index[listID]] = c ;
-     MyData.index[listID]++ ;
+     if( m == TMP ){
+          return TMP_STACK ;
+     }
 
-     return ;
+     return MyData.stackSeq++ ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnAdd_s
+//     fnPushStack
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnAddList_s( int listID, string s ){
+void _KotonefnPushStack( stack stackID, string s ){
 
-     MyData.slist[listID][MyData.index[listID]] = s ;
-     MyData.index[listID]++ ;
-
-     return ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnAdd_i
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-void _fnAddList_i( int listID, int i ){
-
-     MyData.ilist[listID][MyData.index[listID]] = i ;
-     MyData.index[listID]++ ;
+     MyData.myStack[stackID][MyData.stackIndex[stackID]] = s ;
+     MyData.stackIndex[stackID]++ ;
 
      return ;
 }

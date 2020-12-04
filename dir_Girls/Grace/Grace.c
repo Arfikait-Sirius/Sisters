@@ -20,7 +20,7 @@ GraceFunctions callGrace( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnService( void ){
+void _GracefnService( int portNumber ){
      int socketRead ;
      int socketWrite ;
      char method[MIN_LENGTH] ;
@@ -28,7 +28,7 @@ void _fnService( void ){
      char protocol[HALF_LENGTH] ;
      int result ;
 
-     socketRead = sfnBindSocket() ;
+     socketRead = sfnBindSocket( portNumber ) ;
      if( socketRead < 0 ){
           return ;
      }
@@ -42,11 +42,13 @@ void _fnService( void ){
 
           result = sfnSendProperty( socketWrite, url ) ;
           if( result < 0 ){
+               close( socketWrite ) ;
                return ;
           }
 
           result = sfnSendHTML( socketWrite, url ) ;
           if( result < 0 ){
+               close( socketWrite ) ;
                return ;
           }
 
@@ -64,7 +66,7 @@ void _fnService( void ){
 // :[ CATEGORY ]:
 //     Thinking
 //------------------------
-static int sfnBindSocket( void ){
+static int sfnBindSocket( int portNumber ){
      int sock ;
      struct sockaddr_in addr ;
      int result ;
@@ -77,7 +79,7 @@ static int sfnBindSocket( void ){
      }
 
      addr.sin_family = AF_INET ;
-     addr.sin_port = htons( 8080 ) ;
+     addr.sin_port = htons( portNumber ) ;
      addr.sin_addr.s_addr = INADDR_ANY ;
 
      result = bind( sock, ( struct sockaddr* )&addr, sizeof( addr ) ) ;
@@ -139,7 +141,7 @@ static int sfnSendProperty( int sock, string url ){
      char responseHeader[DOUBLE_LENGTH] = { NL } ;
      char contentLength[SHORT_LENGTH] = { NL } ;
      char contentType[SHORT_LENGTH] = { NL } ;
-     char property[READ_BUFSIZE] ;
+     char property[MAX_LENGTH] ;
      int size ;
 
      sprintf( fileName, GRACE_PROPERTY, url ) ;
@@ -148,9 +150,9 @@ static int sfnSendProperty( int sock, string url ){
           fprintf( stderr, "Error: Cannot read property file.\n" ) ;
           return -1 ;
      }
-     fgets( property, READ_BUFSIZE, fp ) ;
+     fgets( property, MAX_LENGTH, fp ) ;
      sprintf( contentLength, "Content-Length: %s", property ) ;
-     fgets( property, READ_BUFSIZE, fp ) ;
+     fgets( property, MAX_LENGTH, fp ) ;
      sprintf( contentType, "Content-Type: text/%s", property ) ;
      sprintf( responseHeader,
                "%s\r\n%s%s\r\n\r\n",
@@ -176,7 +178,7 @@ static int sfnSendProperty( int sock, string url ){
 static int sfnSendHTML( int sock, string url ){
      FILE* fp ;
      char fileName[MAX_LENGTH] = { NL } ;
-     char str[READ_BUFSIZE] ;
+     char str[MAX_LENGTH] ;
      int size ;
      char* p ;
 
@@ -187,12 +189,12 @@ static int sfnSendHTML( int sock, string url ){
           return -1 ;
      }
      printf( "[ Body ]\n" ) ;
-     p = fgets( str, READ_BUFSIZE, fp ) ;
+     p = fgets( str, MAX_LENGTH, fp ) ;
      while( p != NULL ){
           size = strlen( str ) ;
           send( sock, str, size + 1, 0 ) ;
           printf( "%s", str ) ;
-          p = fgets( str, READ_BUFSIZE, fp) ;
+          p = fgets( str, MAX_LENGTH, fp) ;
      }
      fclose( fp ) ;
 
@@ -206,10 +208,10 @@ static int sfnSendHTML( int sock, string url ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnDeploy( string fileName ){
+void _GracefnDeploy( string fileName ){
      FILE* sfp ;
      FILE* dfp ;
-     char str[READ_BUFSIZE] ;
+     char str[MAX_LENGTH] ;
      char* p ;
      char fileNameOmitExtension[HALF_LENGTH] = { NL } ;
      char graceFileName[MAX_LENGTH] = { NL } ;
@@ -235,17 +237,17 @@ void _fnDeploy( string fileName ){
      }
      line = 0 ;
      len = 0 ;
-     p = fgets( str, READ_BUFSIZE, sfp ) ;
+     p = fgets( str, MAX_LENGTH, sfp ) ;
      while( p != NULL ){
           line++ ;
           sfnGenerateHTML( s, str ) ;
           if( s[0] == NL ){
-               fprintf( stderr, "Error: Cannot generated.\n" ) ;
+               fprintf( stderr, "Error: Cannot generated. - %s\n", str ) ;
                break ;
           }
           len += strlen( s ) ;
           fputs( s, dfp ) ;
-          p = fgets( str, READ_BUFSIZE, sfp ) ;
+          p = fgets( str, MAX_LENGTH, sfp ) ;
      }
      fclose( dfp ) ;
      fclose( sfp ) ;
@@ -269,7 +271,7 @@ void _fnDeploy( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnSetValue( string key, string value ){
+void _GracefnSetValue( string key, string value ){
 
      strcpy( MyData.key[MyData.index], key ) ;
      strcpy( MyData.value[MyData.index], value ) ;

@@ -20,7 +20,7 @@ DorothyFunctions callDorothy( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnOpenRead( string fileName ){
+int _DorothyfnOpenRead( string fileName ){
 
      MyData.error[MyData.fileSeq] = FALSE ;
 
@@ -48,7 +48,7 @@ int _fnOpenRead( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnOpenWrite( string fileName ){
+int _DorothyfnOpenWrite( string fileName ){
 
      MyData.error[MyData.fileSeq] = FALSE ;
 
@@ -76,7 +76,7 @@ int _fnOpenWrite( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnCloseFile( int fileID ){
+void _DorothyfnCloseFile( int fileID ){
 
      fclose( MyData.fp[fileID] ) ;
      MyData.stat[fileID] = FILE_STAT_END ;
@@ -91,7 +91,7 @@ void _fnCloseFile( int fileID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnReadLine( int fileID ){
+string _DorothyfnReadLine( int fileID ){
      char c ;
      string src ;
      int count ;
@@ -107,7 +107,7 @@ string _fnReadLine( int fileID ){
           return NULL ;
      }
      for( src = MyData.readStr[fileID], count = 0 ;
-               c != LF && c != EOF && count < READ_BUFSIZE ;
+               c != LF && c != EOF && count < DOROTHY_READ_BUFSIZE ;
                count++ ){
           *src++ = c ;
           c = fgetc( MyData.fp[fileID] ) ;
@@ -125,7 +125,7 @@ string _fnReadLine( int fileID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnWriteLine( int fileID, string srcData ){
+void _DorothyfnWriteLine( int fileID, string srcData ){
 
      strcat( srcData, "\n" ) ;
      fputs( srcData, MyData.fp[fileID] ) ;
@@ -140,7 +140,7 @@ void _fnWriteLine( int fileID, string srcData ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnRenameFile( int fileID, string newName ){
+void _DorothyfnRenameFile( int fileID, string newName ){
      char name[MAX_LENGTH] ;
 
      sprintf( name, "%s%s", MyData.path[fileID], newName ) ;
@@ -156,7 +156,7 @@ void _fnRenameFile( int fileID, string newName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnDelete( string fileName ){
+int _DorothyfnDelete( string fileName ){
      int result = 0 ;
 
      result = remove( fileName ) ;
@@ -174,24 +174,24 @@ int _fnDelete( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnOpenParse( string fileName ){
+int _DorothyfnOpenParse( string fileName ){
      FILE* fp ;
      int len ;
      int line ;
-     char buf[READ_BUFSIZE] = { NL } ;
+     char buf[DOROTHY_READ_BUFSIZE] = { NL } ;
      char* p ;
 
-     fp = fopen( fileName, READ_ONLY ) ;
+     fp = fopen( fileName, "r" ) ;
      if( fp == NULL ){
           return TOO_BAD ;
      }
      len = 0 ;
      line = 0 ;
-     p = fgets( buf, READ_BUFSIZE, fp ) ;
+     p = fgets( buf, DOROTHY_READ_BUFSIZE, fp ) ;
      while( p != NULL ){
           line++ ;
           len += strlen( buf ) ;
-          p = fgets( buf, READ_BUFSIZE, fp ) ;
+          p = fgets( buf, DOROTHY_READ_BUFSIZE, fp ) ;
      }
      fclose( fp ) ;
      MyData.parseLine[MyData.parseSeq] = line ;
@@ -208,7 +208,7 @@ int _fnOpenParse( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnCloseParse( int prsfID ){
+void _DorothyfnCloseParse( int prsfID ){
 
      MyData.parseStat[prsfID] = FILE_PARSE_END ;
 
@@ -222,7 +222,7 @@ void _fnCloseParse( int prsfID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnGetFileLength( int prsfID ){
+int _DorothyfnGetFileLength( int prsfID ){
 
      if( MyData.parseStat[prsfID] == FILE_PARSE_END ){
           return TOO_BAD ;
@@ -238,7 +238,7 @@ int _fnGetFileLength( int prsfID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnGetFileLine( int prsfID ){
+int _DorothyfnGetFileLine( int prsfID ){
 
      if( MyData.parseStat[prsfID] == FILE_PARSE_END ){
           return TOO_BAD ;
@@ -254,21 +254,21 @@ int _fnGetFileLine( int prsfID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _fnCopyFile( string dstFileName, string srcFileName ){
+void _DorothyfnCopyFile( string dstFileName, string srcFileName ){
      FILE* sfp ;
      FILE* dfp ;
-     char buf[READ_BUFSIZE] = { NL } ;
+     char buf[DOROTHY_READ_BUFSIZE] = { NL } ;
      char* p ;
 
-     sfp = fopen( srcFileName, READ_ONLY ) ;
+     sfp = fopen( srcFileName, "r" ) ;
      if( sfp == NULL ){
           return ;
      }
-     dfp = fopen( dstFileName, WRITE_ONLY ) ;
-     p = fgets( buf, READ_BUFSIZE, sfp ) ;
+     dfp = fopen( dstFileName, "w" ) ;
+     p = fgets( buf, DOROTHY_READ_BUFSIZE, sfp ) ;
      while( p != NULL ){
           fputs( buf, dfp ) ;
-          p = fgets( buf, READ_BUFSIZE, sfp ) ;
+          p = fgets( buf, DOROTHY_READ_BUFSIZE, sfp ) ;
      }
      fclose( dfp ) ;
      fclose( sfp ) ;
