@@ -1,38 +1,32 @@
 #include "Veera.h"
 
+// Name
+static string MyName = "Veera" ;
+
+// Veera's Memo
+static _MyDataVeera MyData = INIT_VEERA_MYDATA ;
+
+// Birth
 VeeraFunctions callVeera( void ){
      VeeraFunctions _VeeraSkills = BIRTH_VEERA ;
 
      return _VeeraSkills ;
 }
 
-static time_t seed = 0 ;
+static time_t timer = 0 ;
 
-int mfnMainVeera( int argc, char* argv[] ){
-     int i ;
-     char s[80] ;
+void _VeerafnInitRandom(){
 
-     _fnInitRandom() ;
-     for( i = 0 ; i < 1000 ; i++ ){
-          sprintf( s, "rand = %d", _fnRandom( 10000 ) ) ;
-          logSisters( s, INFO, Veera_ID ) ;
-     }
-
-     return CHAO ;
-}
-
-void _fnInitRandom(){
-
-     seed = time( NULL ) ;
-     srand( seed ) ;
+     timer = time( NULL ) ;
+     srand( timer ) ;
 
      return ;
 }
 
-int _fnRandom( int limit ){
+int _VeerafnRandom( int limit ){
      int randNum ;
 
-     if( seed == 0 ){
+     if( timer == 0 ){
           return STATUS_RED ;
      }
      randNum = rand() % limit ;
@@ -40,19 +34,24 @@ int _fnRandom( int limit ){
      return randNum ;
 }
 
-string _fnGetDate( void ){
-     string date ;
+string _VeerafnGetDate( void ){
+     struct tm* utc ;
 
-     return date ;
+     timer = time( NULL ) ;
+     utc = gmtime( &timer ) ;
+
+     sprintf( MyData.date, "%4d/%2d/%2d", utc->tm_year + 1900, utc->tm_mon + 1, utc->tm_mday ) ;
+
+     return MyData.date ;
 }
 
-string _fnGetTime( void ){
-     string time ;
+string _VeerafnGetTime( void ){
+     string now ;
 
-     return time ;
+     return now ;
 }
 
-string _fnGetWeek( void ){
+string _VeerafnGetWeek( void ){
      string week ;
 
      return week ;

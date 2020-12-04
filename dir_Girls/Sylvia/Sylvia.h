@@ -20,12 +20,12 @@
 //--< Prototype Declarations >--//
 int mfnSylvia( int, char*[] ) ;
 
-int _fnStrToNum( string ) ;
-int _fnCalcStrExpression( string ) ;
-int _fnAdd( int, int ) ;
-int _fnSub( int, int ) ;
-int _fnMul( int, int ) ;
-int _fnDiv( int, int ) ;
+int _SylviafnStrToNum( string ) ;
+int _SylviafnCalcStrExpression( string ) ;
+int _SylviafnAdd( int, int ) ;
+int _SylviafnSub( int, int ) ;
+int _SylviafnMul( int, int ) ;
+int _SylviafnDiv( int, int ) ;
 
 int sfnCalc( int*, char* ) ;
 
@@ -40,12 +40,12 @@ typedef struct _sylvia_functions{
 }SylviaFunctions ;
 
 #define BIRTH_SYLVIA {\
-     _fnStrToNum,\
-     _fnCalcStrExpression,\
-     _fnAdd,\
-     _fnSub,\
-     _fnMul,\
-     _fnDiv\
+     _SylviafnStrToNum,\
+     _SylviafnCalcStrExpression,\
+     _SylviafnAdd,\
+     _SylviafnSub,\
+     _SylviafnMul,\
+     _SylviafnDiv\
 }
 
 static SylviaFunctions Sylvia ;
@@ -57,8 +57,8 @@ SylviaFunctions callSylvia( void ) ;
 
 
 //--< Free Definitions >--//
-#define NUM_OF_OPERATOR OPERATOR_STACK_BUFSIZE
-#define NUM_OF_NUMBERS NUMBER_STACK_BUFSIZE
+#define NUM_OF_OPERATOR 16
+#define NUM_OF_NUMBERS 256
 
 
 #endif

@@ -11,7 +11,7 @@ int mfnSylvia( int argc, char* argv[] ){
      return CHAO ;
 }
 
-int _fnStrToNum( string data ){
+int _SylviafnStrToNum( string data ){
      int num ;
      char* p ;
 
@@ -21,8 +21,8 @@ int _fnStrToNum( string data ){
           if( *p < 0x30 || 0x39 < *p ){
                logSisters(
                          ERR_MSG_NOT_NUMBER,
-                         FATAL,
-                         Sylvia_ID
+                         ERR,
+                         "Sylvia"
                     ) ;
                return NL ;
           }
@@ -30,16 +30,10 @@ int _fnStrToNum( string data ){
           num += *p++ - 0x30 ;
      }
 
-     logSisters(
-               "fnStrToNum()",
-               ATTEND,
-               Sylvia_ID
-          ) ;
-
      return num ;
 }
 
-int _fnCalcStrExpression( string expression ){
+int _SylviafnCalcStrExpression( string expression ){
      int result ;
      char operators[NUM_OF_OPERATOR] = { NL } ;
      int numbers[NUM_OF_NUMBERS] = { 0 } ;
@@ -100,7 +94,7 @@ int _fnCalcStrExpression( string expression ){
                     }
                     p++ ;
                }
-               z = _fnMul( x, y ) ;
+               z = _SylviafnMul( x, y ) ;
                priorityFlg = TRUE ;
           }else if( *p == SLASH ){
                p++ ;
@@ -115,7 +109,7 @@ int _fnCalcStrExpression( string expression ){
                     }
                     p++ ;
                }
-               z = _fnDiv( x, y ) ;
+               z = _SylviafnDiv( x, y ) ;
                priorityFlg = TRUE ;
           }else if( *p == PLUS || *p == MINUS ){
                operators[j++] = *p ;
@@ -147,9 +141,9 @@ int sfnCalc( int* numbers, char* operators ){
      result = *numbers++ ;
      while( *operators != NL ){
           if( *operators == PLUS ){
-               result = _fnAdd( result, *numbers ) ;
+               result = _SylviafnAdd( result, *numbers ) ;
           }else if( *operators == MINUS ){
-               result = _fnSub( result, *numbers ) ;
+               result = _SylviafnSub( result, *numbers ) ;
           }
           numbers++ ;
           operators++ ;
@@ -158,22 +152,22 @@ int sfnCalc( int* numbers, char* operators ){
      return result ;
 }
 
-int _fnAdd( int a, int b ){
+int _SylviafnAdd( int a, int b ){
 
      return a + b ;
 }
 
-int _fnSub( int a, int b ){
+int _SylviafnSub( int a, int b ){
 
      return a - b ;
 }
 
-int _fnMul( int a, int b ){
+int _SylviafnMul( int a, int b ){
 
      return a * b ;
 }
 
-int _fnDiv( int a, int b ){
+int _SylviafnDiv( int a, int b ){
 
      if( b == 0 ){
           return NL ;

@@ -19,11 +19,11 @@
 //--< Prototype Declarations >--//
 int mfnGrace( int, char*[] ) ;
 
-void _fnService( void ) ;
-void _fnDeploy( string ) ;
-void _fnSetValue( string, string ) ;
+void _GracefnService( int ) ;
+void _GracefnDeploy( string ) ;
+void _GracefnSetValue( string, string ) ;
 
-static int sfnBindSocket( void ) ;
+static int sfnBindSocket( int ) ;
 static int sfnAccept( int, string, string, string ) ;
 static int sfnSendProperty( int, string ) ;
 static int sfnSendHTML( int, string ) ;
@@ -35,15 +35,15 @@ static string sfnGetValue( string ) ;
 
 /* <] - Grace - [> */
 typedef struct _grace_functions{
-     void ( *fnService )( void ) ;
+     void ( *fnService )( int ) ;
      void ( *fnDeploy )( string ) ;
      void ( *fnSetValue )( string, string ) ;
 }GraceFunctions ;
 
 #define BIRTH_GRACE {\
-     _fnService,\
-     _fnDeploy,\
-     _fnSetValue\
+     _GracefnService,\
+     _GracefnDeploy,\
+     _GracefnSetValue\
 }
 
 static GraceFunctions Grace ;

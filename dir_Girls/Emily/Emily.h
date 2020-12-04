@@ -14,12 +14,12 @@
 //--< Prototype Declarations >--//
 int mfnMainEmily( int argc, char* argv[] ) ;
 
-string _fnGetLine( string ) ;
-void _fnDispLine( string ) ;
-void _fnDispLineCustom( string, string, string ) ;
-void _fnDispStr( string ) ;
-void _fnDispStrCustom( string, string, string ) ;
-void _fnNewLine( void ) ;
+string _EmilyfnGetLine( string ) ;
+void _EmilyfnDispLine( string ) ;
+void _EmilyfnDispLineCustom( string, string, string ) ;
+void _EmilyfnDispStr( string ) ;
+void _EmilyfnDispStrCustom( string, string, string ) ;
+void _EmilyfnNewLine( void ) ;
 
 
 /* <] - Emily - [> */
@@ -33,12 +33,12 @@ typedef struct _emily_functions{
 }EmilyFunctions ;
 
 #define BIRTH_EMILY {\
-	_fnGetLine,\
-	_fnDispLine,\
-	_fnDispLineCustom,\
-	_fnDispStr,\
-	_fnDispStrCustom,\
-	_fnNewLine\
+	_EmilyfnGetLine,\
+	_EmilyfnDispLine,\
+	_EmilyfnDispLineCustom,\
+	_EmilyfnDispStr,\
+	_EmilyfnDispStrCustom,\
+	_EmilyfnNewLine\
 }
 
 static EmilyFunctions Emily ;

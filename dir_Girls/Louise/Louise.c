@@ -20,7 +20,7 @@ LouiseFunctions callLouise( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnCountString( string data, string sepStr ){
+int _LouisefnCountString( string data, string sepStr ){
      int len ;
      int counter = 0 ;
      char* p ;
@@ -43,7 +43,7 @@ int _fnCountString( string data, string sepStr ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnCopyString( string data, int mode ){
+string _LouisefnCopyString( string data, int mode ){
      int counter = MyData.cpyCounter ;
      int i ;
      bool result = TRUE ;
@@ -53,10 +53,10 @@ string _fnCopyString( string data, int mode ){
           counter = 0 ;
           break ;
      case FIX:
-          MyData.cpyCounter++ ;
-          for( i = 0 ; i < MAX_CPY_SIZE ; i++ ){
+          for( i = 0 ; i < LOUISE_MAX_CPY_SIZE ; i++ ){
                if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
                     result = FALSE ;
+                    counter = i ;
                     break ;
                }
           }
@@ -64,6 +64,7 @@ string _fnCopyString( string data, int mode ){
      }
      if( result ){
           strcpy( MyData.cpyStr[counter], data ) ;
+          MyData.cpyCounter++ ;
      }
 
      return MyData.cpyStr[counter] ;
@@ -76,7 +77,7 @@ string _fnCopyString( string data, int mode ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnGetMiddleString( string format, string data ){
+string _LouisefnGetMiddleString( string format, string data ){
      int flen ;
      int len ;
      char f[MAX_LENGTH] ;
@@ -123,7 +124,7 @@ string _fnGetMiddleString( string format, string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnTrimWhiteSpace( string target ){
+string _LouisefnTrimWhiteSpace( string target ){
      char str[MAX_LENGTH] ;
      char* p ;
 
@@ -149,20 +150,53 @@ string _fnTrimWhiteSpace( string target ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnReplaceString( string data, string repTarget, string repData ){
+string _LouisefnReplaceString( string base, string target, string replacement ){
      int len ;
      char* p ;
      char* e ;
      char s[MAX_LENGTH] ;
 
-     len = strlen( repTarget ) ;
-     strcpy( s, data ) ;
-     p = strstr( s, repTarget ) ;
+     len = strlen( target ) ;
+     strcpy( s, base ) ;
+     p = strstr( s, target ) ;
      *p = NL ;
      e = p + len ;
-     sprintf( MyData.repStr, "%s%s%s", s, repData, e ) ;
+     sprintf( MyData.repStr, "%s%s%s", s, replacement, e ) ;
 
      return MyData.repStr ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnSplit
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnSplitString( string data, char splitter, int position ){
+     int i ;
+     char* s ;
+     char* p ;
+     char d[MAX_LENGTH] ;
+
+     strcpy( d, data ) ;
+
+     p = strchr( d, splitter ) ;
+     s = d ;
+     if( p == NULL ){
+          return NULL ;
+     }
+     for( i = 0 ; i < position && p != NULL ; i++ ){
+          *p++ = NL ;
+          strcpy( MyData.splStr, s ) ;
+          s = p ;
+          p = strchr( p, splitter ) ;
+     }
+     if( i < position ){
+          strcpy( MyData.splStr, s ) ;
+     }
+
+     return MyData.splStr ;
 }
 
 //------------------------
@@ -172,7 +206,7 @@ string _fnReplaceString( string data, string repTarget, string repData ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnUpperAll( string data ){
+string _LouisefnUpperAll( string data ){
      char c ;
      char* result ;
 
@@ -196,7 +230,7 @@ string _fnUpperAll( string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnLowerAll( string data ){
+string _LouisefnLowerAll( string data ){
      char c ;
      string result ;
 
@@ -221,7 +255,7 @@ string _fnLowerAll( string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnUpperFirst( string data ){
+string _LouisefnUpperFirst( string data ){
      char c ;
      char* result ;
 
@@ -251,7 +285,7 @@ string _fnUpperFirst( string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _fnNumToStr( int num ){
+string _LouisefnNumToStr( int num ){
      int n ;
      char result[HALF_LENGTH] ;
      char tmp[HALF_LENGTH] ;
@@ -291,7 +325,7 @@ string _fnNumToStr( int num ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _fnGetLengthString( string data ){
+int _LouisefnGetLengthString( string data ){
      int len = 0 ;
 
      if( data != NULL ){

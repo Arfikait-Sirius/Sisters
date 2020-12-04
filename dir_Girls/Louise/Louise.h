@@ -14,18 +14,17 @@
 
 
 //--< Prototype Declarations >--//
-int mfnLouise( int, char*[] ) ;
-
-string _fnCopyString( string, int ) ;
-string _fnReplaceString( string, string, string ) ;
-string _fnUpperAll( string ) ;
-string _fnLowerAll( string ) ;
-string _fnUpperFirst( string ) ;
-string _fnGetMiddleString( string, string ) ;
-string _fnTrimWhiteSpace( string ) ;
-string _fnNumToStr( int ) ;
-int _fnCountString( string, string ) ;
-int _fnGetLengthString( string ) ;
+string _LouisefnCopyString( string, int ) ;
+string _LouisefnReplaceString( string, string, string ) ;
+string _LouisefnSplitString( string, char, int ) ;
+string _LouisefnUpperAll( string ) ;
+string _LouisefnLowerAll( string ) ;
+string _LouisefnUpperFirst( string ) ;
+string _LouisefnGetMiddleString( string, string ) ;
+string _LouisefnTrimWhiteSpace( string ) ;
+string _LouisefnNumToStr( int ) ;
+int _LouisefnCountString( string, string ) ;
+int _LouisefnGetLengthString( string ) ;
 
 bool _isMatchFormat( string, string ) ;
 bool _isContainString( string, string ) ;
@@ -35,8 +34,10 @@ bool _isEmptyString( string ) ;
 
 /* <] - Louise - [> */
 typedef struct _louise_functions{
+     int ( *fnCount )( string, string ) ;
      string ( *fnCopy )( string, int ) ;
      string ( *fnReplace )( string, string, string ) ;
+     string ( *fnSplit )( string, char, int ) ;
      string ( *fnUpperAll )( string ) ;
      string ( *fnLowerAll )( string ) ;
      string ( *fnUpperFirst )( string ) ;
@@ -52,15 +53,17 @@ typedef struct _louise_functions{
 }LouiseFunctions ;
 
 #define BIRTH_LOUISE {\
-     _fnCopyString,\
-     _fnReplaceString,\
-     _fnUpperAll,\
-     _fnLowerAll,\
-     _fnUpperFirst,\
-     _fnGetMiddleString,\
-     _fnTrimWhiteSpace,\
-     _fnNumToStr,\
-     _fnGetLengthString,\
+     _LouisefnCountString,\
+     _LouisefnCopyString,\
+     _LouisefnReplaceString,\
+     _LouisefnSplitString,\
+     _LouisefnUpperAll,\
+     _LouisefnLowerAll,\
+     _LouisefnUpperFirst,\
+     _LouisefnGetMiddleString,\
+     _LouisefnTrimWhiteSpace,\
+     _LouisefnNumToStr,\
+     _LouisefnGetLengthString,\
      \
      _isMatchFormat,\
      _isContainString,\
@@ -76,8 +79,9 @@ LouiseFunctions callLouise( void ) ;
 //--< Mydata Declaration >--//
 typedef struct myDataLouise{
      int cpyCounter ;
-     char cpyStr[MAX_CPY_SIZE][MAX_LENGTH] ;
+     char cpyStr[LOUISE_MAX_CPY_SIZE][MAX_LENGTH] ;
      char repStr[MAX_LENGTH] ;
+     char splStr[HALF_LENGTH] ;
      char midStr[HALF_LENGTH] ;
      char resStr[MAX_LENGTH] ;
      char trmStr[MAX_LENGTH] ;
@@ -87,6 +91,7 @@ typedef struct myDataLouise{
 #define INIT_LOUISE_MYDATA {\
      1,\
      { { NL } },\
+     { NL },\
      { NL },\
      { NL },\
      { NL },\
