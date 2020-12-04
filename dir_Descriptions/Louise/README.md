@@ -20,23 +20,23 @@ string s = Louise.fnCopy(
 ```
 文字列 str をコピーできます！  
 mode には以下を指定することができます！
-     * FIX
-          * 以降の処理でも書き換えられなくなります
-          * 半永続的な文字列の管理はこちらのモードが便利です
-     * TMP
-          * 以降の処理で再度 Louise.fnCopy() が呼び出される度に上書きされます
-          * 一時的／局所的な文字列の利用はこちらのモードが便利です
+* FIX
+     * 以降の処理でも書き換えられなくなります
+     * 半永続的な文字列の管理はこちらのモードが便利です
+* TMP
+     * 以降の処理で再度 Louise.fnCopy() が呼び出される度に上書きされます
+     * 一時的／局所的な文字列の利用はこちらのモードが便利です
 
 ## fnReplace()
 ```
 string s = Louise.fnReplace(
-     baseString,
-     replaceTarget,
-     replaceString
+     base,
+     target,
+     replacement
 ) ;
 ```
-文字列 baseString に含まれる文字列 replaceTarget を、文字列 replaceString に置き換えた文字列を得られます！  
-文字列 baseString は書き変わりません！
+文字列 base に含まれる文字列 target を、文字列 replacement に置き換えた文字列を得られます！  
+文字列 base は書き変わりません！
 
 ## fnUpperAll()
 ```
@@ -45,6 +45,15 @@ string s = Louise.fnUpperAll(
 ) ;
 ```
 文字列 str をすべて大文字にできます！  
+文字列 str は書き変わりません！
+
+## fnLowerAll()
+```
+string s = Louise.fnLowerAll(
+     str
+) ;
+```
+文字列 str をすべて小文字にできます！  
 文字列 str は書き変わりません！
 
 ## fnUpperFirst()
