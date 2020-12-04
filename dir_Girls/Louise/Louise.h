@@ -9,8 +9,8 @@
 
 
 //--< Standard Definition >--//
-#include "../dir_Specifications/siscmn.h"
-#include "../dir_Specifications/sisdef.h"
+#include "../../dir_Specifications/siscmn.h"
+#include "../../dir_Specifications/sisdef.h"
 
 
 //--< Prototype Declarations >--//
