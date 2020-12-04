@@ -20,7 +20,7 @@ EmilyFunctions callEmily( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _EmilyyfnGetLine( string label ){
+string _EmilyfnGetLine( string label ){
      int len ;
 
      if( label != NULL ){
