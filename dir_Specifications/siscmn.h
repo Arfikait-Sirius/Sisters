@@ -12,7 +12,7 @@
 
 
 //--< Prototype Declarations >--//
-void logSisters( string, int, int ) ;
+void logSisters( string, int, string ) ;
 
 static void sfnWriteLog( string, string ) ;
 
@@ -20,18 +20,17 @@ static void sfnWriteLog( string, string ) ;
 //--< Free Definitions >--//
 #define IS_LOG_FILE LOG_SETUP
 #define LOG_FILE "../dir_Logs/Progress.log"
-#define ATTENDANCE_FILE "../dir_Logs/Attendance.log"
+#define MASSAGE_FILE "../dir_Logs/Message.log"
 #define INFO_FILE "../dir_Logs/Diary.log"
 #define ERROR_FILE "../dir_Logs/Warning.log"
 #define FATAL_FILE "../dir_Logs/Critical.log"
 
-#define STATUS_COUNT 5
+#define STATUS_COUNT 4
 #define SET_ALL_STATUS_LABEL {\
-	"ATTEND",\
-	"ERROR",\
-	"FATAL",\
-	"INFO",\
-	"MESSAGE"\
+     "MESSAGE",\
+     "INFO",\
+     "ERROR",\
+     "FATAL"\
 }
 
 static const string statusLabel[STATUS_COUNT] = SET_ALL_STATUS_LABEL ;
