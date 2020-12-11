@@ -1,10 +1,18 @@
 #include "forVeera.h"
 
 
-void examForVeera( void ){
+static void callSisters( void ){
+     Tina = callTina() ;
      Veera = callVeera() ;
 
-     dispExamGirl( "Veera" ) ;
+     return ;
+}
+
+
+void examForVeera( void ){
+     callSisters() ;
+     
+     Tina.fnSetGirlName( "Veera" ) ;
 
      examFnGetDate() ;
 
@@ -12,7 +20,7 @@ void examForVeera( void ){
 }
 
 static void examFnGetDate( void ){
-     dispExamTarget( "fnGetDate" ) ;
+     Tina.fnSetSkillName( "fnGetDate" ) ;
 
      string s ;
      char tmp[TEST_BUF_SIZE_DATE] ;
@@ -25,11 +33,8 @@ static void examFnGetDate( void ){
      sprintf( tmp, "%4d/%2d/%2d", utc->tm_year + 1900, utc->tm_mon + 1, utc->tm_mday ) ;
      s = Veera.fnGetDate() ;
      result = strcmp( s, tmp ) ;
-     if( result == 0 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+     Tina.fnJudge( result == 0 ) ;
 
      return ;
 }

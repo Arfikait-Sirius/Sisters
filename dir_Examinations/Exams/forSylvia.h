@@ -3,8 +3,6 @@
 
 #include "../../dir_Sources/Sisters.h"
 
-#include "../ExamCommon.h"
-
 void examForSylvia( void ) ;
 
 static void examFnCalcStrExpression( void ) ;
