@@ -2,10 +2,9 @@
 
 gcc \
           SistersExams.c \
-          ExamCommon.c \
 \
-          ./Exams/forLouise.c\
-          ./Exams/forSylvia.c\
+          ./Exams/forLouise.c \
+          ./Exams/forSylvia.c \
           ./Exams/forVeera.c \
 \
      -L ../dir_Modules/ \

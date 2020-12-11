@@ -1,10 +1,16 @@
 #include "for@@@Name@@@.h"
 
 
-void examFor@@@Name@@@( void ){
+void callSisters( void ){
+     Tina = callTina() ;
      @@@Name@@@ = call@@@Name@@@() ;
 
-     dispExamGirl( "@@@Name@@@" ) ;
+     return ;
+}
+
+
+void examFor@@@Name@@@( void ){
+     Tina.fnSetGirlName( "@@@Name@@@" ) ;
 
      return ;
 }

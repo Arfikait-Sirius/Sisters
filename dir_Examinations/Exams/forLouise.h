@@ -3,8 +3,6 @@
 
 #include "../../dir_Sources/Sisters.h"
 
-#include "../ExamCommon.h"
-
 #include "stdio.h"
 #include "string.h"
 
