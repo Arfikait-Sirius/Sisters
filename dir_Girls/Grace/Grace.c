@@ -352,17 +352,12 @@ static void sfnGenerateHTML( string buffer, string readStr ){
 
 static string sfnGetValue( string key ){
      int i ;
-     string result ;
 
-     result = NULL ;
-
-     i = 0 ;
-     while( MyData.key[i][0] != NL ){
+     for( i = 0 ; MyData.key[i][0] != NL ; i++ ){
           if( strcmp( MyData.key[i], key ) == 0 ){
-               result = MyData.value[i] ;
+               return MyData.value[i] ;
           }
-          i++ ;
      }
 
-     return result ;
+     return NULL ;
 }

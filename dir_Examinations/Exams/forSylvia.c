@@ -1,10 +1,18 @@
 #include "forSylvia.h"
 
 
-void examForSylvia( void ){
+static void callSisters( void ){
+     Tina = callTina() ;
      Sylvia = callSylvia() ;
 
-     dispExamGirl( "Sylvia" ) ;
+     return ;
+}
+
+
+void examForSylvia( void ){
+     callSisters() ;
+     
+     Tina.fnSetGirlName( "Sylvia" ) ;
 
      examFnCalcStrExpression() ;
 
@@ -12,16 +20,13 @@ void examForSylvia( void ){
 }
 
 static void examFnCalcStrExpression( void ){
-     dispExamTarget( "fnCalcStrExpression" ) ;
+     Tina.fnSetSkillName( "fnCalcStrExpression" ) ;
 
      int result ;
 
      result = Sylvia.fnCalcStrExpression( "12/2 +5 - 2  * 3" ) ;
-     if( result == 5 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+     Tina.fnJudge( result == 5 ) ;
 
      return ;
 }

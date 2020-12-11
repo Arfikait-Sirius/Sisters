@@ -11,6 +11,7 @@
 #include "../dir_Girls/Louise/Louise.h"
 #include "../dir_Girls/Rachel/Rachel.h"
 #include "../dir_Girls/Sylvia/Sylvia.h"
+#include "../dir_Girls/Tina/Tina.h"
 #include "../dir_Girls/Veera/Veera.h"
 
 #endif
