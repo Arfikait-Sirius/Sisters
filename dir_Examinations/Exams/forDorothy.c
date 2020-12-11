@@ -1,10 +1,18 @@
 #include "forDorothy.h"
 
 
-void examForDorothy( void ){
+static void callSisters( void ){
+     Tina = callTina() ;
      Dorothy = callDorothy() ;
 
-     dispExamGirl( "Dorothy" ) ;
+     return ;
+}
+
+
+void examForDorothy( void ){
+     callSisters() ;
+     
+     Tina.fnSetGirlName( "Dorothy" ) ;
 
      return ;
 }

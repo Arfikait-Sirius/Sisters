@@ -1,10 +1,18 @@
 #include "forLouise.h"
 
 
-void examForLouise( void ){
+static void callSisters( void ){
+     Tina = callTina() ;
      Louise = callLouise() ;
 
-     dispExamGirl( "Louise" ) ;
+     return ;
+}
+
+
+void examForLouise( void ){
+     callSisters() ;
+     
+     Tina.fnSetGirlName( "Louise" ) ;
 
      examFnCopy() ;
      examFnReplace() ;
@@ -16,86 +24,72 @@ void examForLouise( void ){
 }
 
 static void examFnCopy( void ){
-     dispExamTarget( "fnCopy" ) ;
+     Tina.fnSetSkillName( "fnCopy" ) ;
 
      string s ;
      int result ;
 
      s = Louise.fnCopy( "TestString 000", TMP ) ;
      result = strcmp( s, "TestString 000" ) ;
-     if( result == 0 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+
+     Tina.fnJudge( result == 0 ) ;
 
      return ;
 }
 
 static void examFnReplace( void ){
-     dispExamTarget( "fnReplace" ) ;
+     Tina.fnSetSkillName( "fnReplace" ) ;
 
      string s ;
      int result ;
 
      s = Louise.fnReplace( "This is normal string.", "normal", "changed" ) ;
      result = strcmp( s, "This is changed string." ) ;
-     if( result == 0 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+     Tina.fnJudge( result == 0 ) ;
 
      return ;
 }
 
 static void examFnUpperAll( void ){
-     dispExamTarget( "fnUpperAll" ) ;
+     Tina.fnSetSkillName( "fnUpperAll" ) ;
 
      string s ;
      int result ;
 
      s = Louise.fnUpperAll( "sTrInG_123." ) ;
      result = strcmp( s, "STRING_123." ) ;
-     if( result == 0 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+     Tina.fnJudge( result == 0 ) ;
 
      return ;
 }
 
 static void examFnLowerAll( void ){
-     dispExamTarget( "fnLowerAll" ) ;
+     Tina.fnSetSkillName( "fnLowerAll" ) ;
 
      string s ;
      int result ;
 
      s = Louise.fnLowerAll( "sTrInG_123." ) ;
      result = strcmp( s, "string_123." ) ;
-     if( result == 0 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+     Tina.fnJudge( result == 0 ) ;
 
      return ;
 }
 
 static void examFnUpperFirst( void ){
-     dispExamTarget( "fnUpperFirst" ) ;
+     Tina.fnSetSkillName( "fnUpperFirst" ) ;
 
      string s ;
      int result ;
 
      s = Louise.fnUpperFirst( "sTrInG_123." ) ;
      result = strcmp( s, "String_123." ) ;
-     if( result == 0 ){
-          dispResultOK() ;
-     }else{
-          dispResultNG() ;
-     }
+
+     Tina.fnJudge( result == 0 ) ;
 
      return ;
 }
