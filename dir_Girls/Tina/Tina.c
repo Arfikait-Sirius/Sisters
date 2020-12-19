@@ -51,10 +51,24 @@ void _TinafnSetSkillName( string target ){
 void _TinafnJudge( bool judgement ){
 
      if( judgement ){
-          printf( "%sOK\n", LABEL_EXAM ) ;
+          printf( "%sOK\n", LABEL_JUDGE ) ;
      }else{
-          printf( "%sNG\n", LABEL_EXAM ) ;
+          printf( "%sNG\n", LABEL_JUDGE ) ;
      }
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnPrint
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _TinafnPrint( string result ){
+
+     printf( "%s%s\n", LABEL_PRINT, result ) ;
 
      return ;
 }
