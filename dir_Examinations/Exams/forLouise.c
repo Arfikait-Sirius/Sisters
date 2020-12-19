@@ -11,7 +11,7 @@ static void callSisters( void ){
 
 void examForLouise( void ){
      callSisters() ;
-     
+
      Tina.fnSetGirlName( "Louise" ) ;
 
      examFnCopy() ;
@@ -31,7 +31,6 @@ static void examFnCopy( void ){
 
      s = Louise.fnCopy( "TestString 000", TMP ) ;
      result = strcmp( s, "TestString 000" ) ;
-
 
      Tina.fnJudge( result == 0 ) ;
 
