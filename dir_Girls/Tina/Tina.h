@@ -15,6 +15,7 @@
 void _TinafnSetGirlName( string ) ;
 void _TinafnSetSkillName( string ) ;
 void _TinafnJudge( bool ) ;
+void _TinafnPrint( string ) ;
 
 
 /* <] - Tina - [> */
@@ -22,12 +23,14 @@ typedef struct _tina_functions{
      void ( *fnSetGirlName )( string ) ;
      void ( *fnSetSkillName )( string ) ;
      void ( *fnJudge )( bool ) ;
+     void ( *fnPrint )( string ) ;
 }TinaFunctions ;
 
 #define BIRTH_TINA {\
      _TinafnSetGirlName,\
      _TinafnSetSkillName,\
-     _TinafnJudge\
+     _TinafnJudge,\
+     _TinafnPrint\
 }
 
 static TinaFunctions Tina ;
@@ -46,7 +49,8 @@ typedef struct _myDataTina{
 //--< Free Definitions >--//
 #define LABEL_GIRLS_NAME "[GIRLS-NAME]: "
 #define LABEL_TARGET "[    TARGET]: "
-#define LABEL_EXAM "[      EXAM]: "
+#define LABEL_JUDGE "[     JUDGE]: "
+#define LABEL_PRINT "[     PRINT]: "
 
 
 #endif

@@ -1,7 +1,7 @@
 #include "for@@@Name@@@.h"
 
 
-void callSisters( void ){
+static void callSisters( void ){
      Tina = callTina() ;
      @@@Name@@@ = call@@@Name@@@() ;
 
@@ -10,6 +10,8 @@ void callSisters( void ){
 
 
 void examFor@@@Name@@@( void ){
+     callSisters() ;
+
      Tina.fnSetGirlName( "@@@Name@@@" ) ;
 
      return ;
