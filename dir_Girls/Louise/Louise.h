@@ -23,6 +23,7 @@ string _LouisefnUpperFirst( string ) ;
 string _LouisefnGetMiddleString( string, string ) ;
 string _LouisefnTrimWhiteSpace( string ) ;
 string _LouisefnNumToStr( int ) ;
+int _LouisefnFind( string, string ) ;
 int _LouisefnCountString( string, string ) ;
 int _LouisefnGetLengthString( string ) ;
 
@@ -44,6 +45,7 @@ typedef struct _louise_functions{
      string ( *fnGetMiddle )( string, string ) ;
      string ( *fnTrim )( string ) ;
      string ( *fnNumToStr )( int ) ;
+     int ( *fnFind )( string, string ) ;
      int ( *fnGetLength )( string ) ;
 
      bool ( *isMatch )( string, string ) ;
@@ -63,6 +65,7 @@ typedef struct _louise_functions{
      _LouisefnGetMiddleString,\
      _LouisefnTrimWhiteSpace,\
      _LouisefnNumToStr,\
+     _LouisefnFind,\
      _LouisefnGetLengthString,\
      \
      _isMatchFormat,\
