@@ -280,6 +280,40 @@ string _LouisefnUpperFirst( string data ){
 
 //------------------------
 // :[ NAME ]:
+//     fnFind
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+int _LouisefnFind( string base, string target ){
+     int position ;
+     char* p ;
+     char* q ;
+     char* r ;
+
+     position = 0 ;
+     p = base ;
+     q = target ;
+     r = p ;
+     while( *p != NL ){
+          while( *r == *q ){
+               r++ ;
+               q++ ;
+          }
+          if( *q == NL ){
+               break ;
+          }
+          q = target ;
+          p++ ;
+          r = p ;
+          position++ ;
+     }
+
+     return position ;
+}
+
+//------------------------
+// :[ NAME ]:
 //     fnNumToStr
 //
 // :[ CATEGORY ]:

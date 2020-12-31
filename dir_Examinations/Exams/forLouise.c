@@ -19,6 +19,7 @@ void examForLouise( void ){
      examFnUpperAll() ;
      examFnLowerAll() ;
      examFnUpperFirst() ;
+     examFnFind() ;
 
      return ;
 }
@@ -89,6 +90,19 @@ static void examFnUpperFirst( void ){
      result = strcmp( s, "String_123." ) ;
 
      Tina.fnJudge( result == 0 ) ;
+
+     return ;
+}
+
+static void examFnFind( void ){
+     Tina.fnSetSkillName( "fnFind" ) ;
+
+     string base = "teststring_123abc" ;
+     int result ;
+
+     result = Louise.fnFind( base, "string" ) ;
+
+     Tina.fnJudge( result == 4 ) ;
 
      return ;
 }
