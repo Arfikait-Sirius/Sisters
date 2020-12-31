@@ -16,5 +16,6 @@ static void examFnUpperFirst( void ) ;
 static void examFnGetMiddle( void ) ;
 static void examFnTrimWhiteSpace( void ) ;
 static void examFnNumToStr( void ) ;
+static void examFnFind( void ) ;
 
 #endif
