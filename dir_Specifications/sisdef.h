@@ -55,10 +55,10 @@ typedef void* fnp ;
 
 #define CHAR_NUM_OFFSET 0x30
 
-#define LOWER_A 0x41
-#define LOWER_Z 0x5a
-#define UPPER_A 0x61
-#define UPPER_Z 0x7a
+#define UPPER_A 0x41
+#define UPPER_Z 0x5a
+#define LOWER_A 0x61
+#define LOWER_Z 0x7a
 
 #define L_U_OFFSET 0x20
 
