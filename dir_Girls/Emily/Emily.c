@@ -114,3 +114,65 @@ void _EmilyfnNewLine( void ){
 
      return ;
 }
+
+//------------------------
+// :[ NAME ]:
+//     fnBackLine
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _EmilyfnBackLine( int line ){
+     int i ;
+
+     for( i = 0 ; i < line ; i++ ){
+          printf( "\x1B[1A" ) ;
+     }
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnClearAll
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _EmilyfnClearAll( void ){
+
+     printf( "\x1B[2J" ) ;
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnClearLine
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _EmilyfnClearLine( void ){
+     printf( "\x1B[0K" ) ;
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnClearBackLine
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _EmilyfnClearBackLine( int line ){
+     int i ;
+
+     for( i = 0 ; i < line ; i++ ){
+          printf( "\x1B[1F" ) ;
+          printf( "\x1B[0K" ) ;
+     }
+
+     return ;
+}
