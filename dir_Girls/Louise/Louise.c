@@ -186,11 +186,16 @@ string _LouisefnSplitString( string data, char splitter, int position ){
      if( p == NULL ){
           return NULL ;
      }
-     for( i = 0 ; i < position && p != NULL ; i++ ){
-          *p++ = NL ;
-          strcpy( MyData.splStr, s ) ;
+     *p++ = NL ;
+     strcpy( MyData.splStr, s ) ;
+     for( i = 0 ; i < position ; i++ ){
           s = p ;
           p = strchr( p, splitter ) ;
+          if( p == NULL ){
+               break ;
+          }
+          *p++ = NL ;
+          strcpy( MyData.splStr, s ) ;
      }
      if( i < position ){
           strcpy( MyData.splStr, s ) ;
