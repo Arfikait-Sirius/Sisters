@@ -6,6 +6,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "stdbool.h"
 
 
 //--< Standard Definition >--//
@@ -28,8 +29,8 @@ int _DorothyfnGetFileLength( file ) ;
 int _DorothyfnGetFileLine( file ) ;
 void _DorothyfnCopyFile( string, string ) ;
 
-char _isNotFileEnd( file ) ;
-char _isExistError( file ) ;
+bool _isNotFileEnd( file ) ;
+bool _isExistError( file ) ;
 
 static string sfnExtractFilePath( string ) ;
 
@@ -49,8 +50,8 @@ typedef struct _dorothy_functions{
      int ( *fnGetLine )( file ) ;
      void ( *fnCopy )( string, string ) ;
 
-     char ( *isNotFileEnd )( file ) ;
-     char ( *isExistError )( file ) ;
+     bool ( *isNotFileEnd )( file ) ;
+     bool ( *isExistError )( file ) ;
 }DorothyFunctions ;
 
 #define BIRTH_DOROTHY {\
@@ -84,7 +85,7 @@ typedef struct _myDataDorothy{
      char fname[DOROTHY_MAX_FILE_COUNT][80] ;
      char readStr[DOROTHY_MAX_FILE_COUNT][DOROTHY_READ_BUFSIZE] ;
      char stat[DOROTHY_MAX_FILE_COUNT] ;
-     char error[DOROTHY_MAX_FILE_COUNT] ;
+     bool error[DOROTHY_MAX_FILE_COUNT] ;
      char tmpPath[DOROTHY_MAX_FILE_COUNT][MAX_LENGTH] ;
      char* path[DOROTHY_MAX_FILE_COUNT] ;
      int parseStat[DOROTHY_MAX_FILE_COUNT] ;
@@ -99,7 +100,7 @@ typedef struct _myDataDorothy{
      { { NL } },\
      { { NL } },\
      { NL },\
-     { FALSE },\
+     { false },\
      { { NL } },\
      { NULL },\
      { NL },\

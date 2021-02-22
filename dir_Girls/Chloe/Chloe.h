@@ -5,6 +5,7 @@
 //--< Use Headers >--//
 #include "stdio.h"
 #include "string.h"
+#include "stdbool.h"
 
 
 //--< Standard Definition >--//

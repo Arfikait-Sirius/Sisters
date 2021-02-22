@@ -6,4 +6,12 @@
 #include "./Exams/forVeera.h"
 
 
+#define INIT_FNP_LIST {\
+     examForLouise,\
+     examForSylvia,\
+     examForVeera,\
+     finish\
+}
+
+
 #endif
