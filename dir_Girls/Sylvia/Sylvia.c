@@ -46,7 +46,7 @@ int _SylviafnCalcStrExpression( string expression ){
      int z ;
      int tmp ;
      char* expressionTrimSpace ;
-     bool priorityFlg = FALSE ;
+     bool priorityFlg = false ;
      bool numSetFlg ;
 
      expressionTrimSpace = malloc( sizeof( expression ) ) ;
@@ -80,7 +80,7 @@ int _SylviafnCalcStrExpression( string expression ){
                p++ ;
           }
           z = NO_NUMBER ;
-          numSetFlg = FALSE ;
+          numSetFlg = false ;
           if( *p == ASTERISK ){
                p++ ;
                tmp = 0 ;
@@ -95,7 +95,7 @@ int _SylviafnCalcStrExpression( string expression ){
                     p++ ;
                }
                z = _SylviafnMul( x, y ) ;
-               priorityFlg = TRUE ;
+               priorityFlg = true ;
           }else if( *p == SLASH ){
                p++ ;
                tmp = 0 ;
@@ -110,13 +110,13 @@ int _SylviafnCalcStrExpression( string expression ){
                     p++ ;
                }
                z = _SylviafnDiv( x, y ) ;
-               priorityFlg = TRUE ;
+               priorityFlg = true ;
           }else if( *p == PLUS || *p == MINUS ){
                operators[j++] = *p ;
                if( !priorityFlg ){
-                    numSetFlg = TRUE ;
+                    numSetFlg = true ;
                }
-               priorityFlg = FALSE ;
+               priorityFlg = false ;
           }
           if( z != NO_NUMBER ){
                numbers[i++] = z ;

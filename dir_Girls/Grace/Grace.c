@@ -34,7 +34,7 @@ void _GracefnService( int portNumber ){
      }
 
      listen( socketRead, 5 ) ;
-     while( TRUE ){
+     while( true ){
           socketWrite = sfnAccept( socketRead, method, url, protocol ) ;
           if( socketWrite < 0 ){
                return ;

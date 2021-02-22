@@ -22,17 +22,17 @@ DorothyFunctions callDorothy( void ){
 //------------------------
 int _DorothyfnOpenRead( string fileName ){
 
-     MyData.error[MyData.fileSeq] = FALSE ;
+     MyData.error[MyData.fileSeq] = false ;
 
      MyData.fp[MyData.fileSeq] = fopen( fileName, "r" ) ;
      if( MyData.fp[MyData.fileSeq] == NULL ){
-          MyData.error[MyData.fileSeq] = TRUE ;
+          MyData.error[MyData.fileSeq] = true ;
           logSisters(
                     "Failed to open file.",
                     FTL,
                     MyName
                ) ;
-          return CHAO ;
+          return TOO_BAD ;
      }
      MyData.path[MyData.fileSeq] = sfnExtractFilePath( fileName ) ;
      strcpy( MyData.fname[MyData.fileSeq], fileName ) ;
@@ -50,17 +50,17 @@ int _DorothyfnOpenRead( string fileName ){
 //------------------------
 int _DorothyfnOpenWrite( string fileName ){
 
-     MyData.error[MyData.fileSeq] = FALSE ;
+     MyData.error[MyData.fileSeq] = false ;
 
      MyData.fp[MyData.fileSeq] = fopen( fileName, "w" ) ;
      if( MyData.fp[MyData.fileSeq] == NULL ){
-          MyData.error[MyData.fileSeq] = TRUE ;
+          MyData.error[MyData.fileSeq] = true ;
           logSisters(
                     "Failed to open file.",
                     FTL,
                     MyName
                ) ;
-          return CHAO ;
+          return TOO_BAD ;
      }
      MyData.path[MyData.fileSeq] = sfnExtractFilePath( fileName ) ;
      strcpy( MyData.fname[MyData.fileSeq], fileName ) ;
@@ -161,7 +161,7 @@ int _DorothyfnDelete( string fileName ){
 
      result = remove( fileName ) ;
      if( result != 0 ){
-          MyData.error[MyData.fileSeq] = TRUE ;
+          MyData.error[MyData.fileSeq] = true ;
      }
 
      return MyData.fileSeq ;
@@ -313,10 +313,10 @@ static string sfnExtractFilePath( string fileName ){
 bool _isNotFileEnd( int fileID ){
 
      if( MyData.stat[fileID] == FILE_STAT_END ){
-          return FALSE ;
+          return false ;
      }
 
-     return TRUE ;
+     return true ;
 }
 
 //------------------------

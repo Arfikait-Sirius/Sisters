@@ -20,7 +20,7 @@ LouiseFunctions callLouise( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _LouisefnCountString( string data, string sepStr ){
+int _LouisefnCount( string data, string sepStr ){
      int len ;
      int counter = 0 ;
      char* p ;
@@ -43,24 +43,17 @@ int _LouisefnCountString( string data, string sepStr ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnCopyString( string data, int mode ){
+string _LouisefnCopy( string data ){
      int counter = MyData.cpyCounter ;
      int i ;
-     bool result = TRUE ;
+     bool result = true ;
 
-     switch( mode ) {
-     case TMP:
-          counter = 0 ;
-          break ;
-     case FIX:
-          for( i = 0 ; i < LOUISE_MAX_CPY_SIZE ; i++ ){
-               if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
-                    result = FALSE ;
-                    counter = i ;
-                    break ;
-               }
+     for( i = 0 ; i < LOUISE_MAX_CPY_SIZE ; i++ ){
+          if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
+               result = false ;
+               counter = i ;
+               break ;
           }
-          break ;
      }
      if( result ){
           strcpy( MyData.cpyStr[counter], data ) ;
@@ -72,12 +65,152 @@ string _LouisefnCopyString( string data, int mode ){
 
 //------------------------
 // :[ NAME ]:
+//     fnReplace
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnReplace( string base, string target, string replacement ){
+     int len ;
+     char* p ;
+     char* e ;
+     char s[MAX_LENGTH] ;
+
+     len = strlen( target ) ;
+     strcpy( s, base ) ;
+     p = strstr( s, target ) ;
+     *p = NL ;
+     e = p + len ;
+     sprintf( MyData.repStr, "%s%s%s", s, replacement, e ) ;
+
+     return MyData.repStr ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnSplit
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnSplit( string data, char splitter, int position ){
+     int i ;
+     char* s ;
+     char* p ;
+     char d[MAX_LENGTH] ;
+
+     strcpy( d, data ) ;
+
+     p = strchr( d, splitter ) ;
+     s = d ;
+     if( p == NULL ){
+          return NULL ;
+     }
+     *p++ = NL ;
+     strcpy( MyData.splStr, s ) ;
+     for( i = 0 ; i < position ; i++ ){
+          s = p ;
+          p = strchr( p, splitter ) ;
+          if( p == NULL ){
+               break ;
+          }
+          *p++ = NL ;
+          strcpy( MyData.splStr, s ) ;
+     }
+     if( i < position ){
+          strcpy( MyData.splStr, s ) ;
+     }
+
+     return MyData.splStr ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnUpperAll
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnUpperAll( string data ){
+     char c ;
+     char* result ;
+
+     result = MyData.uprStr ;
+     c = *data++ ;
+     while( c != NL ){
+          if( LOWER_A <= c && c <= LOWER_Z ){
+               c -= L_U_OFFSET ;
+          }
+          *result++ = c ;
+          c = *data++ ;
+     }
+
+     return MyData.uprStr ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnLowerAll
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnLowerAll( string data ){
+     char c ;
+     string result ;
+
+     result = MyData.lwrStr ;
+     c = *data++ ;
+     while( c != NL ){
+          if( UPPER_A <= c && c <= UPPER_Z ){
+               c += L_U_OFFSET ;
+          }
+          *result++ = c ;
+          c = *data++ ;
+     }
+     *result = NL ;
+
+     return MyData.lwrStr ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnUpperFirst
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnUpperFirst( string data ){
+     char c ;
+     char* result ;
+
+     result = MyData.fstStr ;
+     c = *data++ ;
+     if( LOWER_A <= c && c <= LOWER_Z ){
+          c -= L_U_OFFSET ;
+     }
+     *result++ = c ;
+     c = *data++ ;
+     while( c != NL ){
+          if( UPPER_A <= c && c <= UPPER_Z ){
+               c += L_U_OFFSET ;
+          }
+          *result++ = c ;
+          c = *data++ ;
+     }
+     *result = NL ;
+
+     return MyData.fstStr ;
+}
+
+//------------------------
+// :[ NAME ]:
 //     fnGetMiddle
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnGetMiddleString( string format, string data ){
+string _LouisefnGetMiddle( string format, string data ){
      int flen ;
      int len ;
      char f[MAX_LENGTH] ;
@@ -124,163 +257,42 @@ string _LouisefnGetMiddleString( string format, string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnTrimWhiteSpace( string target ){
+string _LouisefnTrim( string target ){
      char str[MAX_LENGTH] ;
      char* p ;
+     char* s ;
 
-     p = target ;
+     strcpy( str, target ) ;
+     p = str ;
      while( *p == SPACE || *p == TAB ){
           p++ ;
      }
-     strcpy( str, p ) ;
-     p = str + strlen( p ) ;
+     s = p ;
+     p = strchr( str, NL ) ;
+     p-- ;
      while( *p == SPACE || *p == TAB ){
           p-- ;
      }
      *p = NL ;
-     strcpy( MyData.trmStr, str ) ;
+     strcpy( MyData.trmStr, s ) ;
 
      return MyData.trmStr ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnReplace
+//     fnToString
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnReplaceString( string base, string target, string replacement ){
-     int len ;
-     char* p ;
-     char* e ;
-     char s[MAX_LENGTH] ;
+string _LouisefnToString( int num ){
+     char result[MEDIUM_LENGTH] ;
 
-     len = strlen( target ) ;
-     strcpy( s, base ) ;
-     p = strstr( s, target ) ;
-     *p = NL ;
-     e = p + len ;
-     sprintf( MyData.repStr, "%s%s%s", s, replacement, e ) ;
+     sprintf( result, "%d", num ) ;
+     strcpy( MyData.numStr, result ) ;
 
-     return MyData.repStr ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnSplit
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-string _LouisefnSplitString( string data, char splitter, int position ){
-     int i ;
-     char* s ;
-     char* p ;
-     char d[MAX_LENGTH] ;
-
-     strcpy( d, data ) ;
-
-     p = strchr( d, splitter ) ;
-     s = d ;
-     if( p == NULL ){
-          return NULL ;
-     }
-     *p++ = NL ;
-     strcpy( MyData.splStr, s ) ;
-     for( i = 0 ; i < position ; i++ ){
-          s = p ;
-          p = strchr( p, splitter ) ;
-          if( p == NULL ){
-               break ;
-          }
-          *p++ = NL ;
-          strcpy( MyData.splStr, s ) ;
-     }
-     if( i < position ){
-          strcpy( MyData.splStr, s ) ;
-     }
-
-     return MyData.splStr ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnUpperAll
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-string _LouisefnUpperAll( string data ){
-     char c ;
-     char* result ;
-
-     result = MyData.resStr ;
-     c = *data++ ;
-     while( c != NL ){
-          if( UPPER_A <= c && c <= UPPER_Z ){
-               c -= L_U_OFFSET ;
-          }
-          *result++ = c ;
-          c = *data++ ;
-     }
-
-     return MyData.resStr ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnLowerAll
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-string _LouisefnLowerAll( string data ){
-     char c ;
-     string result ;
-
-     result = MyData.resStr ;
-     c = *data++ ;
-     while( c != NL ){
-          if( LOWER_A <= c && c <= LOWER_Z ){
-               c += L_U_OFFSET ;
-          }
-          *result++ = c ;
-          c = *data++ ;
-     }
-     *result = NL ;
-
-     return MyData.resStr ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnUpperFirst
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-string _LouisefnUpperFirst( string data ){
-     char c ;
-     char* result ;
-
-     result = MyData.resStr ;
-     c = *data++ ;
-     if( UPPER_A <= c && c <= UPPER_Z ){
-          c -= L_U_OFFSET ;
-     }
-     *result++ = c ;
-     c = *data++ ;
-     while( c != NL ){
-          if( LOWER_A <= c && c <= LOWER_Z ){
-               c += L_U_OFFSET ;
-          }
-          *result++ = c ;
-          c = *data++ ;
-     }
-     *result = NL ;
-
-     return MyData.resStr ;
+     return MyData.numStr ;
 }
 
 //------------------------
@@ -319,52 +331,12 @@ int _LouisefnFind( string base, string target ){
 
 //------------------------
 // :[ NAME ]:
-//     fnNumToStr
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-string _LouisefnNumToStr( int num ){
-     int n ;
-     char result[HALF_LENGTH] ;
-     char tmp[HALF_LENGTH] ;
-      char* p ;
-     char* q ;
-
-     if( num == 0 ){
-          MyData.numStr[0] = CHAR_0 ;
-          MyData.numStr[1] = NL ;
-          return MyData.numStr ;
-     }
-
-     p = tmp ;
-     *p++ = NL ;
-     while( num != 0 ){
-          n = num % 10 ;
-          *p++ = n + CHAR_0 ;
-          num = ( num - n ) / 10 ;
-     }
-
-     p-- ;
-     q = result ;
-     while( *p != NL ) {
-          *q++ = *p-- ;
-     }
-     *q = NL ;
-
-     strcpy( MyData.numStr, result ) ;
-
-     return MyData.numStr ;
-}
-
-//------------------------
-// :[ NAME ]:
 //     fnGetLength
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _LouisefnGetLengthString( string data ){
+int _LouisefnGetLength( string data ){
      int len = 0 ;
 
      if( data != NULL ){
@@ -381,7 +353,7 @@ int _LouisefnGetLengthString( string data ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isMatchFormat( string format, string data ){
+bool _LouiseisFormat( string format, string data ){
      int i ;
      int len ;
      int pos ;
@@ -405,7 +377,7 @@ bool _isMatchFormat( string format, string data ){
           }
           p = strstr( ( data + pos ), tmpStr ) ;
           if( p == NULL ){
-               return FALSE ;
+               return false;
           }
           pos = len ;
           p = strstr( strFormat, "%s" ) ;
@@ -413,10 +385,10 @@ bool _isMatchFormat( string format, string data ){
      strcpy( tmpStr, strFormat ) ;
      p = strstr( ( data + pos ), tmpStr ) ;
      if( p == NULL ){
-          return FALSE ;
+          return false ;
      }
 
-     return TRUE ;
+     return true ;
 }
 
 //------------------------
@@ -426,15 +398,15 @@ bool _isMatchFormat( string format, string data ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isContainString( string data, string target ){
+bool _LouiseisContain( string data, string target ){
      char* p ;
 
      p = strstr( data, target ) ;
      if( p == NULL ){
-          return FALSE ;
+          return false ;
      }
 
-     return TRUE ;
+     return true ;
 }
 
 //------------------------
@@ -444,13 +416,13 @@ bool _isContainString( string data, string target ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isEqualString( string org, string target ){
+bool _LouiseisEqual( string org, string target ){
 
      if( strcmp( org, target ) == 0 ){
-          return TRUE ;
+          return true ;
      }
 
-     return FALSE ;
+     return false ;
 }
 
 //------------------------
@@ -460,14 +432,14 @@ bool _isEqualString( string org, string target ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isEmptyString( string data ){
+bool _LouiseisEmpty( string data ){
 
      if( data == NULL ){
-          return TRUE ;
+          return true ;
      }
      if( *data == NL ){
-          return TRUE ;
+          return true ;
      }
 
-     return FALSE ;
+     return false ;
 }

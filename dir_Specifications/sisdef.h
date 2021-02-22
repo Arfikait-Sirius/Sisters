@@ -5,7 +5,6 @@
 //** TYPE DEFINE **
 typedef char mode ;
 typedef void* pointer ;
-typedef char bool ;
 typedef char* string ;
 typedef int file ;
 typedef int list ;
@@ -66,9 +65,6 @@ typedef void* fnp ;
 
 
 // ** CONTEXT DEFINE **
-#define FALSE  0
-#define TRUE   1
-
 #define STATUS_RED   0
 #define STATUS_GREEN 1
 
