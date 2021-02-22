@@ -4,6 +4,7 @@
 
 //--< Use Headers >--//
 #include "stdio.h"
+#include "stdbool.h"
 
 
 //--< Standard Definition >--//

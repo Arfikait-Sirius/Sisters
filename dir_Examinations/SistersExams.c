@@ -1,14 +1,6 @@
 #include "SistersExams.h"
 
 
-#define INIT_FNP_LIST {\
-     examForLouise,\
-     examForSylvia,\
-     examForVeera,\
-     finish\
-}
-
-
 static void finish( void ) ;
 static void spExamAll( fnp[] ) ;
 

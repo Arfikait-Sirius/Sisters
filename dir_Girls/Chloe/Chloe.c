@@ -23,10 +23,10 @@ ChloeFunctions callChloe( void ){
 bool _acNot( bool b ){
 
      if( b ){
-          return FALSE ;
+          return false ;
      }
 
-     return TRUE ;
+     return true ;
 }
 
 //------------------------
@@ -54,10 +54,10 @@ bool _isNo( string judgement ){
 
      sfnToLower( judgement ) ;
      if( strcmp( judgement, NO ) == 0 || strcmp( judgement, "no" ) == 0 ){
-          return TRUE ;
+          return true ;
      }
 
-     return FALSE ;
+     return false ;
 }
 
 static void sfnToLower( string s ){
