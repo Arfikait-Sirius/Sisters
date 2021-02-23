@@ -56,7 +56,7 @@ static void examFnCopy( void ){
      bool result ;
 
      s = Louise.fnCopy( "TestString 000" ) ;
-     result = ( strcmp( s, "TestString 000" ) == 0 ) ;
+     result = strcmp( s, "TestString 000" ) == 0 ;
 
      Tina.fnJudge( result ) ;
 
@@ -178,12 +178,13 @@ static void examFnToString( void ){
 static void examFnFind( void ){
      Tina.fnSetSkillName( "fnFind" ) ;
 
-     string base = "teststring_123abc" ;
+     int index ;
      bool result ;
 
-     result = Louise.fnFind( base, "string" ) == 4 ;
+     index = Louise.fnFind( "teststring_123abc", "string" ) ;
+     result = index == 4 ;
 
-     Tina.fnJudge( result) ;
+     Tina.fnJudge( result ) ;
 
      return ;
 }
@@ -208,7 +209,7 @@ static void examIsFormat( void ){
 
      bool result ;
 
-     result = Louise.isFormat( "%s:%s:%s", "String:Int:Object" ) ;
+     result = Louise.isFormat( "String:Int:Object", "%s:%s:%s" ) ;
 
      Tina.fnJudge( result ) ;
 

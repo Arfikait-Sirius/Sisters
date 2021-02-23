@@ -4,6 +4,7 @@ gcc \
           SistersExams.c \
 \
           ./Exams/forLouise.c \
+          ./Exams/forDorothy.c \
           ./Exams/forSylvia.c \
           ./Exams/forVeera.c \
 \

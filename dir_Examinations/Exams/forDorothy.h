@@ -5,5 +5,9 @@
 
 void examForDorothy( void ) ;
 
+static void examFnOpen( void ) ;
+static void examFnReadLine( void ) ;
+static void examFnClose( void ) ;
+
 
 #endif

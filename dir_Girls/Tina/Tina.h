@@ -41,9 +41,11 @@ TinaFunctions callTina( void ) ;
 
 //--< MyData Declaration >--//
 typedef struct _myDataTina{
+     char skillName[MEDIUM_LENGTH] ;
 }_MyDataTina ;
 
 #define INIT_TINA_MYDATA {\
+     { NL }\
 }
 
 
