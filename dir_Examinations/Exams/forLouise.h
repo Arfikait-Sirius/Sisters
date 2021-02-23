@@ -28,4 +28,5 @@ static void examIsContain( void ) ;
 static void examIsEqual( void ) ;
 static void examIsEmpty( void ) ;
 
+
 #endif

@@ -4,7 +4,7 @@
 static string MyName = "Chloe" ;
 
 // Chloe's Memo
-static _MyDataChloe MyData ;
+static _MyDataChloe MyData = INIT_CHLOE_MYDATA ;
 
 // Birth
 ChloeFunctions callChloe( void ){
@@ -15,18 +15,24 @@ ChloeFunctions callChloe( void ){
 
 //------------------------
 // :[ NAME ]:
-//     acNot
+//     acYes
 //
 // :[ CATEGORY ]:
 //     Accessory
 //------------------------
-bool _acNot( bool b ){
+string _ChloeacYes( void ){
+     return MyData.YES ;
+}
 
-     if( b ){
-          return false ;
-     }
-
-     return true ;
+//------------------------
+// :[ NAME ]:
+//     acNo
+//
+// :[ CATEGORY ]:
+//     Accessory
+//------------------------
+string _ChloeacNo( void ){
+     return MyData.NO ;
 }
 
 //------------------------
@@ -37,9 +43,7 @@ bool _acNot( bool b ){
 //     Skill
 //------------------------
 void _fnPass( void ){
-
      // Do not anything.
-
      return ;
 }
 
@@ -50,26 +54,11 @@ void _fnPass( void ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isNo( string judgement ){
+bool _ChloeisNo( string judgement ){
 
-     sfnToLower( judgement ) ;
-     if( strcmp( judgement, NO ) == 0 || strcmp( judgement, "no" ) == 0 ){
+     if( strcmp( judgement, MyData.NO ) == 0 ){
           return true ;
      }
 
      return false ;
-}
-
-static void sfnToLower( string s ){
-     char* p ;
-
-     p = s ;
-     while( *p != NL ){
-          if( LOWER_A <= *p && *p <= LOWER_Z ){
-               *p += L_U_OFFSET ;
-          }
-          p++ ;
-     }
-
-     return ;
 }

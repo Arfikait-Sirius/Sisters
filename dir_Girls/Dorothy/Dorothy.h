@@ -16,8 +16,7 @@
 
 
 //--< Prototype Declarations >--//
-file _DorothyfnOpenRead( string ) ;
-file _DorothyfnOpenWrite( string ) ;
+file _DorothyfnOpen( string ) ;
 void _DorothyfnCloseFile( file ) ;
 string _DorothyfnReadLine( file ) ;
 void _DorothyfnWriteLine( file, string ) ;
@@ -30,15 +29,14 @@ int _DorothyfnGetFileLine( file ) ;
 void _DorothyfnCopyFile( string, string ) ;
 
 bool _isNotFileEnd( file ) ;
-bool _isExistError( file ) ;
+bool _DorothyisError( file ) ;
 
 static string sfnExtractFilePath( string ) ;
 
 
 /* <] - Dorothy - [> */
 typedef struct _dorothy_functions{
-     file ( *fnOpenRead )( string ) ;
-     file ( *fnOpenWrite )( string ) ;
+     file ( *fnOpen )( string ) ;
      void ( *fnClose )( file ) ;
      string ( *fnReadLine )( file ) ;
      void ( *fnWriteLine )( file, string ) ;
@@ -51,12 +49,11 @@ typedef struct _dorothy_functions{
      void ( *fnCopy )( string, string ) ;
 
      bool ( *isNotFileEnd )( file ) ;
-     bool ( *isExistError )( file ) ;
+     bool ( *isError )( file ) ;
 }DorothyFunctions ;
 
 #define BIRTH_DOROTHY {\
-     _DorothyfnOpenRead,\
-     _DorothyfnOpenWrite,\
+     _DorothyfnOpen,\
      _DorothyfnCloseFile,\
      _DorothyfnReadLine,\
      _DorothyfnWriteLine,\
@@ -69,7 +66,7 @@ typedef struct _dorothy_functions{
      _DorothyfnCopyFile,\
      \
      _isNotFileEnd,\
-     _isExistError\
+     _DorothyisError\
 }
 
 static DorothyFunctions Dorothy ;

@@ -36,7 +36,8 @@ void _TinafnSetGirlName( string girlName ){
 //------------------------
 void _TinafnSetSkillName( string target ){
 
-     printf( "%s%s()\n", LABEL_TARGET, target ) ;
+     sprintf( MyData.skillName, "%s()", target ) ;
+     printf( "%s%s\n", LABEL_TARGET, MyData.skillName ) ;
 
      return ;
 }
@@ -53,7 +54,7 @@ void _TinafnJudge( bool judgement ){
      if( judgement ){
           printf( "%sOK\n", LABEL_JUDGE ) ;
      }else{
-          printf( "%sNG\n", LABEL_JUDGE ) ;
+          printf( "%sNG - Please check \"%s\".\n", LABEL_JUDGE, MyData.skillName ) ;
      }
 
      return ;
