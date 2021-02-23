@@ -15,44 +15,18 @@ DorothyFunctions callDorothy( void ){
 
 //------------------------
 // :[ NAME ]:
-//     fnOpenRead
+//     fnOpen
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _DorothyfnOpenRead( string fileName ){
+int _DorothyfnOpen( string fileName ){
+     char filePath[MAX_LENGTH] ;
 
      MyData.error[MyData.fileSeq] = false ;
 
-     MyData.fp[MyData.fileSeq] = fopen( fileName, "r" ) ;
-     if( MyData.fp[MyData.fileSeq] == NULL ){
-          MyData.error[MyData.fileSeq] = true ;
-          logSisters(
-                    "Failed to open file.",
-                    FTL,
-                    MyName
-               ) ;
-          return TOO_BAD ;
-     }
-     MyData.path[MyData.fileSeq] = sfnExtractFilePath( fileName ) ;
-     strcpy( MyData.fname[MyData.fileSeq], fileName ) ;
-     MyData.stat[MyData.fileSeq] = FILE_STAT_BEGINNING ;
-
-     return MyData.fileSeq++ ;
-}
-
-//------------------------
-// :[ NAME ]:
-//     fnOpenWrite
-//
-// :[ CATEGORY ]:
-//     Skill
-//------------------------
-int _DorothyfnOpenWrite( string fileName ){
-
-     MyData.error[MyData.fileSeq] = false ;
-
-     MyData.fp[MyData.fileSeq] = fopen( fileName, "w" ) ;
+     sprintf( filePath, "../%s", fileName ) ;
+     MyData.fp[MyData.fileSeq] = fopen( filePath, "r+" ) ;
      if( MyData.fp[MyData.fileSeq] == NULL ){
           MyData.error[MyData.fileSeq] = true ;
           logSisters(
@@ -98,6 +72,7 @@ string _DorothyfnReadLine( int fileID ){
      char errMsg[HALF_LENGTH] = { NL } ;
 
      if( MyData.stat[fileID] == FILE_STAT_END ){
+          MyData.error[fileID] = true ;
           return NULL ;
      }
 
@@ -326,7 +301,7 @@ bool _isNotFileEnd( int fileID ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isExistError( int fileID ){
+bool _DorothyisError( int fileID ){
 
      return MyData.error[fileID] ;
 }

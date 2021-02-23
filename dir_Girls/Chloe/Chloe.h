@@ -15,9 +15,8 @@
 
 
 //--< Prototype Declarations >--//
-int mfnChloe( int, char*[] ) ;
-
-bool _acNot( bool ) ;
+string _ChloeacYes( void ) ;
+string _ChloeacNo( void ) ;
 
 void _fnPass( void ) ;
 
@@ -28,7 +27,8 @@ static void sfnToLower( string ) ;
 
 /* <] - Chloe - [> */
 typedef struct _chloe_functions{
-     bool ( *acNot )( bool ) ;
+     string ( *acYes )( void ) ;
+     string ( *acNo )( void ) ;
 
      void ( *fnPass )( void ) ;
 
@@ -36,7 +36,8 @@ typedef struct _chloe_functions{
 }ChloeFunctions ;
 
 #define BIRTH_CHLOE {\
-     _acNot,\
+     _ChloeacYes,\
+     _ChloeacNo,\
      \
      _fnPass,\
      \
@@ -50,7 +51,14 @@ ChloeFunctions callChloe( void ) ;
 
 //--< Mydata Declaration >--//
 typedef struct myDataChloe{
+     string YES ;
+     string NO ;
 }_MyDataChloe ;
+
+#define INIT_CHLOE_MYDATA {\
+     "yes",\
+     "no"\
+}
 
 
 //--< Free Definitions >--//

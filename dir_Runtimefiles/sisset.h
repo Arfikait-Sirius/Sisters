@@ -3,7 +3,7 @@
 
 
 // [ COMMON ]
-#define LOG_SETUP 1
+#define LOG_SETUP 0
 
 #define MSG 0
 #define INF 1

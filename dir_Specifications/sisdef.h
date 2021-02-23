@@ -81,12 +81,6 @@ typedef void* fnp ;
 #define TYPE_STR 's'
 #define TYPE_INT 'd'
 
-#define TMP 'T'
-#define FIX 'F'
-
-#define YES "y"
-#define NO  "n"
-
 #define FILE_CONTINUE	0x40
 #define FILE_END	0x24
 

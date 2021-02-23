@@ -40,7 +40,7 @@ string _VeerafnGetDate( void ){
      timer = time( NULL ) ;
      utc = gmtime( &timer ) ;
 
-     sprintf( MyData.date, "%4d/%2d/%2d", utc->tm_year + 1900, utc->tm_mon + 1, utc->tm_mday ) ;
+     sprintf( MyData.date, "%04d/%02d/%02d", utc->tm_year + 1900, utc->tm_mon + 1, utc->tm_mday ) ;
 
      return MyData.date ;
 }
