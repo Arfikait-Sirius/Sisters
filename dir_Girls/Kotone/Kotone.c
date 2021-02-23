@@ -21,11 +21,6 @@ KotoneFunctions callKotone( void ){
 //     Skill
 //------------------------
 list _KotonefnCreateList( mode m ){
-
-     if( m == TMP ){
-          return TMP_LIST ;
-     }
-
      return MyData.listSeq++ ;
 }
 
@@ -52,11 +47,6 @@ void _KotonefnAddList( list listID, string s ){
 //     Skill
 //------------------------
 stack _KotonefnCreateStack( mode m ){
-
-     if( m == TMP ){
-          return TMP_STACK ;
-     }
-
      return MyData.stackSeq++ ;
 }
 

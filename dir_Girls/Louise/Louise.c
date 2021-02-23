@@ -273,7 +273,7 @@ string _LouisefnTrim( string target ){
      while( *p == SPACE || *p == TAB ){
           p-- ;
      }
-     *p = NL ;
+     *++p = NL ;
      strcpy( MyData.trmStr, s ) ;
 
      return MyData.trmStr ;
@@ -353,7 +353,7 @@ int _LouisefnGetLength( string data ){
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _LouiseisFormat( string format, string data ){
+bool _LouiseisFormat( string data, string format ){
      int i ;
      int len ;
      int pos ;

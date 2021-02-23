@@ -51,7 +51,6 @@ void _GracefnService( int portNumber ){
                close( socketWrite ) ;
                return ;
           }
-
           close( socketWrite ) ;
      }
      close( socketRead ) ;
