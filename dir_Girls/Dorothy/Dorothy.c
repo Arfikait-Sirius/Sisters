@@ -45,12 +45,12 @@ int _DorothyfnOpen( string fileName ){
 
 //------------------------
 // :[ NAME ]:
-//     fnCloseFile
+//     fnClose
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _DorothyfnCloseFile( int fileID ){
+void _DorothyfnClose( int fileID ){
 
      fclose( MyData.fp[fileID] ) ;
      MyData.stat[fileID] = FILE_STAT_END ;
@@ -110,12 +110,12 @@ void _DorothyfnWriteLine( int fileID, string srcData ){
 
 //------------------------
 // :[ NAME ]:
-//     fnRenameFile
+//     fnRename
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _DorothyfnRenameFile( int fileID, string newName ){
+void _DorothyfnRename( int fileID, string newName ){
      char name[MAX_LENGTH] ;
 
      sprintf( name, "%s%s", MyData.path[fileID], newName ) ;
@@ -197,7 +197,7 @@ void _DorothyfnCloseParse( int prsfID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _DorothyfnGetFileLength( int prsfID ){
+int _DorothyfnGetLength( int prsfID ){
 
      if( MyData.parseStat[prsfID] == FILE_PARSE_END ){
           return TOO_BAD ;
@@ -208,12 +208,12 @@ int _DorothyfnGetFileLength( int prsfID ){
 
 //------------------------
 // :[ NAME ]:
-//     fnGetFileLine
+//     fnGetNumberOfLines
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _DorothyfnGetFileLine( int prsfID ){
+int _DorothyfnGetNumberOfLines( int prsfID ){
 
      if( MyData.parseStat[prsfID] == FILE_PARSE_END ){
           return TOO_BAD ;
@@ -224,12 +224,12 @@ int _DorothyfnGetFileLine( int prsfID ){
 
 //------------------------
 // :[ NAME ]:
-//     fnCopyFile
+//     fnCopy
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _DorothyfnCopyFile( string dstFileName, string srcFileName ){
+void _DorothyfnCopy( string dstFileName, string srcFileName ){
      FILE* sfp ;
      FILE* dfp ;
      char buf[DOROTHY_READ_BUFSIZE] = { NL } ;
@@ -280,12 +280,12 @@ static string sfnExtractFilePath( string fileName ){
 
 //------------------------
 // :[ NAME ]:
-//     isNotFileEnd
+//     isNotEnd
 //
 // :[ CATEGORY ]:
 //     Judge
 //------------------------
-bool _isNotFileEnd( int fileID ){
+bool _DorothyisNotEnd( int fileID ){
 
      if( MyData.stat[fileID] == FILE_STAT_END ){
           return false ;
@@ -296,7 +296,7 @@ bool _isNotFileEnd( int fileID ){
 
 //------------------------
 // :[ NAME ]:
-//     isExistError
+//     isError
 //
 // :[ CATEGORY ]:
 //     Judge
