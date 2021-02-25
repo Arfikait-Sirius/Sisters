@@ -17,18 +17,18 @@
 
 //--< Prototype Declarations >--//
 file _DorothyfnOpen( string ) ;
-void _DorothyfnCloseFile( file ) ;
+void _DorothyfnClose( file ) ;
 string _DorothyfnReadLine( file ) ;
 void _DorothyfnWriteLine( file, string ) ;
-void _DorothyfnRenameFile( file, string ) ;
+void _DorothyfnRename( file, string ) ;
 int _DorothyfnDelete( string ) ;
 file _DorothyfnOpenParse( string ) ;
 void _DorothyfnCloseParse( file ) ;
-int _DorothyfnGetFileLength( file ) ;
-int _DorothyfnGetFileLine( file ) ;
-void _DorothyfnCopyFile( string, string ) ;
+int _DorothyfnGetLength( file ) ;
+int _DorothyfnGetNumberOfLines( file ) ;
+void _DorothyfnCopy( string, string ) ;
 
-bool _isNotFileEnd( file ) ;
+bool _DorothyisNotEnd( file ) ;
 bool _DorothyisError( file ) ;
 
 static string sfnExtractFilePath( string ) ;
@@ -40,32 +40,32 @@ typedef struct _dorothy_functions{
      void ( *fnClose )( file ) ;
      string ( *fnReadLine )( file ) ;
      void ( *fnWriteLine )( file, string ) ;
-     void ( *fnRenameFile )( file, string ) ;
+     void ( *fnRename )( file, string ) ;
      int ( *fnDelete )( string ) ;
      file ( *fnOpenParse )( string ) ;
      void ( *fnCloseParse )( file ) ;
      int ( *fnGetLength )( file ) ;
-     int ( *fnGetLine )( file ) ;
+     int ( *fnGetNumberOfLines )( file ) ;
      void ( *fnCopy )( string, string ) ;
 
-     bool ( *isNotFileEnd )( file ) ;
+     bool ( *isNotEnd )( file ) ;
      bool ( *isError )( file ) ;
 }DorothyFunctions ;
 
 #define BIRTH_DOROTHY {\
      _DorothyfnOpen,\
-     _DorothyfnCloseFile,\
+     _DorothyfnClose,\
      _DorothyfnReadLine,\
      _DorothyfnWriteLine,\
-     _DorothyfnRenameFile,\
+     _DorothyfnRename,\
      _DorothyfnDelete,\
      _DorothyfnOpenParse,\
      _DorothyfnCloseParse,\
-     _DorothyfnGetFileLength,\
-     _DorothyfnGetFileLine,\
-     _DorothyfnCopyFile,\
+     _DorothyfnGetLength,\
+     _DorothyfnGetNumberOfLines,\
+     _DorothyfnCopy,\
      \
-     _isNotFileEnd,\
+     _DorothyisNotEnd,\
      _DorothyisError\
 }
 
