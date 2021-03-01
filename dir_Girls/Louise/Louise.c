@@ -281,12 +281,12 @@ string _LouisefnTrim( string target ){
 
 //------------------------
 // :[ NAME ]:
-//     fnToString
+//     fnFromInt
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnToString( int num ){
+string _LouisefnFromInt( int num ){
      char result[MEDIUM_LENGTH] ;
 
      sprintf( result, "%d", num ) ;

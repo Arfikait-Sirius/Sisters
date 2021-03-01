@@ -23,7 +23,7 @@ void examForLouise( void ){
      examFnUpperFirst() ;
      examFnGetMiddle() ;
      examFnTrim() ;
-     examFnToString() ;
+     examFnFromInt() ;
      examFnFind() ;
      examFnGetLength() ;
 
@@ -161,13 +161,13 @@ static void examFnTrim( void ){
      return ;
 }
 
-static void examFnToString( void ){
-     Tina.fnSetSkillName( "fnToString" ) ;
+static void examFnFromInt( void ){
+     Tina.fnSetSkillName( "fnFromInt" ) ;
 
      string s ;
      bool result ;
 
-     s = Louise.fnToString( 1234 ) ;
+     s = Louise.fnFromInt( 1234 ) ;
      result = strcmp( s, "1234" ) == 0 ;
 
      Tina.fnJudge( result ) ;

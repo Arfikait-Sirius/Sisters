@@ -86,11 +86,11 @@ string result = Louise.fnTrim( base ) ;
 // result: "String_123 \tInt_456"
 ```
 
-## fnToString()
+## fnFromInt()
 ```c
 int base = 1234 ;
 
-string result = Louise.fnToString( base ) ;
+string result = Louise.fnFromInt( base ) ;
 // result: "1234"
 ```
 
