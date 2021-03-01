@@ -19,7 +19,7 @@ static void examFnLowerAll( void ) ;
 static void examFnUpperFirst( void ) ;
 static void examFnGetMiddle( void ) ;
 static void examFnTrim( void ) ;
-static void examFnToString( void ) ;
+static void examFnFromInt( void ) ;
 static void examFnFind( void ) ;
 static void examFnGetLength( void ) ;
 
