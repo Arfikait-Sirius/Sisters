@@ -24,7 +24,7 @@ string _LouisefnLowerAll( string ) ;
 string _LouisefnUpperFirst( string ) ;
 string _LouisefnGetMiddle( string, string ) ;
 string _LouisefnTrim( string ) ;
-string _LouisefnToString( int ) ;
+string _LouisefnFromInt( int ) ;
 int _LouisefnFind( string, string ) ;
 int _LouisefnGetLength( string ) ;
 
@@ -45,7 +45,7 @@ typedef struct _louise_functions{
      string ( *fnUpperFirst )( string ) ;
      string ( *fnGetMiddle )( string, string ) ;
      string ( *fnTrim )( string ) ;
-     string ( *fnToString )( int ) ;
+     string ( *fnFromInt )( int ) ;
      int ( *fnFind )( string, string ) ;
      int ( *fnGetLength )( string ) ;
 
@@ -65,7 +65,7 @@ typedef struct _louise_functions{
      _LouisefnUpperFirst,\
      _LouisefnGetMiddle,\
      _LouisefnTrim,\
-     _LouisefnToString,\
+     _LouisefnFromInt,\
      _LouisefnFind,\
      _LouisefnGetLength,\
      \
