@@ -25,7 +25,7 @@ int _DorothyfnOpen( string fileName ){
 
      MyData.error[MyData.fileSeq] = false ;
 
-     sprintf( filePath, "../%s", fileName ) ;
+     sprintf( filePath, "./%s", fileName ) ;
      MyData.fp[MyData.fileSeq] = fopen( filePath, "r+" ) ;
      if( MyData.fp[MyData.fileSeq] == NULL ){
           MyData.error[MyData.fileSeq] = true ;
@@ -34,7 +34,7 @@ int _DorothyfnOpen( string fileName ){
                     FTL,
                     MyName
                ) ;
-          return TOO_BAD ;
+          return MyData.fileSeq ;
      }
      MyData.path[MyData.fileSeq] = sfnExtractFilePath( fileName ) ;
      strcpy( MyData.fname[MyData.fileSeq], fileName ) ;
