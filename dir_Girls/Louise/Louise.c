@@ -48,17 +48,17 @@ string _LouisefnCopy( string data ){
      int i ;
      bool result = true ;
 
+     if( data == NULL ){
+          return NULL ;
+     }
      for( i = 0 ; i < LOUISE_MAX_CPY_SIZE ; i++ ){
           if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
                result = false ;
-               counter = i ;
-               break ;
+               return MyData.cpyStr[i] ;
           }
      }
-     if( result ){
-          strcpy( MyData.cpyStr[counter], data ) ;
-          MyData.cpyCounter++ ;
-     }
+     strcpy( MyData.cpyStr[counter], data ) ;
+     MyData.cpyCounter++ ;
 
      return MyData.cpyStr[counter] ;
 }
