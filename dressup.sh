@@ -10,7 +10,7 @@ cd ..
 DIR_SISTERS="$1/sisters"
 DIR_SISTERS_SKILLSHEETS="$1/sisters/skillsheets"
 
-if [ ! -d ${DIR_SISTERS} ]; then
+if [ ! -d $DIR_SISTERS ]; then
      mkdir $DIR_SISTERS
 fi
 cp ./dir_Modules/Sisters.h $1/.
