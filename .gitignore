@@ -1,4 +1,5 @@
-/dir_Modules/*
-/dir_DevelopSources/*
+libSisters.a
+/dir_DevelopSources
+/dir_Modules/libParts/*
 /dir_Rooms/Grace/*
 /dir_Examinations
