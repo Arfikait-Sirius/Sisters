@@ -1,17 +1,14 @@
 #ifndef _SISTERS_
 #define _SISTERS_
 
-#include "../dir_Specifications/siscmn.h"
-#include "../dir_Runtimefiles/sisset.h"
-
-#include "../dir_Girls/Chloe/Chloe.h"
-#include "../dir_Girls/Dorothy/Dorothy.h"
-#include "../dir_Girls/Emily/Emily.h"
-#include "../dir_Girls/Grace/Grace.h"
-#include "../dir_Girls/Louise/Louise.h"
-#include "../dir_Girls/Rachel/Rachel.h"
-#include "../dir_Girls/Sylvia/Sylvia.h"
-#include "../dir_Girls/Tina/Tina.h"
-#include "../dir_Girls/Veera/Veera.h"
+#include "./sisters/skillsheets/Chloe.h"
+#include "./sisters/skillsheets/Dorothy.h"
+#include "./sisters/skillsheets/Emily.h"
+#include "./sisters/skillsheets/Grace.h"
+#include "./sisters/skillsheets/Louise.h"
+#include "./sisters/skillsheets/Rachel.h"
+#include "./sisters/skillsheets/Sylvia.h"
+#include "./sisters/skillsheets/Tina.h"
+#include "./sisters/skillsheets/Veera.h"
 
 #endif
