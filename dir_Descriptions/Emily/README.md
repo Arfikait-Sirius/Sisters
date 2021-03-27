@@ -1,67 +1,59 @@
-# Emilyの呼び方
-
-*callSisters*を以下のように記載すれば呼び出せますよ！
-```
-void callSisters( void ){
-
+# How to call Emily
+```c
+static void callSisters( void ){
      Emily = callEmily() ;
 
      return ;
 }
 ```
 
-# Emilyができること
+# Skills
 ## fnGetLine()
+```c
+string label = "Please input: " ;
+
+string s = Emily.fnGetLine( label ) ;
+// Wait for input from stdin.
 ```
-string s = Emily.fnGetLine(
-     "Please input: "
-) ;
-```
-コンソールから文字列を入力できます！  
-エンターキー押下まで入力待ちになります！  
-「Please input: 」のような入力待ちラベルは引数に文字列で指定できちゃいます！  
-ラベルが必要ない場合はNULLを指定することで実現できます。
 
 ## fnDispLine()
+```c
+string message = "This is message.";
+
+Emily.fnDispLine( message ) ;
+// Display "This is message" with line breaks.
 ```
-Emily.fnDispLine(
-     "Hello!"
-) ;
-```
-コンソールに「Hello!(改行あり)」を表示できます！
 
 ## fnDispLineCustom()
+```c
+string prefix = "Prefix " ;
+string message = "This is main message." ;
+string suffix = " Suffix" ;
+
+Emily.fnDispLineCustom( prefix, message, suffix ) ;
+// Display "Prefix This is main message. Suffix" with line breaks.
 ```
-Emily.fnDispLineCustom(
-     "Hello, ",
-     "I'm ",
-     "Emily!"
-) ;
-```
-コンソールに「Hello, I'm Emily!(改行あり)」を表示できます！  
-プレフィックス、サフィックスが必要ない場合はNULLを指定することで実現できます。
 
 ## fnDispStr()
+```c
+string message = "This is message.";
+
+Emily.fnDispLine( message ) ;
+// Display "This is message".
 ```
-Emily.fnDispStr(
-     "Hello!"
-) ;
-```
-コンソールに「Hello!(改行なし)」を表示できます！
 
 ## fnDispStrCustom()
+```c
+string prefix = "Prefix " ;
+string message = "This is main message." ;
+string suffix = " Suffix" ;
+
+Emily.fnDispLineCustom( prefix, message, suffix ) ;
+// Display "Prefix This is main message. Suffix".
 ```
-Emily.fnDispStrCustom(
-     "Hello, ",
-     "I'm ",
-     "Emily!"
-) ;
-```
-コンソールに「Hello, I'm Emily!(改行なし)」を表示できます！  
-プレフィックス、サフィックスが必要ない場合はNULLを指定することで実現できます。
 
 ## fnNewLine()
-```
+```c
 Emily.fnNewLine() ;
+// Display new line.
 ```
-コンソール表示を改行できます！
