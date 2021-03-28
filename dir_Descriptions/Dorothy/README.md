@@ -18,7 +18,7 @@ Number of lines is 2.
 ```c
 string fileName = "./path/file.txt" ;
 
-file fileID = Dorothy.fnOpenRead( fileName ) ;
+file fileID = Dorothy.fnOpen( fileName ) ;
 // Open the file and return the id for access.
 ```
 
