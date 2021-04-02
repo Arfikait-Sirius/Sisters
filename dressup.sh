@@ -2,6 +2,7 @@
 
 cd ./dir_Modules/libParts
 gcc -c ../../dir_Girls/**/*.c
+gcc -c ../../dir_Specifications/siscmn.c
 
 cd ..
 ar -r libSisters.a ./libParts/*.o
