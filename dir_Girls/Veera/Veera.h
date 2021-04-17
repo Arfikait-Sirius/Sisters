@@ -6,6 +6,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "stdbool.h"
 #include "stddef.h"
 #include "time.h"
 
@@ -19,14 +20,14 @@ int mfnVeera( int, char*[] ) ;
 
 void _VeerafnInitRandom( void ) ;
 int _VeerafnRandom( int ) ;
-string _VeerafnGetDate( void ) ;
+string _VeerafnGetDate( string ) ;
 
 
 /* <] - Veera - [> */
 typedef struct _veera_functions{
      void ( *fnInit )( void ) ;
      int ( *fnRandom )( int ) ;
-     string ( *fnGetDate )( void ) ;
+     string ( *fnGetDate )( string ) ;
 }VeeraFunctions ;
 
 #define BIRTH_VEERA {\
@@ -51,6 +52,13 @@ typedef struct myDataVeera{
 
 
 //--< Free Definitions >--//
+#define VEERA_SYMBOL_YEAR 'Y'
+#define VEERA_SYMBOL_MONTH 'M'
+#define VEERA_SYMBOL_DAY 'D'
+
+#define VEERA_FORMAT_YEAR "YYYY"
+#define VEERA_FORMAT_MONTH "MM"
+#define VEERA_FORMAT_DAY "DD"
 
 
 #endif
