@@ -20,7 +20,7 @@ DorothyFunctions callDorothy( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _DorothyfnOpen( string fileName ){
+file _DorothyfnOpen( string fileName ){
      char filePath[MAX_LENGTH] ;
 
      MyData.error[MyData.fileSeq] = false ;
@@ -50,7 +50,7 @@ int _DorothyfnOpen( string fileName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _DorothyfnClose( int fileID ){
+void _DorothyfnClose( file fileID ){
 
      fclose( MyData.fp[fileID] ) ;
      MyData.stat[fileID] = FILE_STAT_END ;

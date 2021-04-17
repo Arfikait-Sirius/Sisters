@@ -34,13 +34,70 @@ int _VeerafnRandom( int limit ){
      return randNum ;
 }
 
-string _VeerafnGetDate( void ){
+string _VeerafnGetDate( string baseFormat ){
      struct tm* utc ;
+     char* p ;
+     char resultFormat[BUF_SIZE_DATE] = { NL } ;
+     char* r ;
+     char tmp[5] = { NL } ;
+     char* t ;
+     bool year ;
+     bool month ;
+     bool day ;
 
      timer = time( NULL ) ;
      utc = gmtime( &timer ) ;
 
-     sprintf( MyData.date, "%04d/%02d/%02d", utc->tm_year + 1900, utc->tm_mon + 1, utc->tm_mday ) ;
+     year = false ;
+     month = false ;
+     day = false ;
+
+     t = tmp ;
+     p = baseFormat ;
+     r = resultFormat ;
+     while( *p != NL ){
+          if( *p == VEERA_SYMBOL_YEAR ){
+               *t++ = *p ;
+          }else if( *p == VEERA_SYMBOL_MONTH ){
+               *t++ = *p ;
+          }else if( *p == VEERA_SYMBOL_DAY ){
+               *t++ = *p ;
+          }else{
+               *r++ = *p ;
+               *r = NL ;
+          }
+          *t = NL ;
+          if( strcmp( tmp, VEERA_FORMAT_YEAR ) == 0 ){
+               year = true ;
+               strcat( resultFormat, "%04d" ) ;
+               r += 4 ;
+               t = tmp ;
+          }else if( strcmp( tmp, VEERA_FORMAT_MONTH ) == 0 ){
+               month = true ;
+               strcat( resultFormat, "%02d" ) ;
+               r += 4 ;
+               t = tmp ;
+          }else if( strcmp( tmp, VEERA_FORMAT_DAY ) == 0 ){
+               day = true ;
+               strcat( resultFormat, "%02d" ) ;
+               r += 4 ;
+               t = tmp ;
+          }
+          p++ ;
+     }
+     *r = NL ;
+
+     if( year && month && day ){
+          sprintf( MyData.date, resultFormat, utc->tm_year + 1900, utc->tm_mon + 1, utc->tm_mday ) ;
+     }else if( month && day ){
+          sprintf( MyData.date, resultFormat, utc->tm_mon + 1, utc->tm_mday ) ;
+     }else if( year ){
+          sprintf( MyData.date, resultFormat, utc->tm_year + 1900 ) ;
+     }else if( month ){
+          sprintf( MyData.date, resultFormat, utc->tm_mon + 1 ) ;
+     }else if( day ){
+          sprintf( MyData.date, resultFormat, utc->tm_mday ) ;
+     }
 
      return MyData.date ;
 }
