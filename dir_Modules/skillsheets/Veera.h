@@ -21,14 +21,14 @@ int mfnVeera( int, char*[] ) ;
 
 void _VeerafnInitRandom( void ) ;
 int _VeerafnRandom( int ) ;
-string _VeerafnGetDate( void ) ;
+string _VeerafnGetDate( string ) ;
 
 
 /* <] - Veera - [> */
 typedef struct _veera_functions{
      void ( *fnInit )( void ) ;
      int ( *fnRandom )( int ) ;
-     string ( *fnGetDate )( void ) ;
+     string ( *fnGetDate )( string ) ;
 }VeeraFunctions ;
 
 #define BIRTH_VEERA {\
