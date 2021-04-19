@@ -12,6 +12,7 @@ typedef int stack ;
 typedef int queue ;
 typedef int map ;
 typedef int schema ;
+typedef int storage ;
 typedef void* fnp ;
 
 
