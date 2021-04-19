@@ -25,6 +25,10 @@
 #define MAX_STACK_SIZE 256
 
 
+// Alice
+#define ALICE_MAX_STORAGES 16
+
+
 // Dorothy
 #define DOROTHY_MAX_FILE_COUNT 16
 #define DOROTHY_READ_BUFSIZE 1024
