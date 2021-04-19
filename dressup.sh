@@ -29,7 +29,7 @@ if [ ! -d $DIR_SISTERS ]; then
      mkdir $DIR_SISTERS_SKILLSHEETS
      mkdir $DIR_SISTERS_COMMONS
 fi
-cp ./dir_Modules/Sisters.h $1/.
+cp ./dir_Modules/Sisters_mac.h $1/Sisters.h
 cp \
      ./dir_Modules/skillsheets/Alice.h \
      ./dir_Modules/skillsheets/Chloe.h \
@@ -44,10 +44,10 @@ cp \
      ./dir_Modules/skillsheets/Veera.h \
      $DIR_SISTERS_SKILLSHEETS/.
 cp \
-     ./dir_Specifications/siscmn.h \
-     ./dir_Specifications/sisdef.h \
-     ./dir_Runtimefiles/sismsg.h \
-     ./dir_Runtimefiles/sisset.h \
+     ./dir_Modules/skillsheets/commons/siscmn.h \
+     ./dir_Modules/skillsheets/commons/sisdef.h \
+     ./dir_Modules/skillsheets/commons/sismsg.h \
+     ./dir_Modules/skillsheets/commons/sisset.h \
      $DIR_SISTERS_COMMONS/.
 cp ./dir_Modules/libSisters.a $DIR_SISTERS/.
 
