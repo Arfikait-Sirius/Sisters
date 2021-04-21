@@ -35,7 +35,7 @@
 
 
 // Louise
-#define LOUISE_MAX_CPY_SIZE 512
+#define LOUISE_MAX_STRINGS 16384
 
 
 // Rachel

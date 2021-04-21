@@ -8,7 +8,10 @@
 
 
 //--< Standard Definition >--//
-#include "../../dir_Specifications/sisdef.h"
+#include "../../dir_Modules/skillsheets/commons/siscmn.h"
+#include "../../dir_Modules/skillsheets/commons/sisdef.h"
+#include "../../dir_Modules/skillsheets/commons/sisset.h"
+#include "../../dir_Modules/skillsheets/commons/sismsg.h"
 
 
 //--< Prototype Declarations >--//
