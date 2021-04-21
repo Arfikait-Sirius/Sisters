@@ -10,8 +10,8 @@
 
 
 //--< Standard Definition >--//
-#include "./commons/sisdef.h"
 #include "./commons/siscmn.h"
+#include "./commons/sisdef.h"
 #include "./commons/sisset.h"
 
 
@@ -33,6 +33,8 @@ bool _LouiseisFormat( string, string ) ;
 bool _LouiseisContain( string, string ) ;
 bool _LouiseisEqual( string, string ) ;
 bool _LouiseisEmpty( string ) ;
+
+void _LouiselvFree( void ) ;
 
 
 /* <] - Louise - [> */
@@ -83,29 +85,13 @@ LouiseFunctions callLouise( void ) ;
 
 //--< Mydata Declaration >--//
 typedef struct myDataLouise{
-     int cpyCounter ;
-     char cpyStr[LOUISE_MAX_CPY_SIZE][MAX_LENGTH] ;
-     char repStr[MAX_LENGTH] ;
-     char splStr[HALF_LENGTH] ;
-     char midStr[HALF_LENGTH] ;
-     char uprStr[MAX_LENGTH] ;
-     char lwrStr[MAX_LENGTH] ;
-     char fstStr[MAX_LENGTH] ;
-     char trmStr[MAX_LENGTH] ;
-     char numStr[HALF_LENGTH] ;
+     int seq ;
+     string str[LOUISE_MAX_STRINGS] ;
 }_MyDataLouise ;
 
 #define INIT_LOUISE_MYDATA {\
-     1,\
-     { { NL } },\
-     { NL },\
-     { NL },\
-     { NL },\
-     { NL },\
-     { NL },\
-     { NL },\
-     { NL },\
-     { NL }\
+     0,\
+     { NULL }\
 }
 
 

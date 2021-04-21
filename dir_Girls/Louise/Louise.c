@@ -44,23 +44,16 @@ int _LouisefnCount( string data, string sepStr ){
 //     Skill
 //------------------------
 string _LouisefnCopy( string data ){
-     int counter = MyData.cpyCounter ;
-     int i ;
-     bool result = true ;
+     int size ;
 
      if( data == NULL ){
           return NULL ;
      }
-     for( i = 0 ; i < LOUISE_MAX_CPY_SIZE ; i++ ){
-          if( strcmp( data, MyData.cpyStr[i] ) == 0 ){
-               result = false ;
-               return MyData.cpyStr[i] ;
-          }
-     }
-     strcpy( MyData.cpyStr[counter], data ) ;
-     MyData.cpyCounter++ ;
+     size = strlen( data ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     strcpy( MyData.str[MyData.seq], data ) ;
 
-     return MyData.cpyStr[counter] ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -71,19 +64,26 @@ string _LouisefnCopy( string data ){
 //     Skill
 //------------------------
 string _LouisefnReplace( string base, string target, string replacement ){
+     int size ;
      int len ;
      char* p ;
      char* e ;
-     char s[MAX_LENGTH] ;
+     int baseSize ;
+     string s ;
 
      len = strlen( target ) ;
+     baseSize = strlen( base ) + 1 ;
+     s = malloc( baseSize ) ;
      strcpy( s, base ) ;
      p = strstr( s, target ) ;
      *p = NL ;
      e = p + len ;
-     sprintf( MyData.repStr, "%s%s%s", s, replacement, e ) ;
+     size = strlen( base ) - len + strlen( replacement ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     sprintf( MyData.str[MyData.seq], "%s%s%s", s, replacement, e ) ;
+     free( s ) ;
 
-     return MyData.repStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -94,11 +94,15 @@ string _LouisefnReplace( string base, string target, string replacement ){
 //     Skill
 //------------------------
 string _LouisefnSplit( string data, char splitter, int position ){
+     int size ;
      int i ;
      char* s ;
      char* p ;
-     char d[MAX_LENGTH] ;
+     int dataSize ;
+     string d ;
 
+     dataSize = strlen( data ) + 1 ;
+     d = malloc( dataSize ) ;
      strcpy( d, data ) ;
 
      p = strchr( d, splitter ) ;
@@ -107,7 +111,6 @@ string _LouisefnSplit( string data, char splitter, int position ){
           return NULL ;
      }
      *p++ = NL ;
-     strcpy( MyData.splStr, s ) ;
      for( i = 0 ; i < position ; i++ ){
           s = p ;
           p = strchr( p, splitter ) ;
@@ -115,13 +118,13 @@ string _LouisefnSplit( string data, char splitter, int position ){
                break ;
           }
           *p++ = NL ;
-          strcpy( MyData.splStr, s ) ;
      }
-     if( i < position ){
-          strcpy( MyData.splStr, s ) ;
-     }
+     size = strlen( s ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     strcpy( MyData.str[MyData.seq], s ) ;
+     free( d ) ;
 
-     return MyData.splStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -132,10 +135,13 @@ string _LouisefnSplit( string data, char splitter, int position ){
 //     Skill
 //------------------------
 string _LouisefnUpperAll( string data ){
+     int size ;
      char c ;
      char* result ;
 
-     result = MyData.uprStr ;
+     size = strlen( data ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     result = MyData.str[MyData.seq] ;
      c = *data++ ;
      while( c != NL ){
           if( LOWER_A <= c && c <= LOWER_Z ){
@@ -145,7 +151,7 @@ string _LouisefnUpperAll( string data ){
           c = *data++ ;
      }
 
-     return MyData.uprStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -156,10 +162,13 @@ string _LouisefnUpperAll( string data ){
 //     Skill
 //------------------------
 string _LouisefnLowerAll( string data ){
+     int size ;
      char c ;
      string result ;
 
-     result = MyData.lwrStr ;
+     size = strlen( data ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     result = MyData.str[MyData.seq] ;
      c = *data++ ;
      while( c != NL ){
           if( UPPER_A <= c && c <= UPPER_Z ){
@@ -170,7 +179,7 @@ string _LouisefnLowerAll( string data ){
      }
      *result = NL ;
 
-     return MyData.lwrStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -181,10 +190,13 @@ string _LouisefnLowerAll( string data ){
 //     Skill
 //------------------------
 string _LouisefnUpperFirst( string data ){
+     int size ;
      char c ;
      char* result ;
 
-     result = MyData.fstStr ;
+     size = strlen( data ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     result = MyData.str[MyData.seq] ;
      c = *data++ ;
      if( LOWER_A <= c && c <= LOWER_Z ){
           c -= L_U_OFFSET ;
@@ -200,7 +212,7 @@ string _LouisefnUpperFirst( string data ){
      }
      *result = NL ;
 
-     return MyData.fstStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -211,6 +223,7 @@ string _LouisefnUpperFirst( string data ){
 //     Skill
 //------------------------
 string _LouisefnGetMiddle( string format, string data ){
+     int size ;
      int flen ;
      int len ;
      char f[MAX_LENGTH] ;
@@ -245,9 +258,11 @@ string _LouisefnGetMiddle( string format, string data ){
           }
           *p = NL ;
      }
-     strcpy( MyData.midStr, s + len ) ;
+     size = strlen( s ) - len + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     strcpy( MyData.str[MyData.seq], s + len ) ;
 
-     return MyData.midStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -258,25 +273,32 @@ string _LouisefnGetMiddle( string format, string data ){
 //     Skill
 //------------------------
 string _LouisefnTrim( string target ){
-     char str[MAX_LENGTH] ;
+     int size ;
+     int targetSize ;
+     string t ;
      char* p ;
      char* s ;
 
-     strcpy( str, target ) ;
-     p = str ;
+     targetSize = strlen( target ) + 1 ;
+     t = malloc( targetSize ) ;
+     strcpy( t, target ) ;
+     p = t ;
      while( *p == SPACE || *p == TAB ){
           p++ ;
      }
      s = p ;
-     p = strchr( str, NL ) ;
+     p = strchr( t, NL ) ;
      p-- ;
      while( *p == SPACE || *p == TAB ){
           p-- ;
      }
      *++p = NL ;
-     strcpy( MyData.trmStr, s ) ;
+     size = strlen( s ) + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     strcpy( MyData.str[MyData.seq], s ) ;
+     free( t ) ;
 
-     return MyData.trmStr ;
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -287,12 +309,24 @@ string _LouisefnTrim( string target ){
 //     Skill
 //------------------------
 string _LouisefnFromInt( int num ){
-     char result[MEDIUM_LENGTH] ;
+     int size ;
+     int n ;
+     int digit ;
 
-     sprintf( result, "%d", num ) ;
-     strcpy( MyData.numStr, result ) ;
+     n = num ;
 
-     return MyData.numStr ;
+     digit = 1 ;
+     n /= 10 ;
+     while( n != 0 ){
+          n /= 10 ;
+          digit++ ;
+     }
+
+     size = digit + 1 ;
+     MyData.str[MyData.seq] = malloc( size ) ;
+     sprintf( MyData.str[MyData.seq], "%d", num ) ;
+
+     return MyData.str[MyData.seq++] ;
 }
 
 //------------------------
@@ -442,4 +476,21 @@ bool _LouiseisEmpty( string data ){
      }
 
      return false ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     lvFree
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _LouiselvFree( void ){
+     int i ;
+
+     for( i = 0 ; i < LOUISE_MAX_STRINGS ; i++ ){
+          free( MyData.str[i] ) ;
+     }
+
+     return ;
 }
