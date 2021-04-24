@@ -5,35 +5,19 @@
 //--< Use Headers >--//
 #include "stdio.h"
 
+#include "../Louise.h"
+
 
 //--< Standard Definition >--//
-#include "sisdef.h"
-#include "sisset.h"
 
 
 //--< Prototype Declarations >--//
-void logSisters( string, int, string ) ;
-
-static void sfnWriteLog( string, string ) ;
+int chao( void ) ;
 
 
-//--< Free Definitions >--//
-#define IS_LOG_FILE LOG_SETUP
-#define LOG_FILE "../dir_Logs/Progress.log"
-#define MASSAGE_FILE "../dir_Logs/Message.log"
-#define INFO_FILE "../dir_Logs/Diary.log"
-#define ERROR_FILE "../dir_Logs/Warning.log"
-#define FATAL_FILE "../dir_Logs/Critical.log"
-
-#define STATUS_COUNT 4
-#define SET_ALL_STATUS_LABEL {\
-     "MESSAGE",\
-     "INFO",\
-     "ERROR",\
-     "FATAL"\
-}
-
-static const string statusLabel[STATUS_COUNT] = SET_ALL_STATUS_LABEL ;
+// ** SISTERS CONTEXT **
+#define CHAO chao()
+#define TOO_BAD -1
 
 
 #endif
