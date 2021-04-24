@@ -9,6 +9,7 @@ static _MyDataLouise MyData = INIT_LOUISE_MYDATA ;
 // Birth
 LouiseFunctions callLouise( void ){
      LouiseFunctions _LouiseSkills = BIRTH_LOUISE ;
+     MyData.isLouise = true ;
 
      return _LouiseSkills ;
 }
@@ -234,11 +235,6 @@ string _LouisefnGetMiddle( string format, string data ){
 
      flen = strlen( format ) ;
      if( flen > strlen( data ) ){
-          logSisters(
-                    "Length of \"format\" is over length of \"data\".",
-                    ERR,
-                    MyName
-               ) ;
           return NULL ;
      }
      strcpy( f, format ) ;
@@ -476,6 +472,10 @@ bool _LouiseisEmpty( string data ){
      }
 
      return false ;
+}
+
+bool _LouiselvCalled( void ){
+     return MyData.isLouise ;
 }
 
 //------------------------
