@@ -12,7 +12,6 @@
 
 //--< Standard Definition >--//
 #include "./commons/sisdef.h"
-#include "./commons/siscmn.h"
 #include "./commons/sisset.h"
 
 

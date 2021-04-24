@@ -29,7 +29,7 @@ storage _AlicefnOpenStorage( string fileName, string storageType ){
      fp = fopen( fileName, "r" ) ;
      free( filePath ) ;
      if( fp == NULL ){
-          return TOO_BAD ;
+          return -1 ;
      }
      MyData.fp[MyData.seq] = fp ;
      strcpy( MyData.type[MyData.seq], storageType ) ;

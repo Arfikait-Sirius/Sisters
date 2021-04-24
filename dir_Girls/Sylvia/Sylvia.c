@@ -6,11 +6,6 @@ SylviaFunctions callSylvia( void ){
      return _SylviaSkills ;
 }
 
-int mfnSylvia( int argc, char* argv[] ){
-
-     return CHAO ;
-}
-
 int _SylviafnStrToNum( string data ){
      int num ;
      char* p ;
@@ -19,11 +14,6 @@ int _SylviafnStrToNum( string data ){
      p = data ;
      while( *p != NL ){
           if( *p < 0x30 || 0x39 < *p ){
-               logSisters(
-                         ERR_MSG_NOT_NUMBER,
-                         ERR,
-                         "Sylvia"
-                    ) ;
                return NL ;
           }
           num *= 10 ;

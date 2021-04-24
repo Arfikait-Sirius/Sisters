@@ -1,6 +1,8 @@
 #ifndef _SISTERS_
 #define _SISTERS_
 
+#include "./sisters/skillsheets/commons/siscmn.h"
+
 #include "./sisters/skillsheets/Chloe.h"
 #include "./sisters/skillsheets/Dorothy.h"
 #include "./sisters/skillsheets/Emily.h"
