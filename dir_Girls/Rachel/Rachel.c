@@ -29,13 +29,7 @@ schema _RachelfnOpenSchema( string schemaName ){
 
      fp = fopen( name, "a+" ) ;
      if( fp == NULL ){
-          sprintf( msg, "Cannot find schema: %s.", schemaName ) ;
-          logSisters(
-                    msg,
-                    FTL,
-                    MyName
-               ) ;
-          return TOO_BAD ;
+          return -1 ;
      }
      MyData.schemafp[MyData.schemaSeq] = fp ;
      strcpy( MyData.schemaName[MyData.schemaSeq], schemaName ) ;
@@ -56,11 +50,6 @@ void _RachelfnChangeSchema( schema schemaID ){
 
      if( MyData.schemafp[schemaID] == NULL ){
           MyData.currSchema = NULL ;
-          logSisters(
-                    "Cannot change schema.",
-                    ERR,
-                    MyName
-               ) ;
           return ;
      }
 
@@ -123,12 +112,6 @@ void _RachelfnCommit( void ){
 
      fp = fopen( name, "a+" ) ;
      if( fp == NULL ){
-          sprintf( msg, "Failed to commit to schema: %s.", MyData.schemaName[MyData.currSeq] ) ;
-          logSisters(
-                    msg,
-                    FTL,
-                    MyName
-               ) ;
           return ;
      }
      MyData.schemafp[MyData.currSeq] = fp ;
@@ -184,11 +167,6 @@ string _RachelfnGetData( string dataID ){
 void _RachelfnCloseSchema( schema schemaID ){
 
      if( MyData.schemaName[schemaID] == NULL ){
-          logSisters(
-                    "Cannot close schema.",
-                    FTL,
-                    MyName
-               ) ;
           return ;
      }
 

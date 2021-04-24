@@ -10,7 +10,6 @@
 
 
 //--< Standard Definition >--//
-#include "../../dir_Modules/skillsheets/commons/siscmn.h"
 #include "../../dir_Modules/skillsheets/commons/sisdef.h"
 #include "../../dir_Modules/skillsheets/commons/sisset.h"
 #include "../../dir_Modules/skillsheets/commons/sismsg.h"
@@ -35,6 +34,7 @@ bool _LouiseisContain( string, string ) ;
 bool _LouiseisEqual( string, string ) ;
 bool _LouiseisEmpty( string ) ;
 
+bool _LouiselvCalled( void ) ;
 void _LouiselvFree( void ) ;
 
 
@@ -86,11 +86,13 @@ LouiseFunctions callLouise( void ) ;
 
 //--< Mydata Declaration >--//
 typedef struct myDataLouise{
+     bool isLouise ;
      int seq ;
      string str[LOUISE_MAX_STRINGS] ;
 }_MyDataLouise ;
 
 #define INIT_LOUISE_MYDATA {\
+     false,\
      0,\
      { NULL }\
 }

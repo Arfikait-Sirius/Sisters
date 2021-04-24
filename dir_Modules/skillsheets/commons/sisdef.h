@@ -71,9 +71,6 @@ typedef void* fnp ;
 
 #define DETAIL_COUNT_MAX 9
 
-#define CHAO 0
-#define TOO_BAD -1
-
 #define STR_EMPTY ""
 
 #define TYPE_DFT NL

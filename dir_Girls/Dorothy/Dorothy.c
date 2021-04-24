@@ -29,11 +29,6 @@ file _DorothyfnOpen( string fileName ){
      MyData.fp[MyData.fileSeq] = fopen( filePath, "r+" ) ;
      if( MyData.fp[MyData.fileSeq] == NULL ){
           MyData.error[MyData.fileSeq] = true ;
-          logSisters(
-                    "Failed to open file.",
-                    FTL,
-                    MyName
-               ) ;
           return MyData.fileSeq ;
      }
      MyData.path[MyData.fileSeq] = sfnExtractFilePath( fileName ) ;
@@ -101,9 +96,14 @@ string _DorothyfnReadLine( int fileID ){
 //     Skill
 //------------------------
 void _DorothyfnWriteLine( int fileID, string srcData ){
+     int size ;
+     string buff ;
 
-     strcat( srcData, "\n" ) ;
+     size = strlen( srcData ) + 2 ;
+     buff = malloc( size ) ;
+     sprintf( buff, "%s\n", srcData ) ;
      fputs( srcData, MyData.fp[fileID] ) ;
+     free( buff ) ;
 
      return ;
 }
@@ -158,7 +158,7 @@ int _DorothyfnOpenParse( string fileName ){
 
      fp = fopen( fileName, "r" ) ;
      if( fp == NULL ){
-          return TOO_BAD ;
+          return -1 ;
      }
      len = 0 ;
      line = 0 ;
@@ -200,7 +200,7 @@ void _DorothyfnCloseParse( int prsfID ){
 int _DorothyfnGetLength( int prsfID ){
 
      if( MyData.parseStat[prsfID] == FILE_PARSE_END ){
-          return TOO_BAD ;
+          return -1 ;
      }
 
      return MyData.parseLen[prsfID] ;
@@ -216,7 +216,7 @@ int _DorothyfnGetLength( int prsfID ){
 int _DorothyfnGetNumberOfLines( int prsfID ){
 
      if( MyData.parseStat[prsfID] == FILE_PARSE_END ){
-          return TOO_BAD ;
+          return -1 ;
      }
 
      return MyData.parseLine[prsfID] ;
