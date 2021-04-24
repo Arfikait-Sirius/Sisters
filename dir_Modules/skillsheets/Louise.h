@@ -78,8 +78,6 @@ typedef struct _louise_functions{
      _LouiseisEmpty\
 }
 
-static bool isLouise ;
-
 static LouiseFunctions Louise ;
 
 LouiseFunctions callLouise( void ) ;
