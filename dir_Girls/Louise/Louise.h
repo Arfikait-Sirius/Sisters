@@ -19,7 +19,7 @@
 int _LouisefnCount( string, string ) ;
 string _LouisefnCopy( string ) ;
 string _LouisefnReplace( string, string, string ) ;
-string _LouisefnSplit( string, char, int ) ;
+string _LouisefnSplit( string, string, int ) ;
 string _LouisefnUpperAll( string ) ;
 string _LouisefnLowerAll( string ) ;
 string _LouisefnUpperFirst( string ) ;
@@ -43,7 +43,7 @@ typedef struct _louise_functions{
      int ( *fnCount )( string, string ) ;
      string ( *fnCopy )( string ) ;
      string ( *fnReplace )( string, string, string ) ;
-     string ( *fnSplit )( string, char, int ) ;
+     string ( *fnSplit )( string, string, int ) ;
      string ( *fnUpperAll )( string ) ;
      string ( *fnLowerAll )( string ) ;
      string ( *fnUpperFirst )( string ) ;

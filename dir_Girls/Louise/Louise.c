@@ -94,31 +94,33 @@ string _LouisefnReplace( string base, string target, string replacement ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnSplit( string data, char splitter, int position ){
+string _LouisefnSplit( string data, string splitter, int position ){
      int size ;
      int i ;
      char* s ;
      char* p ;
+     int splitterLen ;
      int dataSize ;
      string d ;
 
+     splitterLen = strlen( splitter ) ;
      dataSize = strlen( data ) + 1 ;
      d = malloc( dataSize ) ;
      strcpy( d, data ) ;
 
-     p = strchr( d, splitter ) ;
+     p = strstr( d, splitter ) ;
      s = d ;
      if( p == NULL ){
           return NULL ;
      }
-     *p++ = NL ;
+     *p = NL ;
      for( i = 0 ; i < position ; i++ ){
-          s = p ;
-          p = strchr( p, splitter ) ;
+          s = p + splitterLen ;
+          p = strstr( s, splitter ) ;
           if( p == NULL ){
                break ;
           }
-          *p++ = NL ;
+          *p = NL ;
      }
      size = strlen( s ) + 1 ;
      MyData.str[MyData.seq] = malloc( size ) ;
@@ -491,6 +493,7 @@ void _LouiselvFree( void ){
      for( i = 0 ; i < LOUISE_MAX_STRINGS ; i++ ){
           free( MyData.str[i] ) ;
      }
+     MyData.isLouise = false ;
 
      return ;
 }
