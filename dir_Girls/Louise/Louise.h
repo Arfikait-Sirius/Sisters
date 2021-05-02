@@ -34,6 +34,8 @@ bool _LouiseisContain( string, string ) ;
 bool _LouiseisEqual( string, string ) ;
 bool _LouiseisEmpty( string ) ;
 
+static bool sfnAllocate( int ) ;
+
 bool _LouiselvCalled( void ) ;
 void _LouiselvFree( void ) ;
 
