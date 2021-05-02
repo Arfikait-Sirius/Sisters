@@ -13,13 +13,13 @@
 
 
 //--< Prototype Declarations >--//
-schema _RachelfnOpenSchema( string ) ;
-void _RachelfnChangeSchema( schema ) ;
-int _RachelfnCreateBox( string ) ;
-void _RachelfnRegistData( int, string ) ;
+schema _RachelfnOpen( string ) ;
+void _RachelfnChange( schema ) ;
+int _RachelfnCreate( string ) ;
+void _RachelfnRegister( int, string ) ;
 void _RachelfnCommit( void ) ;
-string _RachelfnGetData( string ) ;
-void _RachelfnCloseSchema( schema ) ;
+string _RachelfnGetValue( string ) ;
+void _RachelfnClose( schema ) ;
 
 int sfnSplitData( string, string, string ) ;
 
@@ -29,20 +29,20 @@ typedef struct _rachel_functions{
      schema ( *fnOpen )( string ) ;
      void ( *fnChange )( schema ) ;
      int ( *fnCreate )( string ) ;
-     void ( *fnRegist )( int, string ) ;
+     void ( *fnRegister )( int, string ) ;
      void ( *fnCommit )( void ) ;
-     string ( *fnGet )( string ) ;
+     string ( *fnGetValue )( string ) ;
      void ( *fnClose )( schema ) ;
 }RachelFunctions ;
 
 #define BIRTH_RACHEL {\
-     _RachelfnOpenSchema,\
-     _RachelfnChangeSchema,\
-     _RachelfnCreateBox,\
-     _RachelfnRegistData,\
+     _RachelfnOpen,\
+     _RachelfnChange,\
+     _RachelfnCreate,\
+     _RachelfnRegister,\
      _RachelfnCommit,\
-     _RachelfnGetData,\
-     _RachelfnCloseSchema\
+     _RachelfnGetValue,\
+     _RachelfnClose\
 }
 
 static RachelFunctions Rachel ;
