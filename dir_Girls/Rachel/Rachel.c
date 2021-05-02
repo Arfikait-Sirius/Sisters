@@ -20,7 +20,7 @@ RachelFunctions callRachel( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-schema _RachelfnOpenSchema( string schemaName ){
+schema _RachelfnOpen( string schemaName ){
      FILE* fp ;
      char name[HALF_LENGTH] ;
      char msg[MEDIUM_LENGTH] ;
@@ -46,7 +46,7 @@ schema _RachelfnOpenSchema( string schemaName ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _RachelfnChangeSchema( schema schemaID ){
+void _RachelfnChange( schema schemaID ){
 
      if( MyData.schemafp[schemaID] == NULL ){
           MyData.currSchema = NULL ;
@@ -66,7 +66,7 @@ void _RachelfnChangeSchema( schema schemaID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-int _RachelfnCreateBox( string dataID ){
+int _RachelfnCreate( string dataID ){
 
      strcpy( MyData.newBox[MyData.newSeq], dataID ) ;
 
@@ -75,12 +75,12 @@ int _RachelfnCreateBox( string dataID ){
 
 //------------------------
 // :[ NAME ]:
-//     fnRegist
+//     fnRegister
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _RachelfnRegistData( int boxID, string data ){
+void _RachelfnRegister( int boxID, string data ){
 
      strcpy( MyData.newData[boxID], data ) ;
 
@@ -122,12 +122,12 @@ void _RachelfnCommit( void ){
 
 //------------------------
 // :[ NAME ]:
-//     fnGet
+//     fnGetValue
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _RachelfnGetData( string dataID ){
+string _RachelfnGetValue( string dataID ){
      int result ;
      char* p ;
      char id[SHORT_LENGTH] ;
@@ -164,7 +164,7 @@ string _RachelfnGetData( string dataID ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _RachelfnCloseSchema( schema schemaID ){
+void _RachelfnClose( schema schemaID ){
 
      if( MyData.schemaName[schemaID] == NULL ){
           return ;

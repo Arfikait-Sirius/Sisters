@@ -35,7 +35,7 @@
 
 
 // Louise
-#define LOUISE_MAX_STRINGS 16384
+#define LOUISE_MAX_STRINGS 65536
 
 
 // Rachel
