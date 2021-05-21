@@ -18,10 +18,7 @@
 #define LIST_TOP 0
 #define STACK_TOP 0
 
-#define MAX_LIST_COUNT 32
 #define MAX_STACK_COUNT 32
-
-#define MAX_LIST_SIZE 256
 #define MAX_STACK_SIZE 256
 
 
@@ -32,6 +29,11 @@
 // Dorothy
 #define DOROTHY_MAX_FILE_COUNT 16
 #define DOROTHY_READ_BUFSIZE 1024
+
+
+// Kotone
+#define KOTONE_MAX_LIST_COUNT 32
+#define KOTONE_MAX_LIST_SIZE 256
 
 
 // Louise
