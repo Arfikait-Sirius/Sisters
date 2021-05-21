@@ -9,58 +9,89 @@ static _MyDataKotone MyData = INIT_KOTONE_MYDATA ;
 // Birth
 KotoneFunctions callKotone( void ){
      KotoneFunctions _KotoneSkills = BIRTH_KOTONE ;
+     MyData.isKotone = true ;
 
      return _KotoneSkills ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnCreateList
+//     fnCreate
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-list _KotonefnCreateList( mode m ){
-     return MyData.listSeq++ ;
+list _KotonefnCreate( void ){
+     return MyData.seq++ ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnAddList
+//     fnAdd
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _KotonefnAddList( list listID, string s ){
+void _KotonefnAdd( list listID, string s ){
+     int size ;
 
-     MyData.myList[listID][MyData.listIndex[listID]] = s ;
-     MyData.listIndex[listID]++ ;
+     size = strlen( s ) + 1 ;
+     MyData.myList[listID][MyData.index[listID]] = malloc( size ) ;
+     strcpy( MyData.myList[listID][MyData.index[listID]], s );
+     MyData.index[listID]++ ;
 
      return ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnCreateStack
+//     fnGet
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-stack _KotonefnCreateStack( mode m ){
-     return MyData.stackSeq++ ;
+string _KotonefnGet( list listID, int index ){
+     if( MyData.index[listID] <= index ){
+          return NULL ;
+     }
+
+     return MyData.myList[listID][index] ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnPushStack
+//     lvCalled
 //
 // :[ CATEGORY ]:
-//     Skill
+//     Leave
 //------------------------
-void _KotonefnPushStack( stack stackID, string s ){
+bool _KotonelvCalled( void ){
+     bool called = false ;
 
-     MyData.myStack[stackID][MyData.stackIndex[stackID]] = s ;
-     MyData.stackIndex[stackID]++ ;
+     if( MyData.isKotone ){
+          called = true ;
+          MyData.isKotone = false ;
+     }
+
+     return called ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     lvFree
+//
+// :[ CATEGORY ]:
+//     Leave
+//------------------------
+void _KotonelvFree( void ){
+     int i ;
+     int j ;
+
+     for( i = 0 ; i < MyData.seq ; i++ ){
+          for( j = 0 ; j < MyData.index[i] ; j++ ){
+               free( MyData.myList[i][j] ) ;
+          }
+     }
 
      return ;
 }
