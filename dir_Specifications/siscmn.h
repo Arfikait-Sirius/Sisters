@@ -6,6 +6,7 @@
 #include "stdio.h"
 
 #include "../dir_Girls/Louise/Louise.h"
+#include "../dir_Girls/Kotone/Kotone.h"
 
 
 //--< Standard Definition >--//
