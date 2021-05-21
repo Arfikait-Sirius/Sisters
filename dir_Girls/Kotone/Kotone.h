@@ -5,6 +5,8 @@
 //--< Use Headers >--//
 #include "stdio.h"
 #include "string.h"
+#include "stdlib.h"
+#include "stdbool.h"
 
 
 //--< Standard Definition >--//
@@ -14,25 +16,25 @@
 
 
 //--< Prototype Declarations >--//
-list _KotonefnCreateList( mode ) ;
-void _KotonefnAddList( list, string ) ;
-stack _KotonefnCreateStack( mode ) ;
-void _KotonefnPushStack( stack, string ) ;
+list _KotonefnCreate( void ) ;
+void _KotonefnAdd( list, string ) ;
+string _KotonefnGet( list, int ) ;
+
+bool _KotonelvCalled( void ) ;
+void _KotonelvFree( void ) ;
 
 
 /* <] - Kotone - [> */
 typedef struct _kotone_functions{
-     list ( *fnCreateList )( mode ) ;
-     void ( *fnAddList )( list, string ) ;
-     stack ( *fnCreateStack )( mode ) ;
-     void ( *fnPushStack )( stack, string ) ;
+     list ( *fnCreate )( void ) ;
+     void ( *fnAdd )( list, string ) ;
+     string ( *fnGet )( list, int ) ;
 }KotoneFunctions ;
 
 #define BIRTH_KOTONE {\
-     _KotonefnCreateList,\
-     _KotonefnAddList,\
-     _KotonefnCreateStack,\
-     _KotonefnPushStack\
+     _KotonefnCreate,\
+     _KotonefnAdd,\
+     _KotonefnGet\
 }
 
 static KotoneFunctions Kotone ;
@@ -42,20 +44,16 @@ KotoneFunctions callKotone( void ) ;
 
 //--< Mydata Declaration >--//
 typedef struct myDataKotone{
-     list listSeq ;
-     stack stackSeq ;
-     string myList[MAX_LIST_COUNT][MAX_LIST_SIZE] ;
-     string myStack[MAX_STACK_COUNT][MAX_STACK_SIZE] ;
-     int listIndex[MAX_LIST_COUNT] ;
-     int stackIndex[MAX_STACK_COUNT] ;
+     bool isKotone ;
+     list seq ;
+     string myList[KOTONE_MAX_LIST_COUNT][KOTONE_MAX_LIST_SIZE] ;
+     int index[KOTONE_MAX_LIST_COUNT] ;
 }_MyDataKotone ;
 
 #define INIT_KOTONE_MYDATA {\
-     1,\
-     1,\
+     false,\
+     0,\
      { { NULL } },\
-     { { NULL } },\
-     { 0 },\
      { 0 }\
 }
 
