@@ -36,9 +36,11 @@ void _KotonefnAdd( list listID, string s ){
      int size ;
 
      size = strlen( s ) + 1 ;
-     MyData.myList[listID][MyData.index[listID]] = malloc( size ) ;
-     strcpy( MyData.myList[listID][MyData.index[listID]], s );
+     MyData.myList[listID][MyData.index[listID]].data = malloc( size ) ;
+     strcpy( MyData.myList[listID][MyData.index[listID]].data, s ) ;
      MyData.index[listID]++ ;
+     MyData.myList[listID][MyData.index[listID]].prev++ ;
+     MyData.myList[listID][MyData.index[listID]].next++ ;
 
      return ;
 }
@@ -55,7 +57,7 @@ string _KotonefnGet( list listID, int index ){
           return NULL ;
      }
 
-     return MyData.myList[listID][index] ;
+     return MyData.myList[listID][index].data ;
 }
 
 //------------------------
@@ -89,7 +91,7 @@ void _KotonelvFree( void ){
 
      for( i = 0 ; i < MyData.seq ; i++ ){
           for( j = 0 ; j < MyData.index[i] ; j++ ){
-               free( MyData.myList[i][j] ) ;
+               free( MyData.myList[i][j].data ) ;
           }
      }
 
