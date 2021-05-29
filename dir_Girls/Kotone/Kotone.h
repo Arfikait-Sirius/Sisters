@@ -44,29 +44,31 @@ KotoneFunctions callKotone( void ) ;
 
 //--< Mydata Declaration >--//
 typedef struct listData{
-     int prev ;
-     int next ;
+     struct listData* prev ;
+     struct listData* next ;
      string data ;
 }_ListData ;
 
 typedef struct myDataKotone{
      bool isKotone ;
      list seq ;
+     int accessIndex[KOTONE_MAX_LIST_COUNT] ;
+     _ListData* accessList[KOTONE_MAX_LIST_COUNT][KOTONE_MAX_LIST_SIZE] ;
      _ListData myList[KOTONE_MAX_LIST_COUNT][KOTONE_MAX_LIST_SIZE] ;
-     int index[KOTONE_MAX_LIST_COUNT] ;
 }_MyDataKotone ;
 
 #define INIT_KOTONE_MYDATA {\
      false,\
      0,\
+     { 0 },\
+     { NULL },\
      {\
           {\
-               0,\
-               1,\
+               NULL,\
+               NULL,\
                NULL\
           }\
-     },\
-     { 0 }\
+     }\
 }
 
 
