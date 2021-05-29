@@ -33,14 +33,34 @@ list _KotonefnCreate( void ){
 //     Skill
 //------------------------
 void _KotonefnAdd( list listID, string s ){
+     int i ;
+     int index ;
+     _ListData* currAddress ;
+     _ListData* prev ;
      int size ;
 
+     for( i = 0 ; i < MyData.accessIndex[listID] ; i++ ){
+          if( MyData.accessList[listID][i] != NULL ){
+               break ;
+          }
+     }
+     index = i ;
+
      size = strlen( s ) + 1 ;
-     MyData.myList[listID][MyData.index[listID]].data = malloc( size ) ;
-     strcpy( MyData.myList[listID][MyData.index[listID]].data, s ) ;
-     MyData.index[listID]++ ;
-     MyData.myList[listID][MyData.index[listID]].prev++ ;
-     MyData.myList[listID][MyData.index[listID]].next++ ;
+     MyData.myList[listID][index].data = malloc( size ) ;
+     strcpy( MyData.myList[listID][index].data, s ) ;
+     currAddress = &( MyData.myList[listID][index] ) ;
+     MyData.accessList[listID][index] = currAddress ;
+     MyData.accessIndex[listID]++ ;
+
+     if( index == 0 ){
+          prev = NULL ;
+     }else{
+          prev = MyData.accessList[listID][index - 1] ;
+     }
+     MyData.myList[listID][index].prev = prev ;
+
+     MyData.myList[listID][index - 1].next = currAddress ;
 
      return ;
 }
@@ -53,11 +73,8 @@ void _KotonefnAdd( list listID, string s ){
 //     Skill
 //------------------------
 string _KotonefnGet( list listID, int index ){
-     if( MyData.index[listID] <= index ){
-          return NULL ;
-     }
 
-     return MyData.myList[listID][index].data ;
+     return MyData.accessList[listID][index]->data ;
 }
 
 //------------------------
@@ -90,7 +107,10 @@ void _KotonelvFree( void ){
      int j ;
 
      for( i = 0 ; i < MyData.seq ; i++ ){
-          for( j = 0 ; j < MyData.index[i] ; j++ ){
+          for( j = 0 ; j < KOTONE_MAX_LIST_SIZE ; j++ ){
+               if( MyData.myList[i][j].data == NULL ){
+                    continue ;
+               }
                free( MyData.myList[i][j].data ) ;
           }
      }
