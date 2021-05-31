@@ -40,7 +40,7 @@ void _KotonefnAdd( list listID, string s ){
      int size ;
 
      for( i = 0 ; i < MyData.accessIndex[listID] ; i++ ){
-          if( MyData.accessList[listID][i] != NULL ){
+          if( MyData.accessList[listID][i] == NULL ){
                break ;
           }
      }
@@ -56,7 +56,7 @@ void _KotonefnAdd( list listID, string s ){
      if( index == 0 ){
           prev = NULL ;
      }else{
-          prev = MyData.accessList[listID][index - 1] ;
+          prev = &( MyData.myList[listID][index - 1] ) ;
      }
      MyData.myList[listID][index].prev = prev ;
 
