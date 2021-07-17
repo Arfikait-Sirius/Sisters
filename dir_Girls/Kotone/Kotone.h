@@ -19,6 +19,7 @@
 list _KotonefnCreate( void ) ;
 void _KotonefnAdd( list, string ) ;
 string _KotonefnGet( list, int ) ;
+void _KotonefnRemove( list, int ) ;
 
 bool _KotonelvCalled( void ) ;
 void _KotonelvFree( void ) ;
@@ -52,8 +53,7 @@ typedef struct listData{
 typedef struct myDataKotone{
      bool isKotone ;
      list seq ;
-     int accessIndex[KOTONE_MAX_LIST_COUNT] ;
-     _ListData* accessList[KOTONE_MAX_LIST_COUNT][KOTONE_MAX_LIST_SIZE] ;
+     int myIndex[KOTONE_MAX_LIST_COUNT] ;
      _ListData myList[KOTONE_MAX_LIST_COUNT][KOTONE_MAX_LIST_SIZE] ;
 }_MyDataKotone ;
 
@@ -61,7 +61,6 @@ typedef struct myDataKotone{
      false,\
      0,\
      { 0 },\
-     { NULL },\
      {\
           {\
                NULL,\

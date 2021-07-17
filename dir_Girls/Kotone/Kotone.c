@@ -33,34 +33,26 @@ list _KotonefnCreate( void ){
 //     Skill
 //------------------------
 void _KotonefnAdd( list listID, string s ){
-     int i ;
      int index ;
+     int size ;
      _ListData* currAddress ;
      _ListData* prev ;
-     int size ;
 
-     for( i = 0 ; i < MyData.accessIndex[listID] ; i++ ){
-          if( MyData.accessList[listID][i] == NULL ){
-               break ;
-          }
-     }
-     index = i ;
+     index = MyData.myIndex[listID] ;
 
      size = strlen( s ) + 1 ;
      MyData.myList[listID][index].data = malloc( size ) ;
      strcpy( MyData.myList[listID][index].data, s ) ;
      currAddress = &( MyData.myList[listID][index] ) ;
-     MyData.accessList[listID][index] = currAddress ;
-     MyData.accessIndex[listID]++ ;
 
      if( index == 0 ){
-          prev = NULL ;
+          MyData.myList[listID][index].prev = NULL ;
      }else{
-          prev = &( MyData.myList[listID][index - 1] ) ;
+          MyData.myList[listID][index].prev = &( MyData.myList[listID][index - 1] ) ;
+          MyData.myList[listID][index - 1].next = currAddress ;
      }
-     MyData.myList[listID][index].prev = prev ;
 
-     MyData.myList[listID][index - 1].next = currAddress ;
+     MyData.myIndex[listID]++ ;
 
      return ;
 }
@@ -73,8 +65,34 @@ void _KotonefnAdd( list listID, string s ){
 //     Skill
 //------------------------
 string _KotonefnGet( list listID, int index ){
+     int i ;
 
-     return MyData.accessList[listID][index]->data ;
+     i = index ;
+
+     return MyData.myList[listID][i].data ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnRemove
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _KotonefnRemove( list listID, int index ){
+     int i ;
+
+     i = index ;
+     if( MyData.myList[listID][i].prev != NULL ){
+          MyData.myList[listID][i - 1].next = MyData.myList[listID][i + 1].next ;
+     }
+     if( MyData.myList[listID][i].next != NULL ){
+          MyData.myList[listID][i + 1].prev = MyData.myList[listID][i].prev ;
+     }
+
+     free( MyData.myList[listID][i].data ) ;
+
+     return ;
 }
 
 //------------------------
