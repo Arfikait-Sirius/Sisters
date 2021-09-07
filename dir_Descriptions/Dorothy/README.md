@@ -1,4 +1,4 @@
-# How to call Dorothy
+# Dorothy のアサイン方法
 ```c
 static void callSisters( void ){
      Dorothy = callDorothy() ;
@@ -7,7 +7,8 @@ static void callSisters( void ){
 }
 ```
 
-# Skills
+# 作業スキル
+例えばこんなファイルがあったとしたら......
 **./path/file.txt**
 ```
 This is text file.
@@ -19,79 +20,72 @@ Number of lines is 2.
 string fileName = "./path/file.txt" ;
 
 file fileID = Dorothy.fnOpen( fileName ) ;
-// Open the file and return the id for access.
 ```
+* 文字列 `filename` で指定したファイルを開いて準備してくれます
+* 以降そのファイルにアクセスするためのファイル ID を教えてくれます
 
 ## fnClose()
 ```c
-// After opening file and the file id is "fileID".
-
 Dorothy.fnClose( fileID ) ;
-// Close the file.
 ```
+* ファイル ID で指定したファイルを閉じてくれます
 
 ## fnReadLine()
 ```c
-// After opening file and the file id is "fileID".
-
 string result1 = Dorothy.fnReadLine( fileID ) ;
-// result1( The first time ): "This is text file."
+// result1: "This is text file."
 
 string result2 = Dorothy.fnReadLine( fileID ) ;
-// result2( The Second time ): "Number of lines is 2."
+// result2: "Number of lines is 2."
 ```
+* ファイルのテキストを行単位で読み出して教えてくれます
+* 副作用のあるスキルです
+  * 呼び出す度に読み出す行が進みます
 
 ## fnWriteLine()
 ```c
-// After opening file and the file id is "fileID".
-
 string line = "This is new line." ;
 
 Dorothy.fnWriteLine( fileID, line ) ;
-// Write "This is new line." to the file.
 ```
+* ファイルにテキストを行単位で書き出してくれます
 
 ## fnRename()
 ```c
-// After opening file and the file id is "fileID".
+string newFilename = "NewFile" ;
 
-string newFileName = "NewFile" ;
-
-Dorothy.fnRename( fileID, newFileName ) ;
-// Rename the file to "NewFile".
+Dorothy.fnRename( fileID, newFilename ) ;
 ```
+* ファイル ID で指定したファイルのファイル名を文字列 `newFilename` に変更してくれます
 
 ## fnDelete()
 ```c
 string fileName = "./path/file.txt" ;
 
 Dorothy.fnDelete( fileName ) ;
-// Delete the file.
 ```
+* 文字列 `filename` で指定したファイルを削除してくれます
 
 ## fnCopy()
 ```c
-string destFileName = "./path/file_copy.txt" ;
-string srcFileName = "./path/file.txt" ;
+string destFilename = "./path/file_copy.txt" ;
+string srcFilename = "./path/file.txt" ;
 
-Dorothy.fnCopy( destFileName, srcFileName ) ;
-// Copy file "./path/file.txt" to file "./path/file_copy.txt".
+Dorothy.fnCopy( destFilename, srcFilename ) ;
 ```
+* 文字列 `srcFilename` で指定したファイルを文字列 `destFilename` で指定するファイルにコピーしてくれます
 
-# Judges
+# 判定スキル
 ## isNotEnd()
 ```c
-// After opening file and the file id is "fileID".
-
 bool result = Dorothy.isNotEnd( fileID ) ;
 // Judge if exist unread lines.( Exist: true )
 ```
+* まだ読み出していない行があるかどうかを教えてくれます
 
 ## isError()
 ```c
-// After opening file and the file id is "fileID".
-// Or after failed to open file.
-
 bool result = Dorothy.isError( fileID ) ;
 // Judge if exist any errors.( Exist: true )
 ```
+* ファイル処理でエラーが発生しているかどうかを教えてくれます
