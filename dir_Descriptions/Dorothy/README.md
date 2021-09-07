@@ -8,7 +8,7 @@ static void callSisters( void ){
 ```
 
 # 作業スキル
-例えばこんなファイルがあったとしたら......
+例えばこんなファイルがあったとしたら......  
 **./path/file.txt**
 ```
 This is text file.
