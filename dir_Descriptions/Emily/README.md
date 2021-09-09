@@ -1,4 +1,4 @@
-# How to call Emily
+# Emily のアサイン方法
 ```c
 static void callSisters( void ){
      Emily = callEmily() ;
