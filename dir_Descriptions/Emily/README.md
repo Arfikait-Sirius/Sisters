@@ -66,4 +66,4 @@ Emily.fnDispLineCustom( prefix, message, suffix ) ;
 Emily.fnNewLine() ;
 // Display new line.
 ```
-* 標準入力に空行を 1行表示してくれます
+* 標準出力に空行を 1行表示してくれます
