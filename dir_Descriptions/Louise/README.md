@@ -86,12 +86,12 @@ string result = Louise.fnUpperFirst( base ) ;
 * 非破壊的スキルなので文字列 `base` は書き換えません
 * アルファベット以外には何もしません
 
-## fnGetMiddle()
+## fnGetSubstring()
 ```c
 string base = "This is String_123 and Int_456." ;
 string format = " is %s and " ;
 
-string result = Louise.fnGetMiddle( format, base ) ;
+string result = Louise.fnGetSubstring( format, base ) ;
 // result: "String_123"
 ```
 * 文字列 `base` を基準として文字列 `format` の %s にあたる部分文字列を教えてくれます
