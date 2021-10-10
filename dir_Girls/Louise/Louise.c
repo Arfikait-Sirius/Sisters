@@ -226,12 +226,12 @@ string _LouisefnUpperFirst( string data ){
 
 //------------------------
 // :[ NAME ]:
-//     fnGetMiddle
+//     fnGetSubstring
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnGetMiddle( string format, string data ){
+string _LouisefnGetSubstring( string format, string data ){
      int size ;
      bool isAllocation ;
      int flen ;
