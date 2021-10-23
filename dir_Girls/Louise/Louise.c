@@ -231,7 +231,7 @@ string _LouisefnUpperFirst( string data ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _LouisefnGetSubstring( string format, string data ){
+string _LouisefnGetSubstring( string data, string format ){
      int size ;
      bool isAllocation ;
      int flen ;
