@@ -91,7 +91,7 @@ string result = Louise.fnUpperFirst( base ) ;
 string base = "This is String_123 and Int_456." ;
 string format = " is %s and " ;
 
-string result = Louise.fnGetSubstring( format, base ) ;
+string result = Louise.fnGetSubstring( base, format ) ;
 // result: "String_123"
 ```
 * 文字列 `base` を基準として文字列 `format` の %s にあたる部分文字列を教えてくれます
