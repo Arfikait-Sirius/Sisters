@@ -19,7 +19,7 @@ int result = Sylvia.fnStrToNum( str ) ;
 
 ## fnCalcStrExpression()
 ```c
-string str = "5 + 3-  2   *2 + 1" ;
+string str = "5 + 3-  2   *2 +  1" ;
 
 int result = Sylvia.fnCalcStrExpression( str ) ;
 // result: 5
