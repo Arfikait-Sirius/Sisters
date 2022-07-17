@@ -3,6 +3,7 @@
 
 #include "./sisters/skillsheets/commons/siscmn.h"
 
+#include "./sisters/skillsheets/Alice.h"
 #include "./sisters/skillsheets/Chloe.h"
 #include "./sisters/skillsheets/Dorothy.h"
 #include "./sisters/skillsheets/Emily.h"
