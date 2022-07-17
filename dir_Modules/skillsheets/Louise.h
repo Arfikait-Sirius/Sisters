@@ -12,6 +12,7 @@
 //--< Standard Definition >--//
 #include "./commons/sisdef.h"
 #include "./commons/sisset.h"
+#include "./commons/sismsg.h"
 
 
 //--< Prototype Declarations >--//

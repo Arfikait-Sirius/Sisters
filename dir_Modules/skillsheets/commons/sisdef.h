@@ -12,8 +12,14 @@ typedef int stack ;
 typedef int queue ;
 typedef int map ;
 typedef int schema ;
-typedef int storage ;
 typedef void* fnp ;
+typedef int pochette ;
+
+typedef struct Pochettes {
+    string key ;
+    char type[16] ;
+    string value ;
+} pochettes ;
 
 
 // ** KEY SYMBOL DEFINE **

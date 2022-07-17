@@ -23,7 +23,8 @@
 
 
 // Alice
-#define ALICE_MAX_STORAGES 16
+#define ALICE_MAX_POCHETTE_ENTRY 512
+#define ALICE_MAX_POCHETTES 64
 
 
 // Dorothy

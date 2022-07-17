@@ -16,22 +16,25 @@
 
 
 //--< Prototype Declarations >--//
-storage _AlicefnOpenStorage( string, string ) ;
-void _AlicefnCloseStorage( storage ) ;
-string _AlicefnGetData( storage, string ) ;
+pochette _AlicefnCreate( void ) ;
+void _AlicefnPutString( pochette, string, string, string ) ;
+string _AlicefnGetString( pochette, string ) ;
+string _AlicefnToString( pochette ) ;
 
 
 /* <] - Alice - [> */
 typedef struct _alice_functions{
-     storage ( *fnOpen )( string, string ) ;
-     void ( *fnClose )( storage ) ;
-     string ( *fnGet )( storage, string ) ;
-}AliceFunctions ;
+     pochette ( *fnCreate )( void ) ;
+     void ( *fnPutString )( pochette, string, string, string ) ;
+     string ( *fnGetString )( pochette, string ) ;
+     string ( *fnToString )( pochette ) ;
+} AliceFunctions ;
 
 #define BIRTH_ALICE {\
-     _AlicefnOpenStorage,\
-     _AlicefnCloseStorage,\
-     _AlicefnGetData\
+     _AlicefnCreate,\
+     _AlicefnPutString,\
+     _AlicefnGetString,\
+     _AlicefnToString\
 }
 
 static AliceFunctions Alice ;
@@ -41,15 +44,17 @@ AliceFunctions callAlice( void ) ;
 
 //--< MyData Declaration >--//
 typedef struct _myDataAlice{
-     storage seq ;
-     FILE* fp[ALICE_MAX_STORAGES] ;
-     char type[ALICE_MAX_STORAGES][5] ;
-}_MyDataAlice ;
+     int seq ;
+     int curr[ALICE_MAX_POCHETTES] ;
+     pochettes poc[ALICE_MAX_POCHETTE_ENTRY][ALICE_MAX_POCHETTES] ;
+     string str[ALICE_MAX_POCHETTES] ;
+} _MyDataAlice ;
 
 #define INIT_ALICE_MYDATA {\
      0,\
-     { NULL },\
-     { { NL } }\
+     { 0 },\
+     { { 0 } },\
+     { NULL }\
 }
 
 

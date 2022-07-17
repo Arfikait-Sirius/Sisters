@@ -15,51 +15,82 @@ AliceFunctions callAlice( void ){
 
 //------------------------
 // :[ NAME ]:
-//     fnOpen
+//     fnCreate
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-storage _AlicefnOpenStorage( string fileName, string storageType ){
-     FILE* fp ;
-     char* filePath ;
-
-     filePath = malloc( strlen( fileName ) + 3 ) ;
-     sprintf( filePath, "./%s", fileName ) ;
-     fp = fopen( fileName, "r" ) ;
-     free( filePath ) ;
-     if( fp == NULL ){
-          return -1 ;
+pochette _AlicefnCreate( void ){
+     if( MyData.seq >= ALICE_MAX_POCHETTES ){
+          return 0 ;
      }
-     MyData.fp[MyData.seq] = fp ;
-     strcpy( MyData.type[MyData.seq], storageType ) ;
-
      return MyData.seq++ ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnClose
+//     fnPutString
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _AlicefnCloseStorage( storage storageID ){
+void _AlicefnPutString( pochette pochetteID, string key, string type, string value ){
+     MyData.poc[pochetteID][MyData.curr[pochetteID]].key = malloc( strlen( key ) + 1 ) ;
+     MyData.poc[pochetteID][MyData.curr[pochetteID]].value = malloc( strlen( value ) + 1 ) ;
 
-     fclose( MyData.fp[storageID] ) ;
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].key, key ) ;
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].type, type ) ;
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].value, value ) ;
+
+     MyData.curr[pochetteID]++ ;
 
      return ;
 }
 
 //------------------------
 // :[ NAME ]:
-//     fnGet
+//     fnGetString
 //
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-string _AlicefnGetData( storage storageID, string key ){
-     string data ;
+string _AlicefnGetString( pochette pochetteID, string key ){
+     string result ;
+     int i ;
 
-     return data ;
+     for( i = 0 ; i < MyData.curr[pochetteID] ; i++ ){
+          if( strcmp( MyData.poc[pochetteID][i].key, key ) == 0 ){
+               result = MyData.poc[pochetteID][i].value ;
+               break ;
+          }
+     }
+
+     return result ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnToString
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _AlicefnToString( pochette pochetteID ){
+     int len ;
+     int i ;
+     char str[64 + 1] = { NL } ;
+
+     len = MyData.curr[pochetteID] * 64 + 5 + 1 ;
+     MyData.str[pochetteID] = malloc( len + 1 ) ;
+     strcat( MyData.str[pochetteID], "[" ) ;
+     for( i = 0 ; i < MyData.curr[pochetteID] ; i++ ){
+          if( i > 0 ) {
+               strcat( MyData.str[pochetteID], "," ) ;
+          }
+          sprintf( str, "%s@%s=%s", MyData.poc[pochetteID][i].key, MyData.poc[pochetteID][i].type, MyData.poc[pochetteID][i].value ) ;
+          sprintf( MyData.str[pochetteID], "%s%s", MyData.str[pochetteID], str ) ;
+     }
+     strcat( MyData.str[pochetteID], "]" ) ;
+
+     return MyData.str[pochetteID] ;
 }
