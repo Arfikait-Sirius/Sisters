@@ -31,17 +31,17 @@ if [ ! -d $DIR_SISTERS ]; then
 fi
 cp ./dir_Modules/Sisters_mac.h $1/Sisters.h
 cp \
-     ./dir_Modules/skillsheets/Alice.h \
-     ./dir_Modules/skillsheets/Chloe.h \
-     ./dir_Modules/skillsheets/Dorothy.h \
-     ./dir_Modules/skillsheets/Emily.h \
-     ./dir_Modules/skillsheets/Grace.h \
-     ./dir_Modules/skillsheets/Kotone.h \
-     ./dir_Modules/skillsheets/Louise.h \
-     ./dir_Modules/skillsheets/Rachel.h \
-     ./dir_Modules/skillsheets/Sylvia.h \
-     ./dir_Modules/skillsheets/Tina.h \
-     ./dir_Modules/skillsheets/Veera.h \
+     ./dir_Girls/Alice/Alice.h \
+     ./dir_Girls/Chloe/Chloe.h \
+     ./dir_Girls/Dorothy/Dorothy.h \
+     ./dir_Girls/Emily/Emily.h \
+     ./dir_Girls/Grace/Grace.h \
+     ./dir_Girls/Kotone/Kotone.h \
+     ./dir_Girls/Louise/Louise.h \
+     ./dir_Girls/Rachel/Rachel.h \
+     ./dir_Girls/Sylvia/Sylvia.h \
+     ./dir_Girls/Tina/Tina.h \
+     ./dir_Girls/Veera/Veera.h \
      $DIR_SISTERS_SKILLSHEETS/.
 cp \
      ./dir_Modules/skillsheets/commons/siscmn.h \
