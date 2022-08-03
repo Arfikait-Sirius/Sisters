@@ -34,12 +34,12 @@ pochette _AlicefnCreate( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _AlicefnPutString( pochette pochetteID, string key, string type, string value ){
+void _AlicefnPutString( pochette pochetteID, string key, string value ){
      MyData.poc[pochetteID][MyData.curr[pochetteID]].key = malloc( strlen( key ) + 1 ) ;
      MyData.poc[pochetteID][MyData.curr[pochetteID]].value = malloc( strlen( value ) + 1 ) ;
 
      strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].key, key ) ;
-     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].type, type ) ;
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].type, "string" ) ;
      strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].value, value ) ;
 
      MyData.curr[pochetteID]++ ;
