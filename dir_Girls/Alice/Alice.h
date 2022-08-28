@@ -17,16 +17,20 @@
 
 //--< Prototype Declarations >--//
 pochette _AlicefnCreate( void ) ;
-void _AlicefnPutString( pochette, string, string, string ) ;
+void _AlicefnPutString( pochette, string, string ) ;
 string _AlicefnGetString( pochette, string ) ;
+void _AlicefnPutInt( pochette, string, int ) ;
+int _AlicefnGetInt( pochette, string ) ;
 string _AlicefnToString( pochette ) ;
 
 
 /* <] - Alice - [> */
 typedef struct _alice_functions{
      pochette ( *fnCreate )( void ) ;
-     void ( *fnPutString )( pochette, string, string, string ) ;
+     void ( *fnPutString )( pochette, string, string ) ;
      string ( *fnGetString )( pochette, string ) ;
+     void ( *fnPutInt )( pochette, string, int ) ;
+     int ( *fnGetInt )( pochette, string ) ;
      string ( *fnToString )( pochette ) ;
 } AliceFunctions ;
 
@@ -34,6 +38,8 @@ typedef struct _alice_functions{
      _AlicefnCreate,\
      _AlicefnPutString,\
      _AlicefnGetString,\
+     _AlicefnPutInt,\
+     _AlicefnGetInt,\
      _AlicefnToString\
 }
 
