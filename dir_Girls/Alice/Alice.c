@@ -60,7 +60,51 @@ string _AlicefnGetString( pochette pochetteID, string key ){
 
      for( i = 0 ; i < MyData.curr[pochetteID] ; i++ ){
           if( strcmp( MyData.poc[pochetteID][i].key, key ) == 0 ){
-               result = MyData.poc[pochetteID][i].value ;
+               result = ( string ) MyData.poc[pochetteID][i].value ;
+               break ;
+          }
+     }
+
+     return result ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnPutInt
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+void _AlicefnPutInt( pochette pochetteID, string key, int value ){
+     char numStr[64] = { NL } ;
+
+     sprintf( numStr, "%d", value ) ;
+     MyData.poc[pochetteID][MyData.curr[pochetteID]].key = malloc( strlen( key ) + 1 ) ;
+     MyData.poc[pochetteID][MyData.curr[pochetteID]].value = malloc( strlen( numStr ) + 1 ) ;
+
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].key, key ) ;
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].type, "int" ) ;
+     strcpy( MyData.poc[pochetteID][MyData.curr[pochetteID]].value, numStr ) ;
+
+     MyData.curr[pochetteID]++ ;
+
+     return ;
+}
+
+//------------------------
+// :[ NAME ]:
+//     fnGetInt
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+int _AlicefnGetInt( pochette pochetteID, string key ){
+     int result ;
+     int i ;
+
+     for( i = 0 ; i < MyData.curr[pochetteID] ; i++ ){
+          if( strcmp( MyData.poc[pochetteID][i].key, key ) == 0 ){
+               result = atoi( MyData.poc[pochetteID][i].value ) ;
                break ;
           }
      }
