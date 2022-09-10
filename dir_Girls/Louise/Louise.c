@@ -418,9 +418,9 @@ bool _LouiseisFormat( string data, string format ){
           }
           p = strstr( ( data + pos ), tmpStr ) ;
           if( p == NULL ){
-               return false;
+               return false ;
           }
-          pos = len ;
+          pos = ( p + strlen( tmpStr ) ) - data ;
           p = strstr( strFormat, "%s" ) ;
      }
      strcpy( tmpStr, strFormat ) ;
