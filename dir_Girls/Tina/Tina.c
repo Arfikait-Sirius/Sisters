@@ -20,9 +20,9 @@ TinaFunctions callTina( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _TinafnSetGirlName( string girlName ){
+void _TinafnSetGirlName( string name ){
 
-     printf( "%s%s\n", LABEL_GIRLS_NAME, girlName ) ;
+     printf( "%s%s\n", LABEL_GIRLS_NAME, name ) ;
 
      return ;
 }
@@ -36,8 +36,7 @@ void _TinafnSetGirlName( string girlName ){
 //------------------------
 void _TinafnSetSkillName( string target ){
 
-     sprintf( MyData.skillName, "%s()", target ) ;
-     printf( "%s%s\n", LABEL_TARGET, MyData.skillName ) ;
+     printf( "%s%s\n", LABEL_TARGET, target ) ;
 
      return ;
 }
@@ -54,7 +53,7 @@ void _TinafnJudge( bool judgement ){
      if( judgement ){
           printf( "%sOK\n", LABEL_JUDGE ) ;
      }else{
-          printf( "%sNG - Please check \"%s\".\n", LABEL_JUDGE, MyData.skillName ) ;
+          printf( "%sNG - Please check this source.\n", LABEL_JUDGE ) ;
      }
 
      return ;
