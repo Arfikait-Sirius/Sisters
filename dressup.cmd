@@ -31,16 +31,16 @@ IF NOT exist %DIR_SISTERS% (
 
 copy .\dir_Modules\Sisters_windows.h %1\Sisters.h > NUL
 
-copy .\dir_Girls\Alice\Alice.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Chloe\Chloe.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Dorothy\Dorothy.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Emily\Emily.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Kotone\Kotone.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Louise\Louise.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Rachel\Rachel.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Sylvia\Sylvia.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Tina\Tina.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
-copy .\dir_Girls\Veera\Veera.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Alice.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Chloe.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Dorothy.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Emily.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Kotone.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Louise.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Rachel.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Sylvia.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Tina.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
+copy .\dir_Modules\skillsheets\Veera.h %DIR_SISTERS_SKILLSHEETS%\. > NUL
 
 copy .\dir_Modules\skillsheets\commons\siscmn.h %DIR_SISTERS_COMMONS%\. > NUL
 copy .\dir_Modules\skillsheets\commons\sisdef.h %DIR_SISTERS_COMMONS%\. > NUL
