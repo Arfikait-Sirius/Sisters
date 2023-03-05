@@ -2,6 +2,7 @@
 #define _SISTERS_
 
 #include "./sisters/skillsheets/commons/siscmn.h"
+#include "./sisters/skillsheets/commons/sisdef.h"
 
 #include "./sisters/skillsheets/Alice.h"
 #include "./sisters/skillsheets/Chloe.h"
