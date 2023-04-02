@@ -8,6 +8,38 @@ static void callSisters( void ){
 ```
 
 # 作業スキル
+## fnSetBuffer()
+```c
+string buffer[2] ;
+
+int i ;
+for( i = 0 ; i < 2 ; i++ ){
+  buffer[i] = malloc( 16 ) ;
+}
+
+Louise.fnSetBuffer( buffer ) ;
+
+// Louise.fnFix() による固定化文字列が buffer に格納されます
+
+for( i = 0 ; i < 2 ; i++ ){
+  free( buffer[i] ) ;
+}
+```
+* 文字列格納用のバッファーを設定できます
+  * 未設定の場合は Louise が自動で内部バッファーにメモして持っていてくれます
+    * 優しいですね
+
+## fnFix()
+```c
+string src = "String_123." ;
+
+string result = Louise.fnFix( src ) ;
+// result: "String_123."
+```
+* 文字列 `src` を文字列 `result` に固定化してくれます
+  * Louise の文字列処理はこのスキルを除いてすべて一時的な変数で行われます
+  * 内部的にはポインタでの管理となるため変更されるといけない文字列はこのスキルで固定化しましょう
+
 ## fnCount()
 ```c
 string base = "String_123 and String_456, string_123:STRING_456" ;
@@ -17,15 +49,6 @@ int count = Louise.fnCount( base, target ) ;
 // count: 2
 ```
 * 文字列 `base` に含まれる文字列 `target` がいくつあるのか数えてくれます
-
-## fnCopy()
-```c
-string src = "String_123." ;
-
-string result = Louise.fnCopy( src ) ;
-// result: "String_123."
-```
-* 文字列 `src` を文字列 `result` にコピーしてくれます
 
 ## fnReplace()
 ```c
