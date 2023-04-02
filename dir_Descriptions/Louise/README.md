@@ -8,27 +8,6 @@ static void callSisters( void ){
 ```
 
 # 作業スキル
-## fnSetBuffer()
-```c
-string buffer[2] ;
-
-int i ;
-for( i = 0 ; i < 2 ; i++ ){
-  buffer[i] = malloc( 16 ) ;
-}
-
-Louise.fnSetBuffer( buffer ) ;
-
-// Louise.fnFix() による固定化文字列が buffer に格納されます
-
-for( i = 0 ; i < 2 ; i++ ){
-  free( buffer[i] ) ;
-}
-```
-* 文字列格納用のバッファーを設定できます
-  * 未設定の場合は Louise が自動で内部バッファーにメモして持っていてくれます
-    * 優しいですね
-
 ## fnFix()
 ```c
 string src = "String_123." ;
@@ -37,8 +16,10 @@ string result = Louise.fnFix( src ) ;
 // result: "String_123."
 ```
 * 文字列 `src` を文字列 `result` に固定化してくれます
-  * Louise の文字列処理はこのスキルを除いてすべて一時的な変数で行われます
-  * 内部的にはポインタでの管理となるため変更されるといけない文字列はこのスキルで固定化しましょう
+  * Louise が対応した文字列は内部的にポインタでの管理となっているためこのスキルを除いてすべて一時的な変数扱いです
+  * 変更されるといけない文字列はこのスキルで固定化しましょう
+  * 後述の `fnSetBuffer()` 未設定の場合は Louise が自動で内部バッファーにメモして持っていてくれます
+    * 優しいですね
 
 ## fnCount()
 ```c
@@ -203,3 +184,23 @@ bool result = Louise.isEmpty( target ) ;
 // result: true
 ```
 * 文字列 `target` が空文字かどうかを教えてくれます
+
+# ちょこっと上級者さん向けに提供しているスキル
+## fnSetBuffer()
+```c
+string buffer[2] ;
+
+int i ;
+for( i = 0 ; i < 2 ; i++ ){
+  buffer[i] = malloc( 16 ) ;
+}
+
+Louise.fnSetBuffer( buffer ) ;
+
+// Louise.fnFix() による固定化文字列が buffer に格納されます
+
+for( i = 0 ; i < 2 ; i++ ){
+  free( buffer[i] ) ;
+}
+```
+* 文字列格納用のバッファーを設定できます
