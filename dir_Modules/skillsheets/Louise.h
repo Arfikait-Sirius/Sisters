@@ -16,8 +16,9 @@
 
 
 //--< Prototype Declarations >--//
+string _LouisefnFix( string ) ;
+void _LouisefnSetBuffer( string[] ) ;
 int _LouisefnCount( string, string ) ;
-string _LouisefnCopy( string ) ;
 string _LouisefnReplace( string, string, string ) ;
 string _LouisefnSplit( string, string, int ) ;
 string _LouisefnUpperAll( string ) ;
@@ -35,6 +36,7 @@ bool _LouiseisEqual( string, string ) ;
 bool _LouiseisEmpty( string ) ;
 
 static bool sfnAllocate( int ) ;
+static string sfnCopy( string ) ;
 
 bool _LouiselvCalled( void ) ;
 void _LouiselvFree( void ) ;
@@ -42,8 +44,9 @@ void _LouiselvFree( void ) ;
 
 /* <] - Louise - [> */
 typedef struct _louise_functions{
+     string ( *fnFix )( string ) ;
+     void ( *fnSetBuffer )( string[] ) ;
      int ( *fnCount )( string, string ) ;
-     string ( *fnCopy )( string ) ;
      string ( *fnReplace )( string, string, string ) ;
      string ( *fnSplit )( string, string, int ) ;
      string ( *fnUpperAll )( string ) ;
@@ -62,8 +65,9 @@ typedef struct _louise_functions{
 }LouiseFunctions ;
 
 #define BIRTH_LOUISE {\
+     _LouisefnFix,\
+     _LouisefnSetBuffer,\
      _LouisefnCount,\
-     _LouisefnCopy,\
      _LouisefnReplace,\
      _LouisefnSplit,\
      _LouisefnUpperAll,\
@@ -89,14 +93,20 @@ LouiseFunctions callLouise( void ) ;
 //--< Mydata Declaration >--//
 typedef struct myDataLouise{
      bool isLouise ;
-     int seq ;
-     string str[LOUISE_MAX_STRINGS] ;
+     int fixSeq ;
+     int userBufferSeq ;
+     string str ;
+     string fixBuffer[LOUISE_MAX_STRINGS] ;
+     string* userBuffer ;
 }_MyDataLouise ;
 
 #define INIT_LOUISE_MYDATA {\
      false,\
      0,\
-     { NULL }\
+     0,\
+     NULL,\
+     { NULL },\
+     NULL\
 }
 
 
