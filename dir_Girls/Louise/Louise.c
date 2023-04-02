@@ -5,7 +5,6 @@ static string MyName = "Louise" ;
 
 // Louise's Memo
 static _MyDataLouise MyData = INIT_LOUISE_MYDATA ;
-static string* str ;
 
 // Birth
 LouiseFunctions callLouise( void ){
