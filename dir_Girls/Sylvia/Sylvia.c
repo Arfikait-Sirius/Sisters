@@ -13,7 +13,7 @@ int _SylviafnFromString( string s ){
 
      isMinus = false ;
 
-     result = NL ;
+     result = 0 ;
      p = s ;
      while( *p != NL ){
           if( *p < 0x30 || 0x39 < *p ){
