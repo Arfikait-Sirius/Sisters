@@ -6,21 +6,35 @@ SylviaFunctions callSylvia( void ){
      return _SylviaSkills ;
 }
 
-int _SylviafnStrToNum( string data ){
-     int num ;
+int _SylviafnFromString( string s ){
+     int result ;
+     bool isMinus ;
      char* p ;
 
-     num = 0 ;
-     p = data ;
+     isMinus = false ;
+
+     result = NL ;
+     p = s ;
      while( *p != NL ){
           if( *p < 0x30 || 0x39 < *p ){
-               return NL ;
+               if( *p == MINUS && result == NL ){
+                    isMinus = true ;
+                    p++ ;
+                    continue ;
+               } else {
+                    return NL ;
+               }
           }
-          num *= 10 ;
-          num += *p++ - 0x30 ;
+          result *= 10 ;
+          result += *p++ - 0x30 ;
      }
 
-     return num ;
+     if( isMinus ){
+          result *= -1 ;
+     }
+
+     return result ;
+
 }
 
 int _SylviafnCalcStrExpression( string expression ){
