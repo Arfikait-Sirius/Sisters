@@ -19,9 +19,7 @@
 
 
 //--< Prototype Declarations >--//
-int mfnSylvia( int, char*[] ) ;
-
-int _SylviafnStrToNum( string ) ;
+int _SylviafnFromString( string ) ;
 int _SylviafnCalcStrExpression( string ) ;
 int _SylviafnAdd( int, int ) ;
 int _SylviafnSub( int, int ) ;
@@ -32,7 +30,7 @@ int sfnCalc( int*, char* ) ;
 
 /* <] - Sylvia - [> */
 typedef struct _sylvia_functions{
-     int ( *fnStrToNum )( string ) ;
+     int ( *fnFromString )( string ) ;
      int ( *fnCalcStrExpression )( string ) ;
      int ( *fnAdd )( int, int ) ;
      int ( *fnSub )( int, int ) ;
@@ -41,7 +39,7 @@ typedef struct _sylvia_functions{
 }SylviaFunctions ;
 
 #define BIRTH_SYLVIA {\
-     _SylviafnStrToNum,\
+     _SylviafnFromString,\
      _SylviafnCalcStrExpression,\
      _SylviafnAdd,\
      _SylviafnSub,\
