@@ -21,7 +21,7 @@
 //--< Prototype Declarations >--//
 int mfnGrace( int, char*[] ) ;
 
-void _GracefnService( int ) ;
+void _GracefnService( int, int ) ;
 void _GracefnDeploy( string ) ;
 void _GracefnSetValue( string, string ) ;
 
@@ -37,7 +37,7 @@ static string sfnGetValue( string ) ;
 
 /* <] - Grace - [> */
 typedef struct _grace_functions{
-     void ( *fnService )( int ) ;
+     void ( *fnService )( int, int ) ;
      void ( *fnDeploy )( string ) ;
      void ( *fnSetValue )( string, string ) ;
 }GraceFunctions ;
