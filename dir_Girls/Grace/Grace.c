@@ -20,7 +20,7 @@ GraceFunctions callGrace( void ){
 // :[ CATEGORY ]:
 //     Skill
 //------------------------
-void _GracefnService( int portNumber ){
+void _GracefnService( int portNumber, int maxNumOfListen ){
      int socketRead ;
      int socketWrite ;
      char method[MIN_LENGTH] ;
@@ -33,7 +33,7 @@ void _GracefnService( int portNumber ){
           return ;
      }
 
-     listen( socketRead, 5 ) ;
+     listen( socketRead, maxNumOfListen ) ;
      while( true ){
           socketWrite = sfnAccept( socketRead, method, url, protocol ) ;
           if( socketWrite < 0 ){
