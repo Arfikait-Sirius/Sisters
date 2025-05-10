@@ -102,6 +102,9 @@ string _LouisefnReplace( string base, string target, string replacement ){
      e = p + len ;
      size = strlen( base ) - len + strlen( replacement ) + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      sprintf( MyData.str, "%s%s%s", s, replacement, e ) ;
      free( s ) ;
 
@@ -146,6 +149,9 @@ string _LouisefnSplit( string data, string splitter, int position ){
      }
      size = strlen( s ) + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      strcpy( MyData.str, s ) ;
      free( d ) ;
 
@@ -167,6 +173,9 @@ string _LouisefnUpperAll( string data ){
 
      size = strlen( data ) + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      result = MyData.str ;
      c = *data++ ;
      while( c != NL ){
@@ -195,6 +204,9 @@ string _LouisefnLowerAll( string data ){
 
      size = strlen( data ) + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      result = MyData.str ;
      c = *data++ ;
      while( c != NL ){
@@ -224,6 +236,9 @@ string _LouisefnUpperFirst( string data ){
 
      size = strlen( data ) + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      result = MyData.str ;
      c = *data++ ;
      if( LOWER_A <= c && c <= LOWER_Z ){
@@ -284,6 +299,9 @@ string _LouisefnGetSubstring( string data, string format ){
      }
      size = strlen( s ) - len + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      strcpy( MyData.str, s + len ) ;
 
      return MyData.str ;
@@ -320,6 +338,9 @@ string _LouisefnTrim( string target ){
      *++p = NL ;
      size = strlen( s ) + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      strcpy( MyData.str, s ) ;
      free( t ) ;
 
@@ -350,6 +371,9 @@ string _LouisefnFromInt( int num ){
 
      size = digit + 1 ;
      isAllocation = sfnAllocate( size ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
      sprintf( MyData.str, "%d", num ) ;
 
      return MyData.str ;
