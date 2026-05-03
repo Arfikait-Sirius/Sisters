@@ -4,3 +4,5 @@ libSisters.a
 /dir_Rooms/Grace/*
 /dir_Examinations
 apply.sh
+.DS_Store
+**/.DS_Store
