@@ -21,6 +21,7 @@ void _LouisefnSetBuffer( string[] ) ;
 int _LouisefnCount( string, string ) ;
 string _LouisefnReplace( string, string, string ) ;
 string _LouisefnSplit( string, string, int ) ;
+string _LouisefnFill( string, int, char ) ;
 string _LouisefnUpperAll( string ) ;
 string _LouisefnLowerAll( string ) ;
 string _LouisefnUpperFirst( string ) ;
@@ -49,6 +50,7 @@ typedef struct _louise_functions{
      int ( *fnCount )( string, string ) ;
      string ( *fnReplace )( string, string, string ) ;
      string ( *fnSplit )( string, string, int ) ;
+     string ( *fnFill )( string, int, char ) ;
      string ( *fnUpperAll )( string ) ;
      string ( *fnLowerAll )( string ) ;
      string ( *fnUpperFirst )( string ) ;
@@ -70,6 +72,7 @@ typedef struct _louise_functions{
      _LouisefnCount,\
      _LouisefnReplace,\
      _LouisefnSplit,\
+     _LouisefnFill,\
      _LouisefnUpperAll,\
      _LouisefnLowerAll,\
      _LouisefnUpperFirst,\
