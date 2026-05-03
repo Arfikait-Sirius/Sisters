@@ -160,6 +160,39 @@ string _LouisefnSplit( string data, string splitter, int position ){
 
 //------------------------
 // :[ NAME ]:
+//     fnFill
+//
+// :[ CATEGORY ]:
+//     Skill
+//------------------------
+string _LouisefnFill( string data, int length, char symbol ){
+     int len ;
+     int size ;
+     bool isAllocation ;
+
+     len = strlen( data ) ;
+     if( len >= length ){
+          size = strlen( data ) + 1 ;
+          isAllocation = sfnAllocate( size ) ;
+          if( !isAllocation ){
+               return NULL ;
+          }
+          strcpy( MyData.str, data ) ;
+          return MyData.str ;
+     }
+     isAllocation = sfnAllocate( length + 1 ) ;
+     if( !isAllocation ){
+          return NULL ;
+     }
+     memset( MyData.str, symbol, length ) ;
+     MyData.str[length] = NL ;
+     memcpy( MyData.str, data, len ) ;
+
+     return MyData.str ;
+}
+
+//------------------------
+// :[ NAME ]:
 //     fnUpperAll
 //
 // :[ CATEGORY ]:
